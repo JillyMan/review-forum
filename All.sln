@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{31FAF65C-A6C1-4F8D-8D89-46CC5367A3B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "src\Microservices\Service\Service.csproj", "{72D596FF-E8AA-487C-B085-226CBDB07399}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "src\Microservices\Service\Service.csproj", "{72D596FF-E8AA-487C-B085-226CBDB07399}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3F77B165-9795-4ED3-BEB1-F520345E1831}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApi", "src\Microservices\TestApi\TestApi\TestApi.csproj", "{D6328D95-0309-437A-8AE7-757FA5213194}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{3F77B165-9795-4ED3-BEB1-F520345E1831}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F77B165-9795-4ED3-BEB1-F520345E1831}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F77B165-9795-4ED3-BEB1-F520345E1831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6328D95-0309-437A-8AE7-757FA5213194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6328D95-0309-437A-8AE7-757FA5213194}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6328D95-0309-437A-8AE7-757FA5213194}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6328D95-0309-437A-8AE7-757FA5213194}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
