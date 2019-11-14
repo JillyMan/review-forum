@@ -1,7 +1,7 @@
-import React, {Componets } from 'react'
+import React, { Component } from 'react'
 import Input from '../presentational/Input'
 
-class FormContainer extends Componet {
+class FormContainer extends Component {
     constructor() {
         super()
         this.state = {
@@ -19,12 +19,12 @@ class FormContainer extends Componet {
         return (
             <form id='article-form'>
                 <Input
-                text="Some title"
-                label='title'
-                type='text'
-                id='title'
-                value={title}
-                handleChange={this.handleChange}
+                    id='title'
+                    type='text'
+                    label='title'
+                    text="Some title"
+                    value={title}
+                    handleChange={this.handleChange}
                 />
             </form>
         )
