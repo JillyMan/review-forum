@@ -26,6 +26,14 @@ class FormContainer extends Component {
                     value={title}
                     handleChange={this.handleChange}
                 />
+                <Input
+                    id='title'
+                    type='text2'
+                    label='title2'
+                    text="Some title2"
+                    value={title}
+                    handleChange={this.handleChange}
+                />
             </form>
         )
     }
