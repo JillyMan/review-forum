@@ -3,10 +3,11 @@ import Input from '../presentational/Input'
 import Button from '../presentational/Button'
 import {INPUT_EMAIL_TYPE, INPUT_PASSWORD_TYPE} from '../constants'
 
-class RegistrationForm extends Component {
+class FormRegistration extends Component {
     render() {
         return (
             <form className='container border p-3'>
+                <label>Registration</label>
                     <Input
                         id='email_id'
                         text='Email'
@@ -25,4 +26,4 @@ class RegistrationForm extends Component {
     }
 }
 
-export default RegistrationForm;
+export default FormRegistration;

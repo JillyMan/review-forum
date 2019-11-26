@@ -7,7 +7,7 @@ const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_ARTICLE: 
         {
-            return { 
+            return {
                 articles: [action.payload, ...state.articles]
             }
         }
