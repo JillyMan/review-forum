@@ -10,7 +10,7 @@ class FormRegistration extends Component {
                 <label>Registration</label>
                     <Input
                         id='email_id'
-                        text='Email'
+                        text='cvbvc'
                         label='Email'
                         type={INPUT_EMAIL_TYPE}/>
                     <Input

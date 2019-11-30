@@ -1,13 +1,12 @@
 import React from 'react'
-import FormContainer from './FormContainer'
-import FormRegistration from './FormRegistration'
-import Navbar from './Navbar'
+import Navbar from './NavbarContainer'
+import SearchContentContainer from './SearchContentContainer'
 
 const App = () => {
     return (
         <div>
             <Navbar />
-            <FormRegistration />
+            <SearchContentContainer />
         </div>
     )
 }
