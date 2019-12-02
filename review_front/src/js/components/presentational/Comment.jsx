@@ -7,18 +7,22 @@ class Comment extends Component {
     }
 
     render() {
-        const { userName, commentText, childComments } = this.props.comments
+        const { userName, commentText, childComments } = this.props
         //todo: check on null childComments
         //todo: think again about comments and child comments.
-        const ChildCommentsComponent = childComments.map((childComments) => {
-            return (
-                <Comment
-                    userName={comment.user}
-                    commentText={comment.Text}
-                    childComments={comment.childComments}
-                />
-            )
-        })
+        
+        let ChildCommentsComponent;
+        if(childComments){ 
+            ChildCommentsComponent = childComments.map((child) => {
+                return (
+                    <Comment
+                        userName={child.user}
+                        commentText={child.Text}
+                        childComments={child.childComments}
+                    />
+                )
+            })
+        } 
 
         return (
             <div className='container'>
@@ -26,13 +30,13 @@ class Comment extends Component {
                     <h2>{userName}</h2>
                     <p>{commentText}</p>
                 </div>
-                <Comment/>
+                <ChildCommentsComponent/>
             </div>
         )
     }
 }
 
-PropType.propTypes = {
+Comment.propTypes = {
     userName: PropTypes.string.isRequired,
     commentText: PropTypes.string.isRequired,
 }

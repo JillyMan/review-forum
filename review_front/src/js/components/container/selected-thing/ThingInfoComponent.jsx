@@ -1,23 +1,39 @@
 import React, { Component } from 'react'
 import Image from '../../presentational/common/Image'
-import Rate from '../../presentational/Rate'
-import Description from '../../presentational/Description'
+import Rate from '../../presentational/common/Rate'
+import Description from '../../presentational/common/Description'
+import PropTypes from 'prop-types'
 
+/*
+    |       | Rate
+    |image  | Desciption
+*/
+/*
+    - Thing
+        - Image
+        - Rate
+        - Description
+*/
 
-class ThingInfoComponent extends Component {
+export default class ThingInfoComponent extends Component {
+    constructor(props) {
+        super(props)
+    }
+ 
     changeRate() {
     }
    
     render () {
-        const { umageUrl, rate, description } = this.props;
+        const { urlImage, rate, description } = this.props;       
         return (
             <div>              
                 <Image
-                    url={umageUrl}
+                    url={urlImage}
                 />
                 <Rate
-                    currentRate={rate} 
-                    changeRate={this.changeRate}
+                    warmStars={4} 
+                    starsCount={5}
+                    onChangeRate={this.changeRate}
                 />
                 <Description
                     text={description}/>
@@ -26,4 +42,8 @@ class ThingInfoComponent extends Component {
     }
 }
 
-export default ThingInfoComponent;
+ThingInfoComponent.propTypes = {
+    urlImage: PropTypes.string.isRequired,
+    rate: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired
+}

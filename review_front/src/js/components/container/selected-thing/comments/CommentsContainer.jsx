@@ -1,23 +1,31 @@
 import React, { Component } from 'react'
-import Comment from '../presentational/Comment'
+import Comment from '../../../presentational/Comment'
 
-class CommentsContainer extends Component {
+export default class CommentsContainer extends Component {
     render() {
         const { comments } = this.props
-        const CommentsView = comments.forEach((commentInfo) => {
-            return (
-                <Comment
-                    userName={commentInfo.userName}
-                    commemtText={commentInfo.commentText}
-                    childComments={commentInfo.childComments}
+        if(comments) {
+            let CommentsView = comments ? comments.map((info) => {
+                return (
+                    <Comment
+                        userName={info.userName}
+                        commentText={info.commentText}
+                        childComments={info.childComments}
+                    />
+                )
+            }) : <Comment
+                    userName='default name'
+                    commentText='default text'
                 />
+    
+            return (
+                <CommentsView />
             )
-        })
-
-        return (
-            <CommentsView />
-        )
+        }
+        else {
+            return (
+                <h1>There is no comments</h1>
+            )
+        }
     }
 }
-
-export default CommentsContainer;

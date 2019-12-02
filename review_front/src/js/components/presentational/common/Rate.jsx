@@ -6,7 +6,7 @@ const UncheckedStar = 'fa fa-star'
 
 //todo: also pls checks docs about function context (func -> this.bind(funcName) )
 
-class Rate extends Component {
+export default class Rate extends Component {
     constructor(props) {
         super(props)
     }
@@ -17,10 +17,10 @@ class Rate extends Component {
 
     render() {
         const {warmStars, starsCount, onChangeRate} = this.props
-        const StarsComponent = Array(starsCount).map((v, i) => {
-            let className = i < warmStars ? CheckedStar : UncheckedStar
-            let style = i < warmStars ? {color: 'orange'} : {color: 'black'}
-            return (
+        const stars = []
+        for(let i = 0; i < starsCount; ++i) {
+            let { className, style }  = (i < warmStars) ? { className: CheckedStar, style: {color: 'orange'}} : { className: UncheckedStar, style: {color: 'black'}}
+            stars.push(
                 <span 
                     id={i}
                     style={style}
@@ -28,11 +28,10 @@ class Rate extends Component {
                     onClick={onChangeRate}>
                 </span>
             )
-        })
-    
+        }
         return (
             <div className='group-inline'>
-                <StarsComponent />
+                {stars}
             </div>
         )
     }
@@ -43,5 +42,3 @@ Rate.propTypes = {
     starsCount: PropTypes.number.isRequired,
     onChangeRate: PropTypes.func.isRequired
 }
-
-export default Rate;
