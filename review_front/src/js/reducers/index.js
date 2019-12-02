@@ -1,5 +1,12 @@
 import { ADD_ARTICLE } from '../constants/action-types'
 
+const test_state = {
+    auth: {},
+    things: {},
+    search: {},
+    selectedPage: {},
+}
+
 const initialState = {
     articles: []
 }
