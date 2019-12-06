@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Comment from '../../../presentational/Comment'
+import Comment from '../../../presentational/comment'
 
 export default class CommentsContainer extends Component {
     render() {

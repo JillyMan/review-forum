@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from './NavbarContainer'
-import SearchContentContainer from './searching/SearchContentContainer'
-import SelectedThingComponent from './selected-thing/SelectedThingComponent'
+import Navbar from './navbar-container'
+import SearchContentContainer from './searching/search-content-container'
+import SelectedThingComponent from './selected-thing/selected-thing-component'
 
 const App = () => {
     return (

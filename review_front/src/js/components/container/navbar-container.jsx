@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import NavbarItem from '../presentational/common/navbar/NavbarItem'
-import NavbarBrand from '../presentational/common/navbar/NavbarBrand'
+import NavbarItem from '../presentational/common/navbar/navbar-item'
+import NavbarBrand from '../presentational/common/navbar/navbar-brand'
 
 class Navbar extends Component {
     render() {

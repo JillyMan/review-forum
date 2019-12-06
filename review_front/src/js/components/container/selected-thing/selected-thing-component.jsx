@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import CommentsContainer from './comments/CommentsContainer'
-import ThingInfoComponent from './ThingInfoComponent'
+import CommentsContainer from './comments/comments-container'
+import ThingInfoComponent from './thing-info-component'
 
 class SelectedThingComponent extends Component {
     render() {

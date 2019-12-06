@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Image from '../../presentational/common/Image'
-import Rate from '../../presentational/common/Rate'
-import Description from '../../presentational/common/Description'
+import Image from '../../presentational/common/image'
+import Rate from '../../presentational/common/rate'
+import Description from '../../presentational/common/description'
 import PropTypes from 'prop-types'
 
 /*
