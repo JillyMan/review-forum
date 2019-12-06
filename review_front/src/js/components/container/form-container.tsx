@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Input from '../presentational/common/input'
 
-
 const FormContainer = (title: string) => {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

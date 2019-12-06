@@ -6,8 +6,8 @@ const NavbarBrandStyle = 'navbar-brand'
 
 const NavbarContainer = () => {
 
-    const items = ['Sign in', 'Sign up'].map((item) => {
-        return <NavbarItem className={NavbarItemStyle} link='#' name={item}/>
+    const items = ['Sign in', 'Sign up'].map((item, index) => {
+        return <NavbarItem key={index} className={NavbarItemStyle} link='#' name={item}/>
     });
 
     return (

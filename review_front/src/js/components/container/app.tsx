@@ -1,14 +1,14 @@
 import React from 'react'
-// import NavbarContainer from './navbar-container'
+import NavbarContainer from './navbar-container'
 // import SearchContentContainer from './searching/search-content-container'
-// import SelectedThingComponent from './selected-thing/selected-thing-component'
+import SelectedThingComponent from './selected-thing/selected-thing-component'
 
 const App = () => {
     return (
         <>
-            {/* <NavbarContainer />
+            <NavbarContainer />
             {/* <SearchContentContainer /> */}
-            {/* <SelectedThingComponent/> */} */}
+            <SelectedThingComponent/>
         </>
     )
 }
