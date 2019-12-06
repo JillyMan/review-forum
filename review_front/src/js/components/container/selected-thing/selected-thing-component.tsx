@@ -10,7 +10,7 @@ class SelectedThingComponent extends Component {
                     urlImage='https://cdn.pixabay.com/photo/2019/11/06/14/33/moon-4606246_960_720.jpg'
                     rate={3}
                     description='lorem ipsum blablablablablablabla'/>
-                <CommentsContainer />
+                {/* <CommentsContainer /> */}
             </div>
         )
     }

@@ -1,13 +1,15 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+    mode: "production",
+    devtool: "source-map",
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.ts(x?)$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader"
+                    loader: "ts-loader"
                 }
             },
             {
@@ -15,6 +17,11 @@ module.exports = {
                 use: {
                         loader: "html-loader"
                 }
+            },
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                loader: "source-map-loader"
             }
         ]
     },
@@ -25,6 +32,10 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx', '.tsx', '.ts']
+    },
+    externals: {
+        "react": "React",
+        "react-dom": "ReactDOM"
     }
 }; 

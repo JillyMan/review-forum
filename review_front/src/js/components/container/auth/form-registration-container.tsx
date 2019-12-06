@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import Input from '../presentational/Input'
-import Button from '../presentational/Button'
-import {INPUT_EMAIL_TYPE, INPUT_PASSWORD_TYPE} from '../constants'
+import Input from '../../presentational/common/input'
+import Button from '../../presentational/common/button'
+import {
+    INPUT_EMAIL_TYPE, 
+    INPUT_PASSWORD_TYPE
+} from '../../constants'
 import {BorderContainer} from '../../presentational/common/container'
 
 class FormRegistration extends Component {
