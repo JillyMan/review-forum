@@ -28,10 +28,14 @@ const ThingInfoComponent = ({
     }
 
     return (
-        <div>              
-            <Image
-                url={urlImage}
-            />
+        <div className='container'>
+            <div className=''>
+                <Image
+                    url={urlImage}
+                    width='240'
+                    height='200'
+                />
+            </div>
             <Rate
                 warmStars={rate} 
                 starsCount={5}

@@ -1,21 +1,70 @@
 import React, { Component } from 'react'
-import CommentsWrapper from './comments/comments-wrapper'
 import ThingInfoComponent from './thing-info-component'
-import CommentThing from '../../presentational/comment-thing'
+import Comment from '../../presentational/comment'
+import WriteCommentPanel from '../../presentational/write-comment-panel'
+import { CommentInfo } from '../../shared/types'
 
-//pls create wrapper under comments.
-class SelectedThingComponent extends Component {
+// todo: pls create wrapper under comments.
+// todo: validate comments.
+
+interface Props {
+    userName?: string, // it's shit pls delete
+    urlImage: string,
+    rate: number,
+    description: string,
+    comments?: CommentInfo[]
+}
+
+interface State {
+    comments?: CommentInfo[]
+}
+
+class SelectedThingComponent extends Component<Props, State> {
+    constructor(props: Props) {
+        super(props)
+
+        this.state = {
+            comments: this.props.comments
+        }
+    }
+
+    addComment = (comment: string) => {
+        const userName: string = this.props.userName
+
+        const newState = {
+            comments: [{
+                userName: userName, 
+                commentText: comment
+            }, ...this.state.comments]
+        }
+        this.setState(newState)
+    }
+
     render() {
+        const {urlImage, rate, description} = this.props;
+        const { comments } = this.state
+        let CommentsList = comments ? comments.map((comment, index) => {
+            return <Comment 
+                        key={index} 
+                        userName={comment.userName} 
+                        commentText={comment.commentText}/>
+        }) : []
+        
         return (
-            <div>
+            <div className='container align-middle'>
                 <ThingInfoComponent
-                    urlImage='https://cdn.pixabay.com/photo/2019/11/06/14/33/moon-4606246_960_720.jpg'
-                    rate={3}
-                    description='lorem ipsum blablablablablablabla'/>
-                <>
-                    <CommentThing key={1} userName='Petr' commentText="it's pretty product" />
-                    <CommentThing key={3} userName='Vasia' commentText="it's shitty product" />
-                </>
+                    urlImage={urlImage}
+                    rate={rate}
+                    description={description}/>
+                <div>
+                    <WriteCommentPanel
+                        label='Comments:'
+                        buttonName='Add comment'
+                        onButtonPress={this.addComment}/>
+                </div>
+                <div className='container'>
+                    {CommentsList}
+                </div>
             </div>
         )
     }

@@ -14,7 +14,7 @@ const Image = ({
 
     return (
         <div className='shadow-sm p-3 mb-5 bg-white rounded'>
-            <img src={url} width={width} height={height}/>
+            <img className='img-thumbnail' src={url} width={width} height={height}/>
         </div>
     )
 }

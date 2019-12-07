@@ -6,7 +6,7 @@ interface Props {
     text?: string, 
     type?: string, 
     value?: string, 
-    onInputChange?: (value: React.ChangeEvent<HTMLInputElement>) => void
+    onInputChange?: (value: string) => void
 }
 
 const Input = ({
@@ -19,7 +19,7 @@ const Input = ({
 }: Props) => {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        onInputChange(event);
+        onInputChange(event.target.value)
     }
 
     return (

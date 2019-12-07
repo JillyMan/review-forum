@@ -3,7 +3,7 @@ import Input from '../presentational/common/input'
 
 const FormContainer = (title: string) => {
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (value: string) => {
         // this.setState({[event.target.id]: event.target.value})       
     }
 
