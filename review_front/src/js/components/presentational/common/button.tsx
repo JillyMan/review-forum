@@ -12,11 +12,15 @@ const Button = ({
     onBtnClick} : Props
 ) => {
     
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        onBtnClick()
+    }
+
     return (
         <button 
             className="btn btn-primary"
             type={type}
-            onClick={onBtnClick}>{name}</button>
+            onClick={handleClick}>{name}</button>
     )
 }
 

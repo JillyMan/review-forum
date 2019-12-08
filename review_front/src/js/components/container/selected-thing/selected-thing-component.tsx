@@ -3,17 +3,10 @@ import ThingInfoComponent from './thing-info-component'
 import Comment from '../../presentational/comment'
 import WriteCommentPanel from '../../presentational/write-comment-panel'
 import { CommentInfo } from '../../shared/types'
+import { getThing, Thing } from 'js/data-layer/things'
 
 // todo: pls create wrapper under comments.
 // todo: validate comments.
-
-interface ISelectedThing { 
-    id: number,
-    userName?: string,
-    urlImage: string,
-    rate: number,
-    description: string,
-}
 
 interface IState { 
     comments?: CommentInfo[]
@@ -21,8 +14,8 @@ interface IState {
 
 const STORAGE_KEY: string = 'SELECTED_THING'
 
-class SelectedThingComponent extends Component<ISelectedThing, IState> {
-    constructor(props: ISelectedThing) {
+class SelectedThingComponent extends Component<Thing, IState> {
+    constructor(props: Thing) {
         super(props)
         this.state = {
             comments: []
@@ -30,8 +23,8 @@ class SelectedThingComponent extends Component<ISelectedThing, IState> {
     }
 
     componentDidMount() { 
-        const saved = JSON.parse(localStorage.getItem(`${STORAGE_KEY}/${this.props.id}` || `{id: ${STORAGE_KEY}/${this.props.id}, comments: []}`)) as IState
-        this.setState(saved);
+        const saved = getThing(this.props.id).comments
+        //this.setState(saved)
     }
 
     saveInLocalStorage = (state: IState) => {
@@ -39,7 +32,7 @@ class SelectedThingComponent extends Component<ISelectedThing, IState> {
     }
 
     addComment = (commentText: string) => {
-        const userName: string = this.props.userName
+        const userName: string = ''//this.props.userName
         const commentInfo: CommentInfo = {userName, commentText}
         const newState = {
             comments: [commentInfo, ...this.state.comments]
