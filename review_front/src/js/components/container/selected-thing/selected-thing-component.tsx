@@ -7,36 +7,44 @@ import { CommentInfo } from '../../shared/types'
 // todo: pls create wrapper under comments.
 // todo: validate comments.
 
-interface Props {
-    userName?: string, // it's shit pls delete
+interface ISelectedThing { 
+    id: number,
+    userName?: string,
     urlImage: string,
     rate: number,
     description: string,
+}
+
+interface IState { 
     comments?: CommentInfo[]
 }
 
-interface State {
-    comments?: CommentInfo[]
-}
+const STORAGE_KEY: string = 'SELECTED_THING'
 
-class SelectedThingComponent extends Component<Props, State> {
-    constructor(props: Props) {
+class SelectedThingComponent extends Component<ISelectedThing, IState> {
+    constructor(props: ISelectedThing) {
         super(props)
-
         this.state = {
-            comments: this.props.comments
+            comments: []
         }
     }
 
-    addComment = (comment: string) => {
-        const userName: string = this.props.userName
+    componentDidMount() { 
+        const saved = JSON.parse(localStorage.getItem(`${STORAGE_KEY}/${this.props.id}` || `{id: ${STORAGE_KEY}/${this.props.id}, comments: []}`)) as IState
+        this.setState(saved);
+    }
 
+    saveInLocalStorage = (state: IState) => {
+        localStorage.setItem(`${STORAGE_KEY}/${this.props.id}`, JSON.stringify(state))
+    }
+
+    addComment = (commentText: string) => {
+        const userName: string = this.props.userName
+        const commentInfo: CommentInfo = {userName, commentText}
         const newState = {
-            comments: [{
-                userName: userName, 
-                commentText: comment
-            }, ...this.state.comments]
+            comments: [commentInfo, ...this.state.comments]
         }
+        this.saveInLocalStorage(newState)
         this.setState(newState)
     }
 
@@ -49,7 +57,7 @@ class SelectedThingComponent extends Component<Props, State> {
                         userName={comment.userName} 
                         commentText={comment.commentText}/>
         }) : []
-        
+
         return (
             <div className='container align-middle'>
                 <ThingInfoComponent

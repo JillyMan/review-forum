@@ -29,20 +29,24 @@ const ThingInfoComponent = ({
 
     return (
         <div className='container'>
-            <div className=''>
-                <Image
-                    url={urlImage}
-                    width='240'
-                    height='200'
-                />
+            <div className='row'>
+                <div className='col-4'>
+                    <Image
+                        url={urlImage}
+                        width='240'
+                        height='200'
+                    />
+                    <Rate
+                        warmStars={rate} 
+                        starsCount={5}
+                        onChangeRate={onRateChaged}
+                    />
+                </div>
+                <div className='col-8'>
+                    <Description
+                        text={description}/>
+                </div>
             </div>
-            <Rate
-                warmStars={rate} 
-                starsCount={5}
-                onChangeRate={onRateChaged}
-            />
-            <Description
-                text={description}/>
         </div>
     )
 }

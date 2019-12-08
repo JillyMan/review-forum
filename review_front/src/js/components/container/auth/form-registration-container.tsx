@@ -7,6 +7,8 @@ import {
 } from '../../constants'
 import {BorderContainer} from '../../presentational/common/container'
 
+const USER_KEY = 'USERS'
+
 class FormRegistration extends Component {
     render() {
         return (
