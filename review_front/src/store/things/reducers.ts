@@ -1,4 +1,4 @@
-import { ADD_COMMENT } from "./actions"
+import { ADD_COMMENT, STORE_THING } from "./actions"
 
 export interface CommentInfo {
     userName: string,
@@ -27,6 +27,10 @@ export const selectedThingReducer = (state: SelectedThing = defaultState, action
             return {
                 ...state,
                 comments: action.payload
+            }
+        case STORE_THING:
+            return {
+                ...action.payload
             }
     }
 

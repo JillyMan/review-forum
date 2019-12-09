@@ -1,4 +1,11 @@
 - Routing
 - State?
 - Page with content. (use card snipets from bootstrap.com)
-- make shadow in text description
+
+- content page
+- Api to local storage
+
+
+# reducers 
+    - set state for current selected things
+    
