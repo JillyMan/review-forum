@@ -1,11 +1,11 @@
+import Redux from 'redux'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Redux from 'redux'
-import { AppState, CommentInfo } from '../../../store/types'
-import { ThingInfoComponent } from './thing-info-component'
 import { Comment } from '../../presentational/comment'
-import WriteCommentPanel from '../../presentational/write-comment-panel'
+import { ThingInfoComponent } from './thing-info-component'
+import { AppState, CommentInfo } from '../../../store/types'
 import { addComment, ActiveThingAction } from '../../../store/active-thing/actions'
+import WriteCommentPanel from '../../presentational/write-comment-panel'
 
 interface StoreProps {
     id: number,

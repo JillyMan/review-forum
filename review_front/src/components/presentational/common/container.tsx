@@ -10,10 +10,20 @@ export const Container = (childs: React.ReactChild) => {
 }
 
 interface Props { 
+    colSm?: number
     children: React.ReactChild;
 }
 
 export const BorderContainer = ({
+    colSm,
     children
-}: Props) => 
-    <div className='container border'>{children}</div>
+}: Props) =>  {
+    
+    const className = `container border col-${colSm ? colSm : '' }`
+
+    return (
+        <div className={className}>
+            {children}
+        </div>
+    )
+}

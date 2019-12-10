@@ -1,24 +1,28 @@
-import { STORE_USER_INFO, LOG_OUT } from "./actions"
+import {
+    UserInfoAction,
+    STORE_USER_INFO,
+    LOG_OUT
+ } from "./actions"
 
-export interface UserState { 
+export interface UserState {
     userName: string,
 }
 
-const defaultState: UserState = { 
+const defaultState: UserState = {
     userName: 'Artsiom'
 }
 
-export const userReducer = (state: UserState = defaultState, action: any) => {
+export const userReducer = (state: UserState = defaultState, action: UserInfoAction) => {
     switch (action.type) {
         case STORE_USER_INFO:
             return {
                 ...state,
-                userName: action.payload
+                ...action.payload
             }
         case LOG_OUT:
             return {
                 ...state,
-                userName: ''
+                ...action.payload
             }
     }
     return state

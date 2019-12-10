@@ -42,8 +42,16 @@ export const addUser = (userInfo: IUserAuth): string => {
     return SUCCESS
 }
 
-export const existUser = (login: string): boolean => { 
-    const users = getUsers()
-    const result = !!users.filter(u => u.login == login)
-    return result
+const users = [
+    { login: 'login1', pass:'1234', userName: 'Petr' },
+    { login: 'login3', pass:'1234', userName: 'Vasia' },
+    { login: 'login4', pass:'1234', userName: 'Misha' },
+    { login: 'login5', pass:'1234', userName: 'Vova' },
+]
+
+export const existUser = (login: string, pass: string) => { 
+    let user = users.find(x => x.login == login && x.pass == pass)
+    return user ? {
+            userName: user.userName
+        } : null
 }

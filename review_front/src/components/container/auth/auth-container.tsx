@@ -1,36 +1,58 @@
 import React from 'react'
+import Redux from 'redux'
 import { connect } from "react-redux"
 import { Auth } from "./auth"
-import { AuthProps } from './shared'
+import { AppState } from 'store/types'
+import { existUser } from '../../../api/user'
+import { UserInfoAction, storeUser, UserInfo } from '../../../store/user-info/actions'
+import { AuthAction, AuthData, setAuthData } from '../../../store/auth/actions'
+import { WarningAllert } from '../../../components/presentational/allers/warning-allert'
 
-const AuthContainer = ({
-    pass, 
-    login, 
-    setPass,
-    setLogin, 
-    onBtnAuthClick
-}: AuthProps) => {
-    return (
-        <Auth 
-            login={login}
-            pass={pass}
-            setLogin={setLogin}
-            setPass={setPass}
-            onBtnAuthClick={onBtnAuthClick}
-        />
-    )
+interface StateToProps { 
+    isAuth: boolean
 }
 
-const mapStateToProps = (state: any) => {
-    return {
-        login: state.auth.login,
-        password: state.auth.password
+interface DispatchToProps { 
+    onAuthDataSetup: (authData: AuthData) => void,
+    onUserSignIn: (userInfo: UserInfo) => void
+}
+
+type Props = DispatchToProps & StateToProps
+
+const AuthContainer = ({
+    isAuth,
+    onUserSignIn,
+    onAuthDataSetup,
+}: Props) => {
+
+    const onBtnAuthClick = (login: string, pass: string) => {
+        let responce = existUser(login, pass)
+        if(responce) {
+            // set navigation ?????
+            onUserSignIn({userName: responce.userName})
+            onAuthDataSetup({isAuth: true})
+            return true
+        }
+
+        return false
+    }
+
+    if(isAuth) { 
+        return <WarningAllert isHidden={isAuth} text='You already authorized!' />
+    }
+    else {
+        return<Auth onBtnAuthClick={onBtnAuthClick}/>
     }
 }
 
-const mapDispatchToProps = {
-    // setLogin,
-    // setPassword
-}
+const mapStateToProps = (state: AppState): StateToProps => ({
+    isAuth: state.auth.isAuth
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer)
+type DispatchTypes = UserInfoAction | AuthAction
+const mapDispatchToProps = (dispatch: Redux.Dispatch<DispatchTypes>): DispatchToProps => ({
+    onUserSignIn: (userInfo: UserInfo) => dispatch(storeUser(userInfo)),
+    onAuthDataSetup: (authData: AuthData) => dispatch(setAuthData(authData))
+})
+
+export default connect<StateToProps, DispatchToProps>(mapStateToProps, mapDispatchToProps)(AuthContainer)

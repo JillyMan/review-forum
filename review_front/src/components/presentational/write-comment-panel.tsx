@@ -1,5 +1,6 @@
-import React, { useRef, createRef, Component } from 'react'
+import React, { createRef, Component } from 'react'
 import Button from './common/button';
+import { WarningAllert } from './allers/warning-allert';
 
 interface Props { 
     label: string,
@@ -37,9 +38,9 @@ class WriteCommentPanel extends Component<Props, State> {
         return (
             <div className='container shadow-lg p-3 mb-5 bg-white rounded'>
                 <div className="form-group">
-                    <div className="alert alert-danger" role="alert" hidden={!this.state.isEmpty}>
-                        Pls put text here!
-                    </div>
+                    <WarningAllert
+                        text={'Pls put text here!'}
+                        isHidden={!this.state.isEmpty}/>
                     <label htmlFor="comment">{label}</label>
                     <textarea
                         rows={5}
