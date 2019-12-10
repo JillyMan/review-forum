@@ -2,16 +2,6 @@ import React, { Component } from 'react'
 import Image from '../../presentational/common/image'
 import Rate from '../../presentational/common/rate'
 import Description from '../../presentational/common/description'
-/*
-    |       | Rate
-    |image  | Desciption
-*/
-/*
-    - Thing
-        - Image
-        - Rate
-        - Description
-*/
 
 interface Props { 
     rate: Number,
@@ -19,7 +9,7 @@ interface Props {
     description?: string       
 }
 
-const ThingInfoComponent = ({ 
+export const ThingInfoComponent = ({ 
     rate, 
     urlImage, 
     description 
@@ -50,5 +40,3 @@ const ThingInfoComponent = ({
         </div>
     )
 }
-
-export default ThingInfoComponent;

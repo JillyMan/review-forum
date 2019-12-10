@@ -1,12 +1,13 @@
 import React from 'react'
 //todo: in future will add posibility to add comment to comment 
+
 interface Props {
     userName?: string,
     commentText?: string,
     // childComments?: Props[]
 }
 
-const Comment = ({
+export const Comment = ({
     userName,
     commentText,
 }: Props) => {
@@ -18,5 +19,3 @@ const Comment = ({
         </li>
     )
 }
-
-export default Comment;

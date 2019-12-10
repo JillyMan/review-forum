@@ -13,7 +13,7 @@ const UncheckedStar = {
 interface Props { 
     warmStars: Number,
     starsCount: Number,
-    onChangeRate: (changedValue: Number) => void 
+    onChangeRate?: (changedValue: Number) => void 
 }
 
 const Rate = ({

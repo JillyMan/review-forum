@@ -2,7 +2,7 @@ import React from 'react'
 import Input from '../../presentational/common/input'
 import Button from '../../presentational/common/button'
 import { BorderContainer } from '../../presentational/common/container'
-import { INPUT_TEXT_TYPE, INPUT_PASSWORD_TYPE } from 'js/components/constants'
+import { INPUT_TEXT_TYPE, INPUT_PASSWORD_TYPE } from '../../constants'
 import { AuthProps } from './shared'
 
 export const Auth = ({

@@ -1,38 +1,15 @@
-import { ADD_COMMENT, STORE_THING } from "./actions"
+import { ThingsConfig, STORE_THINGS } from './actions'
 
-export interface CommentInfo {
-    userName: string,
-    text: string,
+const defaultState: ThingsConfig = {
+    configs: []
 }
 
-export interface SelectedThing { 
-    id: number,
-    urlImage: string,
-    rate: number,
-    description: string,
-    comments: CommentInfo[]
-}
-
-const defaultState: SelectedThing = {
-    id: 0,
-    urlImage: '',
-    rate: 0,
-    description: '',
-    comments: []
-}
-
-export const selectedThingReducer = (state: SelectedThing = defaultState, action: any): SelectedThing => {
+export const thingsReducer = (state: ThingsConfig = defaultState, action: any) => {
     switch (action.type) {
-        case ADD_COMMENT:
-            return {
-                ...state,
-                comments: action.payload
-            }
-        case STORE_THING:
+        case STORE_THINGS:
             return {
                 ...action.payload
             }
     }
-
     return state
 }

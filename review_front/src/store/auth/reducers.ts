@@ -1,26 +1,19 @@
-import { AUTH_CHANGE_LOGIN, AUTH_CHANGE_PASSWORD } from "./actions"
+import { SET_AUTH_DATA } from "./actions"
 
 export interface AuthState {
-    login: string,
-    password: string,
+    isAuth: boolean
 }
 
 const defaultState: AuthState = { 
-   login: '',
-   password: '',
+    isAuth: true
 }
 
 export const authReducer = (state: AuthState = defaultState, action: any): AuthState => {
     switch (action.type) {
-        case AUTH_CHANGE_LOGIN:
+        case SET_AUTH_DATA:
             return {
                 ...state, 
-                login: action.payload
-            }
-        case AUTH_CHANGE_PASSWORD:
-            return {
-                ...state, 
-                password: action.payload
+                isAuth: action.payload
             }
     }
 

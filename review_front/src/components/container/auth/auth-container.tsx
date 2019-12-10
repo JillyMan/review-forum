@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux"
 import { Auth } from "./auth"
-import { setLogin, setPassword } from '../../../store/auth/actions'
 import { AuthProps } from './shared'
 
 const AuthContainer = ({
@@ -30,8 +29,8 @@ const mapStateToProps = (state: any) => {
 }
 
 const mapDispatchToProps = {
-    setLogin,
-    setPassword
+    // setLogin,
+    // setPassword
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer)
