@@ -3,7 +3,7 @@ import Input from '../../presentational/common/input'
 import Button from '../../presentational/common/button'
 import { BorderContainer } from '../../presentational/common/container'
 import { INPUT_TEXT_TYPE, INPUT_PASSWORD_TYPE } from '../../constants'
-import { WarningAllert } from '../../../components/presentational/allers/warning-allert'
+import { Allert } from '../../presentational/allerts/allert'
 
 interface Props {
     onBtnAuthClick: (login: string, pass: string) => boolean,
@@ -22,7 +22,8 @@ export const Auth = ({
             colSm={5}>
             <>
             <div className='mb-3 mt-1'>
-                <WarningAllert
+                <Allert
+                    type='warning'
                     text={'Incorrect login/password'}
                     isHidden={allertHidden}
                 />

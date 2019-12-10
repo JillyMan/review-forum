@@ -10,5 +10,6 @@
     - set state for current selected things
     
 
-todo: pls create wrapper under comments.
-todo: validate comments.
+# pls create wrapper under comments.
+- validate comments.
+- change logic for allert hidden

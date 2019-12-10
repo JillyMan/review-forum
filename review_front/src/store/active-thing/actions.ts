@@ -1,8 +1,17 @@
 export const ADD_COMMENT = 'ADD_COMMENT'
+import { CommentInfo} from '../types'
+
 export const STORE_THING = 'STORE_THING'
 export const CLEAR_THING = 'CLEAR_THING'
 
-import { CommentInfo, ThingConfig } from '../types'
+export interface ThingConfig { 
+    id: number,
+    rate: number,
+    urlImage: string,
+    description: string,
+    comments: CommentInfo[]
+}
+
 
 type AddCommentAction = {
     type: typeof ADD_COMMENT,

@@ -1,4 +1,4 @@
-import { ThingConfig } from "../types"
+import { ThingConfig } from "./actions"
 import { 
     ADD_COMMENT, 
     STORE_THING,

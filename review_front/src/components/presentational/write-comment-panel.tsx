@@ -1,6 +1,6 @@
 import React, { createRef, Component } from 'react'
 import Button from './common/button';
-import { WarningAllert } from './allers/warning-allert';
+import { Allert } from './allerts/allert';
 
 interface Props { 
     label: string,
@@ -38,7 +38,8 @@ class WriteCommentPanel extends Component<Props, State> {
         return (
             <div className='container shadow-lg p-3 mb-5 bg-white rounded'>
                 <div className="form-group">
-                    <WarningAllert
+                    <Allert
+                        type='warning'
                         text={'Pls put text here!'}
                         isHidden={!this.state.isEmpty}/>
                     <label htmlFor="comment">{label}</label>

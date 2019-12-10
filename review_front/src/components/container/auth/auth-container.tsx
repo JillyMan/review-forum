@@ -6,7 +6,7 @@ import { AppState } from 'store/types'
 import { existUser } from '../../../api/user'
 import { UserInfoAction, storeUser, UserInfo } from '../../../store/user-info/actions'
 import { AuthAction, AuthData, setAuthData } from '../../../store/auth/actions'
-import { WarningAllert } from '../../../components/presentational/allers/warning-allert'
+import { Allert } from '../../presentational/allerts/allert'
 
 interface StateToProps { 
     isAuth: boolean
@@ -38,7 +38,10 @@ const AuthContainer = ({
     }
 
     if(isAuth) { 
-        return <WarningAllert isHidden={isAuth} text='You already authorized!' />
+        return <Allert 
+                    type='warning' 
+                    isHidden={isAuth} 
+                    text='You already authorized!' />
     }
     else {
         return<Auth onBtnAuthClick={onBtnAuthClick}/>

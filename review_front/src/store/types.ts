@@ -9,8 +9,9 @@ export interface CommentInfo {
 
 export interface ThingConfig { 
     id: number,
-    urlImage: string,
     rate: number,
+    name: string,
+    urlImage: string,
     description: string,
     comments: CommentInfo[]
 }
