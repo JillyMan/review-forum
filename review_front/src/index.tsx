@@ -1,5 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './js/components/container/app'
+import { createStore } from 'redux'
+import rootReducer from 'store/reducers'
+import { AppContainer } from 'components/container/app'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const store = createStore(rootReducer, 
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__())
+
+ReactDOM.render(<AppContainer store={store} />, document.getElementById('root'))

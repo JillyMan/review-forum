@@ -1,20 +1,14 @@
 import React from 'react'
 import NavbarContainer from './navbar/navbar-container'
-import SelectedThingComponent from './selected-thing/selected-thing-component'
-import { CommentInfo } from '../shared/types'
-import { Switch, Route, Router } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
-
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-
-import rootReducer from '../../store/reduces'
 import AuthContainer from './auth/auth-container'
+import { Provider } from 'react-redux'
 
-const store = createStore(rootReducer, 
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__())
+// import SelectedThingComponent from './selected-thing/selected-thing-component'
+// import { CommentInfo } from '../shared/types'
+// import { Switch, Route, Router } from 'react-router'
 
-const App = () => {
+export const AppContainer = (store: any) => {
     return (
         <Provider store={store}>
             <BrowserRouter>
@@ -26,8 +20,6 @@ const App = () => {
         </Provider>
     )
 }
-
-export default App
 
 /**
     <SelectedThingComponent
