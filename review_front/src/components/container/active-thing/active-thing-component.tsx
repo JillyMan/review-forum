@@ -59,7 +59,7 @@ class ActiveThingComponent extends Component<Props, State> {
                             label='Comments:'
                             buttonName='Add comment'
                             onButtonPress={this.addComment}/> :
-                        <p>For add comment need sign in!</p>
+                        <p>For adding comment need sign in!</p>
                     }
                 </div>
                 <div className='container'>

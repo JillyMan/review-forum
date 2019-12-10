@@ -37,14 +37,14 @@ const AuthContainer = ({
         return false
     }
 
-    if(isAuth) { 
+    if(isAuth) {
         return <Allert 
                     type='warning' 
                     isHidden={isAuth} 
                     text='You already authorized!' />
     }
     else {
-        return<Auth onBtnAuthClick={onBtnAuthClick}/>
+        return <Auth onBtnAuthClick={onBtnAuthClick}/>
     }
 }
 

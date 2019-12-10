@@ -9,7 +9,7 @@ export interface UserState {
 }
 
 const defaultState: UserState = {
-    userName: 'none'
+    userName: ''
 }
 
 export const userReducer = (state: UserState = defaultState, action: UserInfoAction) => {

@@ -76,7 +76,7 @@ const ThingsContainer = ({
     const Details = things && things.length > 0 ? things.map((item, index) => {
         return (
             <div key={index} 
-                className='col-4 mb-4' 
+                className='col-4 mt-4 mb-4 grow box'
                 onClick={() => onCardClick(item.id)}>
                 <ThingCardDetail
                     id={item.id}
