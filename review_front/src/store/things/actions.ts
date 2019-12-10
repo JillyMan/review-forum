@@ -18,7 +18,7 @@ type StoreThingsAction = {
 
 export type ThingsActions = StoreThingsAction
 
-export const storeThings = (things: ThingsConfig) => ({
+export const storeThings = (things: ThingsConfig): StoreThingsAction => ({
     type: STORE_THINGS,
     payload: things
 })

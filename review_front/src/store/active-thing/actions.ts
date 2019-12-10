@@ -4,14 +4,13 @@ import { CommentInfo} from '../types'
 export const STORE_THING = 'STORE_THING'
 export const CLEAR_THING = 'CLEAR_THING'
 
-export interface ThingConfig { 
+export interface ActiveThingConfig { 
     id: number,
     rate: number,
     urlImage: string,
     description: string,
     comments: CommentInfo[]
 }
-
 
 type AddCommentAction = {
     type: typeof ADD_COMMENT,
@@ -20,7 +19,7 @@ type AddCommentAction = {
 
 type StoreThingAction = {
     type: typeof STORE_THING,
-    payload: ThingConfig
+    payload: ActiveThingConfig
 }
 
 type ClearThingAction = {
@@ -34,7 +33,7 @@ export const addComment = (comment: CommentInfo): AddCommentAction => ({
     payload: comment
 })
 
-export const storeThings = (thing: ThingConfig): StoreThingAction => ({
+export const storeActiveThing = (thing: ActiveThingConfig): StoreThingAction => ({
     type: STORE_THING,
     payload: thing
 })

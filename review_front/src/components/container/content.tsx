@@ -9,9 +9,9 @@ interface Props {
 }
 
 const CurrentContentComponent = ({isAuth}: Props) => {
-    // return (
-    //     <ThingsContainer onThingSelect={() => {}}/>
-    // )
+    return (
+        <ThingsContainer />
+    )
 
     if(isAuth) {
         return <ActiveThingComponent />

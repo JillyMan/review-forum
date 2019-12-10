@@ -9,9 +9,9 @@ interface Props {
 export const Allert = ({type, text, isHidden}: Props) => {
     return (
         <div 
-            className={`alert alert-${type}`}
+            className={`alert alert-${type} text-center`}
             hidden={isHidden}>
-            {text}
+            <p className='lead'>{text}</p>
         </div>
     )
 }
