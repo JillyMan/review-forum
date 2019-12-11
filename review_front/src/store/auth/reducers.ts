@@ -1,4 +1,4 @@
-import { SET_AUTH_DATA, AuthAction } from "./actions"
+import { SET_AUTH_DATA, AuthAction, CLEAR_AUTH_DATA } from "./actions"
 
 export interface AuthState {
     isAuth: boolean
@@ -13,8 +13,12 @@ export const authReducer = (state: AuthState = defaultState, action: AuthAction)
         case SET_AUTH_DATA:
             return {
                 ...state,
-                ...action.payload
+                ...action.payload,
             }
+        case CLEAR_AUTH_DATA: 
+            return {
+                ...action.payload
+        }
     }
 
     return state
