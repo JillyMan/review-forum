@@ -6,7 +6,7 @@ import { AppState } from 'store/types'
 import { existUser } from '../../../api/user'
 import { UserInfoAction, storeUser, UserInfo } from '../../../store/user-info/actions'
 import { AuthAction, AuthData, setAuthData } from '../../../store/auth/actions'
-import { Allert } from '../../presentational/allerts/allert'
+import { Redirect } from 'react-router'
 
 interface StateToProps { 
     isAuth: boolean
@@ -38,12 +38,10 @@ const AuthContainer = ({
     }
 
     if(isAuth) {
-        return <Allert 
-                    type='warning' 
-                    isHidden={isAuth} 
-                    text='You already authorized!' />
+        return <Redirect to='/'/>
     }
-    else {
+    else 
+    {
         return <Auth onBtnAuthClick={onBtnAuthClick}/>
     }
 }

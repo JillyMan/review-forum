@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom'
 interface Props {
     className: string,
     link: string,
-    name: string
+    name: string,
+    onClick?: (href: string) => void
 }
 
 const NavbarItem = ({
@@ -13,7 +14,9 @@ const NavbarItem = ({
     name
 }: Props) => {
     return (
-        <NavLink className={className} to={link}>{name}</NavLink>
+        <NavLink 
+            className={className} 
+            to={link}>{name}</NavLink>
     )
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Redux from 'redux'
 import { connect } from 'react-redux'
 import { AppState } from '../../../store/types'
@@ -16,6 +16,7 @@ import {
     storeThings, 
     ThingConfig 
 } from '../../../store/things/actions'
+import { Redirect } from 'react-router'
 
 interface ThingInfo { 
     id: number,
@@ -40,6 +41,8 @@ const ThingsContainer = ({
     storeThings,
     onThingSelect }: Props) => {
     
+    const [needRedirect, setRedirect] = useState(false)
+
     useEffect(() => {
         if(!things.length) {
             const responce = getThings()
@@ -69,7 +72,7 @@ const ThingsContainer = ({
                 urlImage: thing.urlImage,
                 comments: thing.comments
             })
-            // navigate to active things.
+            setRedirect(true)
         } 
     }
 
@@ -86,10 +89,15 @@ const ThingsContainer = ({
             </div>
         )
     }) : (
-    <div className='col'>
-        <Allert type='info' text='Noting to show!' isHidden={false}/>
-    </div> 
+        <div className='col'>
+            <Allert type='info' text='Noting to show!' isHidden={false}/>
+        </div> 
     )
+    
+    if(needRedirect) {
+        return <Redirect to='active-thing' />
+    }
+
     return (
         <div className='container'>
             <div className='row'>

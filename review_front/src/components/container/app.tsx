@@ -1,11 +1,9 @@
 import React from 'react'
 import NavbarContainer from './navbar/navbar-container'
-import CurrentContentComponent from './content'
-
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
-
-// import { Switch, Route, Router } from 'react-router'
+import { AppRouter } from './routes/app-router'
+import history from '../../history/history'
 
 interface Props { 
     store: any
@@ -14,12 +12,12 @@ interface Props {
 export const AppContainer = ({ store }: Props) => {
     return (
         <Provider store={store}>
-            <BrowserRouter>
+            <Router history={history}>
                 <NavbarContainer />
                 <div className='container mt-2 mb-3'>
-                    <CurrentContentComponent/>
+                    <AppRouter/>
                 </div>
-            </BrowserRouter>
+            </Router>
         </Provider>
     )
 }

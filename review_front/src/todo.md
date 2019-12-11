@@ -18,6 +18,8 @@
     - in api implement getThings(id thig)
 
 - add navigation
+- need add routes layer for our components.
+
 
 - test case:
     - auth
