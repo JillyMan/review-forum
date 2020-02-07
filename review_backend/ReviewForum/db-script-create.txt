@@ -1,0 +1,7 @@
+﻿mongod --dbpath <path to existing folder>
+mongo (in other console)
+use ReviewDb
+
+db.createCollection('Things')
+
+db.Things.insertMany([{ },{ },{ },{ }])

@@ -15,8 +15,8 @@ namespace ReviewForum.Infrastructure.Extensions
         public static IServiceCollection AddDepenedencies(this IServiceCollection services)
         {
             services.AddTransient<IMongoContext, MongoContext>();
-            services.AddTransient<IRepository<TodoItem>, TodoRepository>();
-            services.AddTransient<ITodoService, TodoService>();
+            services.AddTransient<IRepository<ThingItem>, ThingItemRepository>();
+            services.AddTransient<IThingReviewService, ThingReviewService>();
             return services;
         }
 

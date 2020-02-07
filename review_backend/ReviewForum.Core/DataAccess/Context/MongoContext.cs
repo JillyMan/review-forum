@@ -20,10 +20,9 @@ namespace ReviewForum.Core.DataAccess.Context
             _database = client.GetDatabase(_settings.DatabaseName);
         }
 
-        public IMongoCollection<T> GetCollection<T>(string name)
+        public IMongoCollection<T> GetCollection<T>(CollectionsEnum collection)
         {
-
-            var collectionName = _settings.CollectionNames.TryGetValue(name, out var result) ? result : throw new ArgumentException($"{name} does not exist in Db collection");
+            var collectionName = _settings.CollectionNames.TryGetValue(collection, out var result) ? result : throw new ArgumentException($"{collection} does not exist in Db collection");
             return _database.GetCollection<T>(collectionName);
         }
     }

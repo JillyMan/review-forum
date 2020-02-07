@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
 using ReviewForum.Contract;
 using ReviewForum.Core.Services.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ReviewForum.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TodoController : ControllerBase
+    public class ThingController : ControllerBase
     {
-        private ITodoService _todoService;
+        private IThingReviewService _todoService;
 
-        public TodoController(ITodoService todoService)
+        public ThingController(IThingReviewService todoService)
         {
             _todoService = todoService;
         }
 
-        [HttpGet(Name = "get")]
-        public async Task<List<TodoItem>> Get()
+        [HttpGet]
+        public async Task<List<ThingItem>> Get()
         {
             return await _todoService.GetAll();
         }

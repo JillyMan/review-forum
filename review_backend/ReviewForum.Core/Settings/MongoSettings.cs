@@ -7,6 +7,6 @@ namespace ReviewForum.Core.Settings
         public string DatabaseName { get; set; }
         public string ConnectionString { get; set; }
 
-        public Dictionary<string, string> CollectionNames { get; set; }
+        public Dictionary<CollectionsEnum, string> CollectionNames { get; set; }
     }
 }

@@ -7,31 +7,31 @@ using ReviewForum.Core.Services.Interfaces;
 
 namespace ReviewForum.Core.Services
 {
-    public class TodoService : ITodoService
+    public class ThingReviewService : IThingReviewService
     {
-        IRepository<TodoItem> _repository;
+        IRepository<ThingItem> _repository;
 
-        public TodoService(IRepository<TodoItem> repository)
+        public ThingReviewService(IRepository<ThingItem> repository)
         {
             _repository = repository;
         }
 
-        public Task Add(TodoItem item)
+        public Task Add(ThingItem item)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<List<TodoItem>> GetAll()
+        public Task<List<ThingItem>> GetAll()
         {
             return _repository.GetAll();
         }
 
-        public Task<TodoItem> GetById(Guid id)
+        public Task<ThingItem> GetById(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task Update(TodoItem item)
+        public Task Update(ThingItem item)
         {
             throw new NotImplementedException();
         }
