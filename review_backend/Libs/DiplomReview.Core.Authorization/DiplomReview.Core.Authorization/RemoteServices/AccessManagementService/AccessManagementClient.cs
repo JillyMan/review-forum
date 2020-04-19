@@ -18,13 +18,12 @@ namespace DiplomReview.Core.Authorization.RemoteServices.AccessManagementService
         public Task<UserInfo> GetUserAsync(string id)
         {
             return GetUserData<UserInfo>(
-                id,
                 $"/api/users('{id}')", 
                 (statusCode, message) => ThrowExceptionOnFailedResponse(statusCode, message)
             );
         }
 
-        public async Task<TType> GetUserData<TType>(string id, string url, Action<HttpStatusCode, string> notFoundBehaviour)
+        private async Task<TType> GetUserData<TType>(string url, Action<HttpStatusCode, string> notFoundBehaviour)
             where TType : class
         {
             var response = await _httpClient.GetAsync(url);

@@ -13,13 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{CF2391
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A86A2745-4D68-4802-BBE5-4CB45288F3D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessManagement.Api", "AccessManagement.Api\AccessManagement.Api.csproj", "{48749974-2750-4695-AFC5-8823CB521494}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessManagement.Api", "AccessManagement.Api\AccessManagement.Api.csproj", "{48749974-2750-4695-AFC5-8823CB521494}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessManagement.App", "AccessManagement.App\AccessManagement.App.csproj", "{194C02DD-A55A-4F2A-ACC7-F438147F5BAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessManagement.App", "AccessManagement.App\AccessManagement.App.csproj", "{194C02DD-A55A-4F2A-ACC7-F438147F5BAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessManagement.Domain", "AccessManagement.Domain\AccessManagement.Domain.csproj", "{60BD5951-AFF9-433D-8DD4-E6DC096E464F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessManagement.Domain", "AccessManagement.Domain\AccessManagement.Domain.csproj", "{60BD5951-AFF9-433D-8DD4-E6DC096E464F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessManagement.Data", "AccessManagement.Data\AccessManagement.Data.csproj", "{4B5D0F42-4A1B-4A81-AFAF-E24A167CA46F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessManagement.Data", "AccessManagement.Data\AccessManagement.Data.csproj", "{4B5D0F42-4A1B-4A81-AFAF-E24A167CA46F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "other", "other", "{CCF5759E-CE3B-437A-8D93-CD6F1ABBBCBF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiplomReview.Core.Authorization", "..\..\Libs\DiplomReview.Core.Authorization\DiplomReview.Core.Authorization\DiplomReview.Core.Authorization.csproj", "{361652EC-4DA6-4C44-9748-57396326CE32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{4B5D0F42-4A1B-4A81-AFAF-E24A167CA46F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B5D0F42-4A1B-4A81-AFAF-E24A167CA46F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B5D0F42-4A1B-4A81-AFAF-E24A167CA46F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{361652EC-4DA6-4C44-9748-57396326CE32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{361652EC-4DA6-4C44-9748-57396326CE32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{361652EC-4DA6-4C44-9748-57396326CE32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{361652EC-4DA6-4C44-9748-57396326CE32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{194C02DD-A55A-4F2A-ACC7-F438147F5BAA} = {6541E0C1-BF35-449C-8DCB-010121726990}
 		{60BD5951-AFF9-433D-8DD4-E6DC096E464F} = {CF239198-F199-4163-B01C-7284EC89080F}
 		{4B5D0F42-4A1B-4A81-AFAF-E24A167CA46F} = {0EB72184-03C3-413C-BCD8-DC89742ECD94}
+		{361652EC-4DA6-4C44-9748-57396326CE32} = {CCF5759E-CE3B-437A-8D93-CD6F1ABBBCBF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E14EE861-3D86-4087-B4C3-97D9D0D76E0C}
