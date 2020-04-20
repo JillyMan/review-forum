@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using AccessManagement.App.Models;
+using AutoMapper;
 
 namespace AccessManagement.Api.AutoMapperProfiler
 {
@@ -6,12 +7,13 @@ namespace AccessManagement.Api.AutoMapperProfiler
     {
         public MapperProfile()
         {
-            CreateMap<App.Models.AuthenticateInfo, Api.Models.AuthenticateInfoModel>();
-            CreateMap<App.Models.RegisterInfo, Api.Models.RegisterInfoModel>();
+            CreateMap<Api.Models.AuthenticateInfoModel, App.Models.AuthenticateInfo>();
 
-            CreateMap<App.Models.IdentityInfo, Api.Services.PayloadInfo>();
+            CreateMap<Api.Models.RegisterInfoModel, App.Models.RegisterInfo>();
 
-            CreateMap<Domain.Entities.UserInfo, Api.Services.PayloadInfo>();
+            CreateMap<App.Models.IdentityInfo, PayloadInfo>();
+
+            CreateMap<Domain.Entities.UserInfo, PayloadInfo>();
         }
     }
 }

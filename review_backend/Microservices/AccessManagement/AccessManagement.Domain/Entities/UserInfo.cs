@@ -17,7 +17,7 @@ namespace AccessManagement.Domain.Entities
 
         public string Login { get; set; }
 
-        public string Roles { get; set; }
+        public string Role { get; set; }
 
         public byte[] PasswordHash { get; set; }
 

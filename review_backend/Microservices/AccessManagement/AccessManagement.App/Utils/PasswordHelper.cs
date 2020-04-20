@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -7,6 +6,20 @@ namespace AccessManagement.App.Utils
 {
     public static class PasswordHelper
     {
+
+        public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        {
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentException(nameof(password));
+            }
+
+            using var hmac = new System.Security.Cryptography.HMACSHA512();
+
+            passwordSalt = hmac.Key;
+            passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+        }
+
         public static bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt)
         {
             if (password == null)

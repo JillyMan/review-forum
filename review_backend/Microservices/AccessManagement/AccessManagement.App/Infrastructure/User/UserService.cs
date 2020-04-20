@@ -34,8 +34,15 @@ namespace AccessManagement.App.Services.User
             throw new UserNotFoundException($"The user was not found.");
         }
 
+        public async Task<UserInfo> GetById(string id)
+        {
+            return await _context.Users.SingleOrDefaultAsync(x => x.Id == id);
+        }
+
         public Task<UserInfo> Register(RegisterInfo registerInfo)
         {
+            UserInfo.Create("", registerInfo.FirstName, )
+
             throw new NotImplementedException();
         }
     }

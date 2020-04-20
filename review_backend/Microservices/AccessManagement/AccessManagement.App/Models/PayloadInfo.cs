@@ -1,4 +1,4 @@
-﻿namespace AccessManagement.Api.Services
+﻿namespace AccessManagement.App.Models
 {
     public class PayloadInfo
     {

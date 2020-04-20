@@ -14,6 +14,8 @@ namespace AccessManagement.Data
 
         public DbSet<UserInfo> Users { get; set; }
 
+        public DbSet<TokenInfo> Tokens { get; set; }
+
         public IDbContextTransaction BeginTransaction()
         {
             return Database.BeginTransaction();

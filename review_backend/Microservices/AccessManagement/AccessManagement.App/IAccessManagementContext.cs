@@ -10,6 +10,8 @@ namespace AccessManagement.App
     {
         DbSet<UserInfo> Users { get; set; }
 
+        public DbSet<TokenInfo> Tokens { get; set; }
+
         int SaveChanges();
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
