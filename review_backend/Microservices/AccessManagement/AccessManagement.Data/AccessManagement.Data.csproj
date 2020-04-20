@@ -12,4 +12,8 @@
     <ProjectReference Include="..\AccessManagement.App\AccessManagement.App.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="EntityConfiguration\" />
+  </ItemGroup>
+
 </Project>

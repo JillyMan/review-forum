@@ -39,11 +39,37 @@ namespace AccessManagement.App.Services.User
             return await _context.Users.SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task<UserInfo> Register(RegisterInfo registerInfo)
+        public async Task<UserInfo> Register(RegisterInfo registerInfo)
         {
-            UserInfo.Create("", registerInfo.FirstName, )
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Login == registerInfo.Login);
+            if (user != null)
+            {
+                throw new UserAlreadyExistException();
+            } 
 
-            throw new NotImplementedException();
+            PasswordHelper.CreatePasswordHash(registerInfo.Password, out var hash, out var salt);
+
+            var newUser = UserInfo.Create("",
+                registerInfo.FirstName,
+                registerInfo.LastName,
+                registerInfo.Login,
+                hash,
+                salt,
+                true);
+
+            using var transaction = _context.BeginTransaction();
+            try
+            {
+                var entity = _context.Users.Add(newUser);
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+                return entity.Entity;
+            }
+            catch(Exception e)
+            {
+                await transaction.RollbackAsync();
+                throw e;
+            }
         }
     }
 }

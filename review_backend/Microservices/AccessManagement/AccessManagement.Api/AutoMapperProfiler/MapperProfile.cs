@@ -11,8 +11,6 @@ namespace AccessManagement.Api.AutoMapperProfiler
 
             CreateMap<Api.Models.RegisterInfoModel, App.Models.RegisterInfo>();
 
-            CreateMap<App.Models.IdentityInfo, PayloadInfo>();
-
             CreateMap<Domain.Entities.UserInfo, PayloadInfo>();
         }
     }

@@ -2,7 +2,6 @@
 using AccessManagement.App.Infrastructure.Token;
 using AccessManagement.App.Models;
 using AccessManagement.App.Services.User;
-using AccessManagement.App.Utils;
 using AccessManagement.Domain.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -25,8 +24,7 @@ namespace AccessManagement.Api.Controllers
             _tokenProvider = tokenProvider;
         }
 
-        [Authorize]
-        [HttpPost("authenticate")]
+        [HttpPost("auth")]
         public async Task<IActionResult> PostAuthenticate([FromBody]AuthenticateInfoModel model)
         {
             var authorizeInfo = _mapper.Map<AuthenticateInfo>(model);
@@ -36,7 +34,7 @@ namespace AccessManagement.Api.Controllers
             return Ok(GetIdentityWithToken(userInfo));
         }
 
-        [HttpPost("register")]
+        [HttpPost("registration")]
         public async Task<IActionResult> PostRegister([FromBody]RegisterInfoModel model)
         {
             var registerInfo = _mapper.Map<RegisterInfo>(model);
