@@ -1,6 +1,6 @@
 using System;
 
-namespace ReviewForum.Contract
+namespace ReviewManagement.Domain.Entities
 {
     public class BaseEntity
     {

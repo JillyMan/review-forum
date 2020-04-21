@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ReviewForum.Contract
+namespace ReviewManagement.Domain.Entities
 {
     public class Thing : BaseEntity
     {
