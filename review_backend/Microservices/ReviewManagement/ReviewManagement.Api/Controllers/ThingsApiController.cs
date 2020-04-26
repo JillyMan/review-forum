@@ -28,7 +28,16 @@ namespace ReviewManagement.Api.Controllers
             return Ok(thing);
         }
 
-        public async Task<IActionResult> PostAddRate([FromBody]RateCreateModel rateModel)
+        [HttpPost]
+        [Route("{id}/rate")]
+        public async Task<IActionResult> PostAddRate([FromBody]RateCreateModel rateModel, [FromRoute][Required]int id)
+        {
+            return null;
+        }
+
+        [HttpPost]
+        [Route("{id}/comment")]
+        public async Task<IActionResult> PostComment([FromBody]CommentCreateModel rateModel, [FromRoute][Required]int id)
         {
             return null;
         }
