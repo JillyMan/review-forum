@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace ReviewManagement.Domain.Entities
 {
@@ -6,16 +6,21 @@ namespace ReviewManagement.Domain.Entities
     {
         public int ThingId { get; set; }
 
-        public virtual Thing Thing { get;set;}
+        public Thing Thing { get; set; }
 
-        public int UserId { get; set; }
-
-        public virtual User User { get; set; }
-
-        public IList<int> SubCommentsId { get; set; }
-
-        public virtual IList<Comment> SubComments { get; set; }
+        public string UserId { get; set; }
 
         public string Text { get; set; }
+
+        public static Comment Create(string text, string userId, int thingId)
+        {
+            return new Comment()
+            {
+                Text = text,
+                UserId = userId,
+                ThingId = thingId,
+                CreatedAt = DateTime.UtcNow
+            };
+        }
     }
 }

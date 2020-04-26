@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace ReviewManagement.Api.Controllers
 {
     [Route("api/[controller]")]
-    public class ThingsController : ControllerBase
+    public class ThingsController : BaseController
     {
         [HttpGet]
         [Route("/things")]
