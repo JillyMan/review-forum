@@ -1,3 +1,6 @@
+using AutoMapper;
+using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -6,13 +9,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Review.App.Infrastructure;
 using Review.Data;
-using AutoMapper;
 using ReviewManagement.Api.AutoMapperConfig;
-using MediatR;
-using System.Reflection;
-using ReviewManagement.App.Infrastructure.PipelineBehaviors;
+using ReviewManagement.Api.ExceptionHandling;
+using ReviewManagement.Api.Extensions;
 using ReviewManagement.Api.Filters;
-using FluentValidation.AspNetCore;
+using ReviewManagement.App.Infrastructure.PipelineBehaviors;
+using System.Reflection;
 
 namespace ReviewManagement
 {
@@ -44,6 +46,8 @@ namespace ReviewManagement
             services.AddDbContext<IReviewManagementContext, ReviewManagementContext>(ConfigureSqlServer);
             services.AddDbContext<ReviewManagementContext>(ConfigureSqlServer); // this is required for design-time execution though dotnet ef migrations
 
+            services.RegisterExceptionHandlers();
+
             services.AddControllers();
         }
 
@@ -53,6 +57,8 @@ namespace ReviewManagement
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
 
             app.UseHttpsRedirection();
 

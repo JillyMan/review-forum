@@ -2,9 +2,7 @@
 using FluentValidation.Results;
 using Review.App.Infrastructure;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ReviewManagement.App.Commands.Thing.AddThing
 {
@@ -15,10 +13,7 @@ namespace ReviewManagement.App.Commands.Thing.AddThing
         public Validator(IReviewManagementContext ctx)
         {
             _context = ctx;
-        }
 
-        public Validator()
-        {
             RuleFor(x => x.UrlImage)
                 .Custom((url, ctx) =>
                 {
@@ -26,10 +21,16 @@ namespace ReviewManagement.App.Commands.Thing.AddThing
                     {
                         ctx.AddFailure("Invalid img url.");
                     }
-                });
+                })
+                .NotEmpty()
+                .When(x => x != null);
+
+            RuleFor(x => x.Name)
+                .NotEmpty();
 
             RuleFor(x => x.Description)
-                .NotEmpty();
+                .NotEmpty()
+                .When(x => x != null);
         }
 
         protected override bool PreValidate(ValidationContext<Command> context, ValidationResult result)

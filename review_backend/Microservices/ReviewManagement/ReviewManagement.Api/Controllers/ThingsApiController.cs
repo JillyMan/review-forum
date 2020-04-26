@@ -1,24 +1,31 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using ReviewManagement.Api.Models.Create;
+using ReviewManagement.Api.Models.Update;
 using System.Threading.Tasks;
 
 namespace ReviewManagement.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class ThingsApiController : ControllerBase
+    [Route("/api/things")]
+    public class ThingsApiController : BaseController
     {
         [HttpPost]
-        public Task PostThing()
+        public async Task<IActionResult> PostThing([FromBody]ThingCreateModel model)
         {
-            throw new NotImplementedException();
+            var thing = await Mediator.Send(Mapper.Map<App.Commands.Thing.AddThing.Command>(model));
+            return Ok(thing);
         }
 
         [HttpPatch]
-        public Task PatchThing([FromBody]object thingToUpdate)
+        public async Task<IActionResult> PatchThing([FromBody]ThingUpdateModel model)
         {
-            throw new NotImplementedException();
+            var thing = await Mediator.Send(Mapper.Map<App.Commands.Thing.UpdateThing.Command>(model));
+            return Ok(thing);
+        }
+
+        public async Task<IActionResult> PostAddRate([FromBody]RateCreateModel)
+        {
+
         }
     }
 }

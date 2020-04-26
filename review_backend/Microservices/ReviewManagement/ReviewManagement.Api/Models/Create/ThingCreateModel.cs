@@ -1,8 +1,6 @@
-﻿using MediatR;
-
-namespace ReviewManagement.App.Commands.Thing.AddThing
+﻿namespace ReviewManagement.Api.Models.Create
 {
-    public class Command : IRequest<Domain.Entities.Thing>
+    public class ThingCreateModel
     {
         public string Name { get; set; }
 

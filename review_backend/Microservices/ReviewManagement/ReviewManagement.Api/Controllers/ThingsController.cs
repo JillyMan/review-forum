@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ReviewManagement.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/things")]
     public class ThingsController : BaseController
     {
         [HttpGet]

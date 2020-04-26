@@ -6,11 +6,13 @@ namespace ReviewManagement.Domain.Entities
 {
     public class Thing : BaseEntity
     {
+        public string Name { get; set; }
+
         public string UrlIImage { get; set; }
 
         public IList<ThingRateInfo> Rates { get; set; }
 
-        public float Rate => Rates.Average(x => x.Rate);
+        public float Rate => Rates?.Average(x => x.Rate) ?? 0;
 
         public string Description { get; set; }
 
@@ -27,7 +29,7 @@ namespace ReviewManagement.Domain.Entities
                 UrlIImage = urlImage,
                 CategoryId = categoryId,
                 Description = description,
-                CreatedAt = DateTimeOffset.UtcNow
+                CreatedAt = DateTime.UtcNow
             };
         }
     }

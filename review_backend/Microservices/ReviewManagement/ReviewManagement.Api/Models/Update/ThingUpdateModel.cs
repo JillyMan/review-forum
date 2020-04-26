@@ -1,11 +1,9 @@
-﻿using MediatR;
-
-namespace ReviewManagement.App.Commands.Thing.UpdateThing
+﻿namespace ReviewManagement.Api.Models.Update
 {
-    public class Command : IRequest<Domain.Entities.Thing>
+    public class ThingUpdateModel
     {
         public int ThingId { get; set; }
-
+        
         public string Name { get; set; }
 
         public string UrlImage { get; set; }
