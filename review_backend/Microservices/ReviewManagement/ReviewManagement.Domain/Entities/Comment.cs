@@ -19,7 +19,7 @@ namespace ReviewManagement.Domain.Entities
                 Text = text,
                 UserId = userId,
                 ThingId = thingId,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTimeOffset.UtcNow
             };
         }
     }

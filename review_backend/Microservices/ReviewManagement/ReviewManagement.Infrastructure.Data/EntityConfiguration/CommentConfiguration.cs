@@ -12,12 +12,23 @@ namespace ReviewManagement.Data.EntityConfiguration
 
             builder.ToTable("comments");
 
+            builder.HasAlternateKey(x => x.ThingId);
+            builder.Property(e => e.ThingId)
+                .HasColumnName("thing_id")
+                .IsRequired();
+
             builder.HasOne(c => c.Thing)
                 .WithMany(t => t.Comments)
-                .HasForeignKey(c => c.Id);
+                .HasForeignKey(c => c.ThingId)
+                .HasConstraintName("FK_comments_things_thingId");
+
+            builder.Property(e => e.UserId)
+                .HasColumnName("user_id")
+                .IsRequired();
 
             builder.Property(x => x.Text)
-                .HasColumnName("text");
+                .HasColumnName("text")
+                .IsRequired();
         }
     }
 }

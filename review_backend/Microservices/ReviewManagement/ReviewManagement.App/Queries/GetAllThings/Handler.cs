@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ReviewManagement.App.Queries.GetThings
+namespace ReviewManagement.App.Queries.GetAllThings
 {
     public class Handler : IRequestHandler<Query, IEnumerable<Thing>>
     {

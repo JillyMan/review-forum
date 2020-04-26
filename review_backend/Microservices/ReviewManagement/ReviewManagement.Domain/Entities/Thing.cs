@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ReviewManagement.Domain.Entities
 {
@@ -7,7 +8,9 @@ namespace ReviewManagement.Domain.Entities
     {
         public string UrlIImage { get; set; }
 
-        public float Rate { get; set; }
+        public IList<ThingRateInfo> Rates { get; set; }
+
+        public float Rate => Rates.Average(x => x.Rate);
 
         public string Description { get; set; }
 
@@ -24,7 +27,7 @@ namespace ReviewManagement.Domain.Entities
                 UrlIImage = urlImage,
                 CategoryId = categoryId,
                 Description = description,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTimeOffset.UtcNow
             };
         }
     }

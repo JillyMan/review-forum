@@ -5,7 +5,7 @@ using ReviewManagement.Domain.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ReviewManagement.App.Queries.GetCommentByThingId
+namespace ReviewManagement.App.Queries.GetThing
 {
     public class Handler : IRequestHandler<Query, Thing>
     {

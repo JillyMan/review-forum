@@ -6,7 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Review.App.Infrastructure;
 using Review.Data;
-using ReviewForum.Infrastructure.Extensions;
 using AutoMapper;
 using ReviewManagement.Api.AutoMapperConfig;
 using MediatR;
@@ -32,7 +31,6 @@ namespace ReviewManagement
                             typeof(App.AutoMapperConfig.MapperProfile).Assembly);
 
             services.AddMediatR(typeof(App.Commands.Category.Add.Command).GetTypeInfo().Assembly);
-
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ContextTransactionBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 

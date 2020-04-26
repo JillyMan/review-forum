@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace ReviewManagement.Api.Controllers
 {
@@ -11,20 +9,6 @@ namespace ReviewManagement.Api.Controllers
     [Route("api/[controller]")]
     public class ThingsApiController : ControllerBase
     {
-        [HttpPost]
-        [Route("/{id}/comment")]
-        public Task PostComment()
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpPost]
-        [Route("/{id}/comment")]
-        public Task PatchComment()
-        {
-            throw new NotImplementedException();
-        }
-
         [HttpPost]
         public Task PostThing()
         {

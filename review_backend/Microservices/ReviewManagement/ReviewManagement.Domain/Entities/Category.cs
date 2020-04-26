@@ -11,7 +11,7 @@ namespace ReviewManagement.Domain.Entities
             return new Category()
             {
                 Name = name,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTimeOffset.UtcNow
             };
         }
     }

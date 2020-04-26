@@ -6,6 +6,6 @@ namespace ReviewManagement.Domain.Entities
     {
         public int Id { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
     }
 }
