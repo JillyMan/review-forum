@@ -5,7 +5,7 @@ using ReviewManagement.Domain.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ReviewManagement.App.Queries.GetCommentByThingId
+namespace ReviewManagement.App.Queries.GetThing
 {
     public class Handler : IRequestHandler<Query, Thing>
     {
@@ -21,6 +21,8 @@ namespace ReviewManagement.App.Queries.GetCommentByThingId
             var thing = await _context.Things
                 .AsNoTracking()
                 .Include(x => x.Comments)
+                // TODO: it's realy shit, but i can't fix it fast now
+                .Include(x => x.Rates)
                 .FirstOrDefaultAsync(x => x.Id == request.ThingId);
 
             if (thing == null)

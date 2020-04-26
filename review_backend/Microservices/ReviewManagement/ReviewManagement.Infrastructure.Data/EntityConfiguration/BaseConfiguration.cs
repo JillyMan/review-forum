@@ -9,6 +9,8 @@ namespace ReviewManagement.Data.EntityConfiguration
     {
         public virtual void Configure(EntityTypeBuilder<TEntity> builder)
         {
+            builder.HasKey(e => e.Id);
+
             builder.Property(e => e.Id)
                 .HasColumnName("id")
                 .ValueGeneratedOnAdd();
@@ -17,7 +19,6 @@ namespace ReviewManagement.Data.EntityConfiguration
                 .HasColumnName("created_at")
                 .HasColumnType("datetimeoffset(3)")
                 .IsRequired();
-
         }
     }
 }

@@ -28,9 +28,10 @@ namespace ReviewManagement.App.Commands.Thing.UpdateThing
 
         private void UpdateEntity(Domain.Entities.Thing thing, Command command)
         {
-            thing.CategoryId = command.CategoryId;
-            thing.UrlIImage = command.UrlImage;
-            thing.Description = command.Description;
+            thing.Name = command.Name ?? thing.Name;
+            thing.CategoryId = command.CategoryId ?? thing.CategoryId;
+            thing.UrlIImage = command.UrlImage ?? thing.UrlIImage;
+            thing.Description = command.Description ?? thing.Description;
         }
     }
 }

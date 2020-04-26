@@ -18,8 +18,10 @@ namespace ReviewManagement.App.Commands.Thing.AddComment
         public async Task<Comment> Handle(Command request, CancellationToken cancellationToken)
         {
             var comment = Comment.Create(request.Text, request.UserId, request.ThingId);
+
             var commentEntity = await _context.Comments.AddAsync(comment);
             await _context.SaveChangesAsync();
+
             return commentEntity.Entity;
         }
     }

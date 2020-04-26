@@ -17,6 +17,7 @@ namespace ReviewManagement.App.Commands.Category.Add
 
         public Task<Domain.Entities.Category> Handle(Command request, CancellationToken cancellationToken)
         {
+
             throw new NotImplementedException();
         }
     }

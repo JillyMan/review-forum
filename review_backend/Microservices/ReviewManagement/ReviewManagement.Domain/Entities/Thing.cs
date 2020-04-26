@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ReviewManagement.Domain.Entities
 {
     public class Thing : BaseEntity
     {
+        public string Name { get; set; }
+
         public string UrlIImage { get; set; }
 
-        public float Rate { get; set; }
+        public IList<ThingRateInfo> Rates { get; set; }
+
+        public float Rate => Rates?.Average(x => x.Rate) ?? 0;
 
         public string Description { get; set; }
 

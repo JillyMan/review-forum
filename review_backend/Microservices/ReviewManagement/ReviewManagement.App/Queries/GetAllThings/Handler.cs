@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ReviewManagement.App.Queries.GetThings
+namespace ReviewManagement.App.Queries.GetAllThings
 {
     public class Handler : IRequestHandler<Query, IEnumerable<Thing>>
     {
@@ -19,7 +19,10 @@ namespace ReviewManagement.App.Queries.GetThings
 
         public async Task<IEnumerable<Thing>> Handle(Query request, CancellationToken cancellationToken)
         {
-            return await _context.Things.ToListAsync();
+            return await _context.Things
+                // TODO: it's realy shit, but i can't fix it fast now
+                .Include(x => x.Rates)
+                .ToListAsync();
         }
     }
 }

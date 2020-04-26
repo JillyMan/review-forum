@@ -5,25 +5,26 @@ using System.Threading.Tasks;
 
 namespace ReviewManagement.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/things")]
     public class ThingsController : BaseController
     {
         [HttpGet]
-        [Route("/things")]
         public async Task<IActionResult> Get()
         {
-            throw new NotImplementedException();
+            var result = await Mediator.Send(new App.Queries.GetAllThings.Query());
+            return Ok(result);
         }
 
         [HttpGet]
-        [Route("things/{id}")]
+        [Route("{id}")]
         public async Task<IActionResult> GetById([FromRoute][Required]int id)
         {
-            throw new NotImplementedException();
+            var result = await Mediator.Send(new App.Queries.GetThing.Query() { ThingId = id });
+            return Ok(result);
         }
 
         [HttpGet]
-        [Route("things/{category}")]
+        [Route("{category}")]
         public async Task<IActionResult> GetByCategory([FromRoute][Required]string categoryName)
         {
             throw new NotImplementedException();

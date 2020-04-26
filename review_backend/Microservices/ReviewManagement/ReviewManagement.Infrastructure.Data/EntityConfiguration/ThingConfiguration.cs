@@ -12,22 +12,14 @@ namespace ReviewManagement.Data.EntityConfiguration
 
             builder.ToTable("things");
 
-            builder.Property(t => t.Rate)
-                .HasColumnName("rate")
-                .HasDefaultValue(0);
-
             builder.Property(t => t.Description)
                 .HasColumnName("description")
-                // todo: can be deleted in future
-                .HasMaxLength(2000);
+                .HasMaxLength(2000)
+                .IsRequired();
 
             builder.Property(t => t.CategoryId)
-                .HasColumnName("category_id");
-
-            builder.HasMany(t => t.Comments)
-                .WithOne(c => c.Thing)
-                .HasForeignKey(c => c.Id)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasColumnName("category_id")
+                .IsRequired();
         }
     }
 }

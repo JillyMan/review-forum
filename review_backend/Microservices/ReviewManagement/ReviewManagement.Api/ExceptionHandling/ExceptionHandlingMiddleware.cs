@@ -33,7 +33,6 @@ namespace ReviewManagement.Api.ExceptionHandling
 
         private async Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
-
             var response = context.Response;
             var statusCode = (int)HttpStatusCode.InternalServerError;
 

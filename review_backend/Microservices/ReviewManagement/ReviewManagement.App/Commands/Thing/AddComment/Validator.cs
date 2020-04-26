@@ -15,8 +15,8 @@ namespace ReviewManagement.App.Commands.Thing.AddComment
             _context = context;
 
             RuleFor(x => x.Text)
+                .MinimumLength(15)
                 .NotEmpty();
-
             // todo: check if user exists.
         }
 

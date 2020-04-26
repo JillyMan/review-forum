@@ -14,7 +14,8 @@ namespace ReviewManagement.Data.EntityConfiguration
 
             builder.Property(x => x.Name)
                 .HasColumnName("name")
-                .HasMaxLength(50);
+                .HasMaxLength(50)
+                .IsRequired();
         }
     }
 }

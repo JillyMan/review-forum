@@ -14,21 +14,35 @@ namespace ReviewManagement.App.Commands.Thing.UpdateThing
         public Validator(IReviewManagementContext ctx)
         {
             _context = ctx;
-        }
 
-        public Validator()
-        {
             RuleFor(x => x.UrlImage)
+                .Cascade(CascadeMode.StopOnFirstFailure)
                 .Custom((url, ctx) =>
                 {
-                    if (!Uri.IsWellFormedUriString(url, UriKind.Absolute))
+                    if (url != null && !Uri.IsWellFormedUriString(url, UriKind.Absolute))
                     {
                         ctx.AddFailure("Invalid img url.");
                     }
                 });
 
+            RuleFor(x => x.Name)
+                .MinimumLength(2)
+                .Custom((d, ctx) =>
+                {
+                    if (d != null && d.Length == 0)
+                    {
+                        ctx.AddFailure("'Name' can't be empty");
+                    }
+                });
+
             RuleFor(x => x.Description)
-                .NotEmpty();
+                .Custom((d, ctx) =>
+                {
+                    if (d != null && d.Length == 0)
+                    {
+                        ctx.AddFailure("'Description' can't be empty");
+                    }
+                });
         }
 
         protected override bool PreValidate(ValidationContext<Command> context, ValidationResult result)
@@ -40,7 +54,7 @@ namespace ReviewManagement.App.Commands.Thing.UpdateThing
                 throw new EntityNotFoundException();
             }
 
-            if (_context.Categories.FirstOrDefault(x => x.Id == command.CategoryId) == null)
+            if (command.CategoryId.HasValue && _context.Categories.FirstOrDefault(x => x.Id == command.CategoryId) == null)
             {
                 result.Errors.Add(new ValidationFailure(nameof(command.CategoryId), $"The category with id: {command.CategoryId} not found."));
                 return false;
