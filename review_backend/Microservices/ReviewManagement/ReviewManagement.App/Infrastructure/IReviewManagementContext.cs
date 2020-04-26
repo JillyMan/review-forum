@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using ReviewForum.Contract;
+using ReviewManagement.Domain.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,6 +9,10 @@ namespace Review.App.Infrastructure
     public interface IReviewManagementContext
     {
         public DbSet<Thing> Things { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
 
         int SaveChanges();
 

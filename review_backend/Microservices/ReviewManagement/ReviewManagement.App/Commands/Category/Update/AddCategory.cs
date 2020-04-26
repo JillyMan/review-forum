@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AccessManagement.Domain.Entities
+namespace ReviewManagement.App.Commands.Category.Update
 {
-    class User
+    class Command
     {
     }
 }

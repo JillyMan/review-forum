@@ -1,9 +1,11 @@
 using System;
 
-namespace ReviewForum.Contract
+namespace ReviewManagement.Domain.Entities
 {
     public class BaseEntity
     {
-        public virtual Guid Id { get; set; }
+        public int Id { get; set; }
+
+        public DateTime CreatedAt { get; set; }
     }
 }

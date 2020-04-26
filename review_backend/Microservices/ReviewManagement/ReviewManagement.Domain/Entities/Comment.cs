@@ -1,11 +1,26 @@
-﻿namespace ReviewForum.Contract
+﻿using System;
+
+namespace ReviewManagement.Domain.Entities
 {
     public class Comment : BaseEntity
     {
-        public User User { get; set; }
+        public int ThingId { get; set; }
+
+        public Thing Thing { get; set; }
+
+        public string UserId { get; set; }
 
         public string Text { get; set; }
 
-        public Comment SubComment { get; set; }
+        public static Comment Create(string text, string userId, int thingId)
+        {
+            return new Comment()
+            {
+                Text = text,
+                UserId = userId,
+                ThingId = thingId,
+                CreatedAt = DateTime.UtcNow
+            };
+        }
     }
 }

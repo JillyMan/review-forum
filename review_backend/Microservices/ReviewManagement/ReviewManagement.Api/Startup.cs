@@ -1,11 +1,21 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Review.App.Infrastructure;
+using Review.Data;
 using ReviewForum.Infrastructure.Extensions;
+using AutoMapper;
+using ReviewManagement.Api.AutoMapperConfig;
+using MediatR;
+using System.Reflection;
+using ReviewManagement.App.Infrastructure.PipelineBehaviors;
+using ReviewManagement.Api.Filters;
+using FluentValidation.AspNetCore;
 
-namespace ReviewForum
+namespace ReviewManagement
 {
     public class Startup
     {
@@ -18,8 +28,23 @@ namespace ReviewForum
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCustomOptions(Configuration)
-                    .AddDepenedencies();
+            services.AddAutoMapper(typeof(MapperProfile).Assembly,
+                            typeof(App.AutoMapperConfig.MapperProfile).Assembly);
+
+            services.AddMediatR(typeof(App.Commands.Category.Add.Command).GetTypeInfo().Assembly);
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ContextTransactionBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+
+            services.AddMvc(options =>
+            {
+                options.EnableEndpointRouting = false;
+                options.Filters.Add(typeof(ModelStateFeatureFilter));
+            })
+            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<App.Commands.Thing.AddComment.Validator>());
+
+            services.AddDbContext<IReviewManagementContext, ReviewManagementContext>(ConfigureSqlServer);
+            services.AddDbContext<ReviewManagementContext>(ConfigureSqlServer); // this is required for design-time execution though dotnet ef migrations
 
             services.AddControllers();
         }
@@ -41,6 +66,11 @@ namespace ReviewForum
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void ConfigureSqlServer(DbContextOptionsBuilder options)
+        {
+            options.UseSqlServer(Configuration.GetConnectionString("ReviewManagement"));
         }
     }
 }
