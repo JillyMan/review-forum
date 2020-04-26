@@ -11,7 +11,7 @@ namespace ReviewManagement.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = Mediator.Send(new App.Queries.GetAllThings.Query());
+            var result = await Mediator.Send(new App.Queries.GetAllThings.Query());
             return Ok(result);
         }
 
@@ -19,7 +19,7 @@ namespace ReviewManagement.Api.Controllers
         [Route("{id}")]
         public async Task<IActionResult> GetById([FromRoute][Required]int id)
         {
-            var result = Mediator.Send(new App.Queries.GetThing.Query() { ThingId = id });
+            var result = await Mediator.Send(new App.Queries.GetThing.Query() { ThingId = id });
             return Ok(result);
         }
 

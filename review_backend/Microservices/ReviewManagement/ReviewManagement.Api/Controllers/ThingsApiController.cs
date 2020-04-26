@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ReviewManagement.Api.Models.Create;
 using ReviewManagement.Api.Models.Update;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace ReviewManagement.Api.Controllers
@@ -17,15 +18,19 @@ namespace ReviewManagement.Api.Controllers
         }
 
         [HttpPatch]
-        public async Task<IActionResult> PatchThing([FromBody]ThingUpdateModel model)
+        [Route("{id}")]
+        public async Task<IActionResult> PatchThing([FromBody]ThingUpdateModel model, [FromRoute][Required]int id)
         {
-            var thing = await Mediator.Send(Mapper.Map<App.Commands.Thing.UpdateThing.Command>(model));
+            var command = Mapper.Map<App.Commands.Thing.UpdateThing.Command>(model);
+            command.ThingId = id;
+
+            var thing = await Mediator.Send(command);
             return Ok(thing);
         }
 
-        public async Task<IActionResult> PostAddRate([FromBody]RateCreateModel)
+        public async Task<IActionResult> PostAddRate([FromBody]RateCreateModel rateModel)
         {
-
+            return null;
         }
     }
 }

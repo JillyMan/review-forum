@@ -26,11 +26,11 @@ namespace ReviewManagement.App.Commands.Thing.AddThing
                 .When(x => x != null);
 
             RuleFor(x => x.Name)
-                .NotEmpty();
+                .NotEmpty()
+                .MinimumLength(2);
 
             RuleFor(x => x.Description)
-                .NotEmpty()
-                .When(x => x != null);
+                .NotEmpty();
         }
 
         protected override bool PreValidate(ValidationContext<Command> context, ValidationResult result)

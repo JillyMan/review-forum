@@ -19,16 +19,21 @@ namespace ReviewManagement.App.Commands.Thing.UpdateThing
                 .Cascade(CascadeMode.StopOnFirstFailure)
                 .Custom((url, ctx) =>
                 {
-                    if (!Uri.IsWellFormedUriString(url, UriKind.Absolute))
+                    if (url != null && !Uri.IsWellFormedUriString(url, UriKind.Absolute))
                     {
                         ctx.AddFailure("Invalid img url.");
                     }
-                })
-                .NotEmpty()
-                .When(x => x != null);
+                });
 
             RuleFor(x => x.Name)
-                .NotEmpty();
+                .MinimumLength(2)
+                .Custom((d, ctx) =>
+                {
+                    if (d != null && d.Length == 0)
+                    {
+                        ctx.AddFailure("'Name' can't be empty");
+                    }
+                });
 
             RuleFor(x => x.Description)
                 .Custom((d, ctx) =>
