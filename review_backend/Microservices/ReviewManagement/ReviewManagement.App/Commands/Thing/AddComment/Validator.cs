@@ -1,8 +1,9 @@
-﻿using FluentValidation;
+﻿using System.Linq;
+using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.EntityFrameworkCore;
 using Review.App.Infrastructure;
 using ReviewManagement.App.Resources;
-using System.Linq;
 
 namespace ReviewManagement.App.Commands.Thing.AddComment
 {
@@ -17,14 +18,13 @@ namespace ReviewManagement.App.Commands.Thing.AddComment
             RuleFor(x => x.Text)
                 .MinimumLength(15)
                 .NotEmpty();
-            // todo: check if user exists.
         }
 
         protected override bool PreValidate(ValidationContext<Command> context, ValidationResult result)
         {
             var command = context.InstanceToValidate;
 
-            var thing = _context.Things.FirstOrDefault(x => x.Id == command.ThingId);
+            var thing = _context.Things.AsNoTracking().FirstOrDefault(x => x.Id == command.ThingId);
             if (thing == null)
             {
                 result.Errors.Add(new ValidationFailure(nameof(command.ThingId), string.Format(ValidationErrorMessages.CantAddCommentToThingIdNotFound, command.ThingId)));

@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.EntityFrameworkCore;
 using Review.App.Infrastructure;
 using System;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace ReviewManagement.App.Commands.Thing.AddThing
         {
             var command = context.InstanceToValidate;
 
-            if (_context.Categories.FirstOrDefault(x => x.Id == command.CategoryId) == null)
+            if (_context.Categories.AsNoTracking().FirstOrDefault(x => x.Id == command.CategoryId) == null)
             {
                 result.Errors.Add(new ValidationFailure(nameof(command.CategoryId), $"The category with id: {command.CategoryId} not found."));
                 return false;

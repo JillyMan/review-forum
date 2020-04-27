@@ -14,6 +14,8 @@ namespace Review.App.Infrastructure
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<ThingRateInfo> ThingRateInfos { get; set; }
+
         int SaveChanges();
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);

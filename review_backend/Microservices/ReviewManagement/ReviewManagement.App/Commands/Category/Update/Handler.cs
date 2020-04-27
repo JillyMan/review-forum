@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ReviewManagement.App.Commands.Category.Update
 {
-    class Command
+    class Handler
     {
     }
 }

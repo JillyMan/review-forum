@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.EntityFrameworkCore;
 using Review.App.Infrastructure;
 using ReviewManagement.App.Exceptions;
 using System;
@@ -49,12 +50,15 @@ namespace ReviewManagement.App.Commands.Thing.UpdateThing
         {
             var command = context.InstanceToValidate;
 
-            if (_context.Things.FirstOrDefault(x => x.Id == command.ThingId) == null)
+            if (_context.Things.AsNoTracking().FirstOrDefault(x => x.Id == command.ThingId) == null)
             {
                 throw new EntityNotFoundException();
             }
 
-            if (command.CategoryId.HasValue && _context.Categories.FirstOrDefault(x => x.Id == command.CategoryId) == null)
+            if (command.CategoryId.HasValue && 
+                _context.Categories
+                    .AsNoTracking()
+                    .FirstOrDefault(x => x.Id == command.CategoryId) == null)
             {
                 result.Errors.Add(new ValidationFailure(nameof(command.CategoryId), $"The category with id: {command.CategoryId} not found."));
                 return false;

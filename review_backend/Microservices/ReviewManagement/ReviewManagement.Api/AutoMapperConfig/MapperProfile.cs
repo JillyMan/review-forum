@@ -11,6 +11,9 @@ namespace ReviewManagement.Api.AutoMapperConfig
             CreateMap<ThingCreateModel, App.Commands.Thing.AddThing.Command>();
 
             CreateMap<ThingUpdateModel, App.Commands.Thing.UpdateThing.Command>();
+            
+            
+            CreateMap<CommentCreateModel, App.Commands.Thing.AddComment.Command>();
         }
     }
 }

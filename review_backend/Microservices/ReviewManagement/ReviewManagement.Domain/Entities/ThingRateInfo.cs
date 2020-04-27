@@ -1,4 +1,6 @@
-﻿namespace ReviewManagement.Domain.Entities
+﻿using System;
+
+namespace ReviewManagement.Domain.Entities
 {
     public class ThingRateInfo : BaseEntity
     {
@@ -9,5 +11,16 @@
         public string UserId { get; set; }
 
         public float Rate { get; set; }
+
+        public static ThingRateInfo Create(int thingId, string userId, float rate)
+        {
+            return new ThingRateInfo()
+            {
+                ThingId = thingId,
+                CreatedAt = DateTime.UtcNow,
+                UserId = userId,
+                Rate = rate
+            };
+        }
     }
 }

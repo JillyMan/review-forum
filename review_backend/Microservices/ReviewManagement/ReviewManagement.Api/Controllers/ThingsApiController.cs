@@ -43,14 +43,19 @@ namespace ReviewManagement.Api.Controllers
         [Route("{id}/rate")]
         public async Task<IActionResult> PostAddRate([FromBody]RateCreateModel rateModel, [FromRoute][Required]int id)
         {
-            return null;
+            var command = Mapper.Map<App.Commands.Thing.AddRate.Command>(rateModel);
+            command.ThingId = id;
+            var result = Mediator.Send(command);
+
+            return NoContent();
         }
 
         [HttpPost]
         [Route("{id}/comment")]
         public async Task<IActionResult> PostComment([FromBody]CommentCreateModel rateModel, [FromRoute][Required]int id)
         {
-            return null;
+            var comment = Mediator.Send(Mapper.Map<App.Commands.Thing.AddComment.Command>(rateModel));
+            return NoContent();
         }
     }
 }

@@ -15,9 +15,5 @@
   <ItemGroup>
     <ProjectReference Include="..\ReviewManagement.Domain\ReviewManagement.Domain.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Commands\Thing\AddRate\" />
-  </ItemGroup>
   
 </Project>

@@ -7,6 +7,8 @@ namespace ReviewManagement.Api.Models.Create
 {
     public class RateCreateModel
     {
+        public string UserId { get; set; }
+
         public float Rate { get; set; }
     }
 }

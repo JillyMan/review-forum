@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Review.App.Infrastructure;
+using ReviewManagement.App.Exceptions;
 using ReviewManagement.Domain.Entities;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace ReviewManagement.App.Queries.GetThing
 
             if (thing == null)
             {
-                throw new System.Exception($"The thing with id: {request.ThingId} not found");
+                throw new EntityNotFoundException();
             }
 
             return thing;
