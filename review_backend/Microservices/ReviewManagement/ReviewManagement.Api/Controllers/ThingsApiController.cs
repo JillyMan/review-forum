@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ReviewManagement.Api.Models.Create;
 using ReviewManagement.Api.Models.Update;
+using ReviewManagement.Api.Services;
+using ReviewManagement.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
@@ -10,6 +12,13 @@ namespace ReviewManagement.Api.Controllers
     [Route("/api/things")]
     public class ThingsApiController : BaseController
     {
+        private EntityServiceCache<Thing> _cacheService;
+
+        public ThingsApiController(EntityServiceCache<Thing> cacheService)
+        {
+            _cacheService = cacheService;
+        }
+
         [HttpPost]
         public async Task<IActionResult> PostThing([FromBody]ThingCreateModel model)
         {
@@ -25,6 +34,8 @@ namespace ReviewManagement.Api.Controllers
             command.ThingId = id;
 
             var thing = await Mediator.Send(command);
+            _cacheService.Set(thing);
+
             return Ok(thing);
         }
 
