@@ -13,7 +13,9 @@ using ReviewManagement.Api.AutoMapperConfig;
 using ReviewManagement.Api.ExceptionHandling;
 using ReviewManagement.Api.Extensions;
 using ReviewManagement.Api.Filters;
+using ReviewManagement.Api.Services;
 using ReviewManagement.App.Infrastructure.PipelineBehaviors;
+using ReviewManagement.Domain.Entities;
 using System.Reflection;
 
 namespace ReviewManagement
@@ -47,6 +49,13 @@ namespace ReviewManagement
             services.AddDbContext<ReviewManagementContext>(ConfigureSqlServer); // this is required for design-time execution though dotnet ef migrations
 
             services.RegisterExceptionHandlers();
+
+            services.AddMemoryCache(option =>
+            {
+                option.ExpirationScanFrequency = System.TimeSpan.FromMinutes(5);
+            });
+
+            services.AddTransient<EntityServiceCache<Thing>>();
 
             services.AddControllers();
         }
