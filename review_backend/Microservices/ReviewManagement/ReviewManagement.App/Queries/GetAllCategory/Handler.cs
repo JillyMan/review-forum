@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ReviewManagement.App.Queries.GetAllThings
+namespace ReviewManagement.App.Queries.GetAllCategory
 {
-    public class Handler : IRequestHandler<Query, IEnumerable<Thing>>
+    public class Handler : IRequestHandler<Query, IEnumerable<Category>>
     {
         private IReviewManagementContext _context;
 
@@ -17,11 +17,10 @@ namespace ReviewManagement.App.Queries.GetAllThings
             _context = context;
         }
 
-        public async Task<IEnumerable<Thing>> Handle(Query request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Category>> Handle(Query request, CancellationToken cancellationToken)
         {
-            return await _context.Things
+            return await _context.Categories
                 .AsNoTracking()
-                // TODO: it's realy shit, but i can't fix it fast now
                 .ToListAsync();
         }
     }

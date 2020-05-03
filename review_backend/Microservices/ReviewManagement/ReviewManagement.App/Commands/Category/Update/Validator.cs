@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Review.App.Infrastructure;
 
 namespace ReviewManagement.App.Commands.Category.Update
 {
-    class Validator
+    public class Validator : CategoryValidatorBase<Command>
     {
+        public Validator(IReviewManagementContext context)
+            : base(context)
+        {
+        }
     }
 }

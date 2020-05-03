@@ -32,7 +32,7 @@ namespace ReviewManagement.Api.Controllers
             if (result == null)
             {
                 result = await Mediator.Send(new App.Queries.GetThing.Query() { ThingId = id });
-                _cacheService.Set(result);
+                _cacheService.Set(result, result.Id);
             }
 
             return Ok(result);

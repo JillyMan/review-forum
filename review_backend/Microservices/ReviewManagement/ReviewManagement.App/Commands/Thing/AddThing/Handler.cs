@@ -1,27 +1,13 @@
-﻿using MediatR;
+﻿using AutoMapper;
 using Review.App.Infrastructure;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ReviewManagement.App.Commands.Thing.AddThing
 {
-    public class Handler : IRequestHandler<Command, Domain.Entities.Thing>
+    public class Handler : Common.CreateHandlerBase<Command, Domain.Entities.Thing>
     {
-        public IReviewManagementContext _context;
-
-        public Handler(IReviewManagementContext context)
+        public Handler(IReviewManagementContext context, IMapper mapper)
+            : base(context, mapper)
         {
-            _context = context;
-        }
-
-        public async Task<Domain.Entities.Thing> Handle(Command request, CancellationToken cancellationToken)
-        {
-            var thing = Domain.Entities.Thing.Create(request.UrlImage, request.CategoryId, request.Description);
-
-            var thingEntity = await _context.Things.AddAsync(thing);
-            await _context.SaveChangesAsync();
-
-            return thingEntity.Entity;
         }
     }
 }

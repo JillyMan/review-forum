@@ -8,13 +8,16 @@ namespace Review.App.Infrastructure
 {
     public interface IReviewManagementContext
     {
-        public DbSet<Thing> Things { get; set; }
+        DbSet<Thing> Things { get; set; }
 
-        public DbSet<Comment> Comments { get; set; }
+        DbSet<Comment> Comments { get; set; }
 
-        public DbSet<Category> Categories { get; set; }
+        DbSet<Category> Categories { get; set; }
 
-        public DbSet<ThingRateInfo> ThingRateInfos { get; set; }
+        DbSet<ThingRateInfo> ThingRateInfos { get; set; }
+
+        DbSet<TQuery> Set<TQuery>()
+            where TQuery : class;
 
         int SaveChanges();
 

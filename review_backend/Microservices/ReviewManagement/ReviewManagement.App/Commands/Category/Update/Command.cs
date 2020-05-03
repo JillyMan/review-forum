@@ -1,6 +1,7 @@
 ﻿namespace ReviewManagement.App.Commands.Category.Update
 {
-    class Command
+    public class Command : CategoryCommandBase<Domain.Entities.Category>
     {
+        public int Id { get; set; }
     }
 }

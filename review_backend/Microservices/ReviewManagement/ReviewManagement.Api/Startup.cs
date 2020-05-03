@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using Review.App.Infrastructure;
 using Review.Data;
 using ReviewManagement.Api.AutoMapperConfig;
@@ -41,7 +42,12 @@ namespace ReviewManagement
             services.AddMvc(options =>
             {
                 options.EnableEndpointRouting = false;
+                options.ReturnHttpNotAcceptable = false;
                 options.Filters.Add(typeof(ModelStateFeatureFilter));
+            })
+            .AddNewtonsoftJson(option =>
+            {
+                option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             })
             .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<App.Commands.Thing.AddComment.Validator>());
 

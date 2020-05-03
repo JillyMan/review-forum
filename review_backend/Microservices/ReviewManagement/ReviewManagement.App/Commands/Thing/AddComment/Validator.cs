@@ -3,6 +3,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using Review.App.Infrastructure;
+using ReviewManagement.App.Exceptions;
 using ReviewManagement.App.Resources;
 
 namespace ReviewManagement.App.Commands.Thing.AddComment
@@ -27,8 +28,7 @@ namespace ReviewManagement.App.Commands.Thing.AddComment
             var thing = _context.Things.AsNoTracking().FirstOrDefault(x => x.Id == command.ThingId);
             if (thing == null)
             {
-                result.Errors.Add(new ValidationFailure(nameof(command.ThingId), string.Format(ValidationErrorMessages.CantAddCommentToThingIdNotFound, command.ThingId)));
-                return false;
+                throw new EntityNotFoundException();
             }
 
             //todo: add user check.

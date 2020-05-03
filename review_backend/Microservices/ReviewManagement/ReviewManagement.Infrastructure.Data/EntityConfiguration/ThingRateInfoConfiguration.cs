@@ -28,11 +28,11 @@ namespace ReviewManagement.Data.EntityConfiguration
                 .HasColumnName("thing_id")
                 .IsRequired();
 
-            builder.HasOne(t => t.Thing)
-                .WithMany(r => r.Rates)
-                .HasForeignKey(r => r.ThingId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK_thing_rate_info_thing_id");
+            //builder.HasOne(t => t.Thing)
+            //    .WithMany(r => r.Rates)
+            //    .HasForeignKey(r => r.ThingId)
+            //    .OnDelete(DeleteBehavior.Cascade)
+            //    .HasConstraintName("FK_thing_rate_info_thing_id");
         }
     }
 }

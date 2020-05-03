@@ -1,24 +1,13 @@
-﻿using MediatR;
+﻿using AutoMapper;
 using Review.App.Infrastructure;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ReviewManagement.App.Commands.Category.Add
 {
-    public class Handler : IRequestHandler<Command, Domain.Entities.Category>
+    public class Handler : Common.CreateHandlerBase<Command, Domain.Entities.Category>
     {
-        private IReviewManagementContext _context;
-
-        public Handler(IReviewManagementContext ctx)
+        public Handler(IReviewManagementContext ctx, IMapper mapper) :
+            base(ctx, mapper)
         {
-            _context = ctx;
-        }
-
-        public Task<Domain.Entities.Category> Handle(Command request, CancellationToken cancellationToken)
-        {
-
-            throw new NotImplementedException();
         }
     }
 }

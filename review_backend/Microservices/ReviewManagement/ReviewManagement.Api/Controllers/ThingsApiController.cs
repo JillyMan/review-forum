@@ -23,6 +23,8 @@ namespace ReviewManagement.Api.Controllers
         public async Task<IActionResult> PostThing([FromBody]ThingCreateModel model)
         {
             var thing = await Mediator.Send(Mapper.Map<App.Commands.Thing.AddThing.Command>(model));
+            _cacheService.Set(thing, thing.Id);
+
             return Ok(thing);
         }
 
@@ -34,7 +36,7 @@ namespace ReviewManagement.Api.Controllers
             command.ThingId = id;
 
             var thing = await Mediator.Send(command);
-            _cacheService.Set(thing);
+            _cacheService.Set(thing, thing.Id);
 
             return Ok(thing);
         }
@@ -45,7 +47,10 @@ namespace ReviewManagement.Api.Controllers
         {
             var command = Mapper.Map<App.Commands.Thing.AddRate.Command>(rateModel);
             command.ThingId = id;
-            var result = Mediator.Send(command);
+
+            await Mediator.Send(command);
+
+            _cacheService.Remove(id);
 
             return NoContent();
         }
@@ -54,7 +59,13 @@ namespace ReviewManagement.Api.Controllers
         [Route("{id}/comment")]
         public async Task<IActionResult> PostComment([FromBody]CommentCreateModel rateModel, [FromRoute][Required]int id)
         {
-            var comment = Mediator.Send(Mapper.Map<App.Commands.Thing.AddComment.Command>(rateModel));
+            var command = Mapper.Map<App.Commands.Thing.AddComment.Command>(rateModel);
+            command.ThingId = id;
+
+            await Mediator.Send(command);
+            
+            _cacheService.Remove(id);
+            
             return NoContent();
         }
     }

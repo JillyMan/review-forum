@@ -10,20 +10,7 @@ namespace ReviewManagement.Domain.Entities
 
         public string UrlIImage { get; set; }
 
-        public IList<ThingRateInfo> Rates { get; set; }
-
-        public float Rate
-        {
-            get
-            {
-                if (Rates?.Count() > 0)
-                {
-                    return Rates.Average(x => x.Rate);
-                }
-
-                return 0;
-            }
-        }
+        public float Rate { get; set; }
 
         public string Description { get; set; }
 
