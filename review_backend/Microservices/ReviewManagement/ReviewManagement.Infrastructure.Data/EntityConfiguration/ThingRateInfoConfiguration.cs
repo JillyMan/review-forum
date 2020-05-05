@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ReviewManagement.Data.EntityConfiguration
 {
-    public class ThingRateInfoConfiguration : BaseConfiguration<ThingRateInfo>
+    public class ThingRateInfoConfiguration : AuditableBaseConfiguration<ThingRateInfo>
     {
         public override void Configure(EntityTypeBuilder<ThingRateInfo> builder)
         {

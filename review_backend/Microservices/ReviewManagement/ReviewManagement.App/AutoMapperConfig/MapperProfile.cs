@@ -6,10 +6,12 @@ namespace ReviewManagement.App.AutoMapperConfig
     {
         public MapperProfile()
         {
-            CreateMap<Commands.Thing.AddThing.Command, Domain.Entities.Thing>();
-            CreateMap<Commands.Thing.AddRate.Command, Domain.Entities.ThingRateInfo>();
-            CreateMap<Commands.Thing.AddComment.Command, Domain.Entities.Comment>();
+            CreateMap<Commands.Place.AddPlace.Command, Domain.Entities.Place>();
 
+            CreateMap<Commands.Place.Rate.CommandPlaceRate, Domain.Entities.PlaceRate>();
+            CreateMap<Commands.Place.Rate.CommandDishRate, Domain.Entities.DishRate>();
+
+            CreateMap<Commands.Place.AddComment.Command, Domain.Entities.Comment>();
             CreateMap<Commands.Category.Add.Command, Domain.Entities.Category>();
             CreateMap<Commands.Category.Add.Command, Domain.Entities.Category>();
         }

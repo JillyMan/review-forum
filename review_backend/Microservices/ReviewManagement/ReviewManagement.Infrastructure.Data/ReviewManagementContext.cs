@@ -1,19 +1,32 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ReviewManagement.Domain.Entities;
+using ReviewManagement.Domain.Entities.Security;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Review.App.Infrastructure;
-using ReviewManagement.Domain.Entities;
 
 namespace Review.Data
 {
     public class ReviewManagementContext : DbContext, IReviewManagementContext
     {
-        public DbSet<Thing> Things { get; set; }
+        public DbSet<Place> Places { get; set; }
 
         public DbSet<Comment> Comments { get; set; }
 
         public DbSet<Category> Categories { get; set; }
 
-        public DbSet<ThingRateInfo> ThingRateInfos { get; set; }
+        public DbSet<PlaceRate> PlaceRateInfos { get; set; }
+        
+        public DbSet<DishRate> DishRateInfos { get; set; }
+
+        public DbSet<UserInfo> Users { get; set; }
+
+        public DbSet<TokenInfo> Tokens { get; set; }
+
+        public DbSet<Address> Addresses { get; set; }
+
+        public DbSet<Country> Countries { get; set; }
+
+        public DbSet<City> Cities { get; set; }
 
         public ReviewManagementContext(DbContextOptions<ReviewManagementContext> options)
             : base(options)

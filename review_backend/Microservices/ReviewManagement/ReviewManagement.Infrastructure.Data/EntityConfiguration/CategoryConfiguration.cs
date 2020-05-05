@@ -4,7 +4,7 @@ using ReviewManagement.Domain.Entities;
 
 namespace ReviewManagement.Data.EntityConfiguration
 {
-    public class CategoryConfiguration : BaseConfiguration<Category>
+    public class CategoryConfiguration : AuditableBaseConfiguration<Category>
     {
         public override void Configure(EntityTypeBuilder<Category> builder)
         {

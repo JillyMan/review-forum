@@ -4,7 +4,7 @@ using ReviewManagement.Domain.Entities;
 
 namespace ReviewManagement.Data.EntityConfiguration
 {
-    public class CommentConfiguration : BaseConfiguration<Comment>
+    public class CommentConfiguration : AuditableBaseConfiguration<Comment>
     {
         public override void Configure(EntityTypeBuilder<Comment> builder)
         {

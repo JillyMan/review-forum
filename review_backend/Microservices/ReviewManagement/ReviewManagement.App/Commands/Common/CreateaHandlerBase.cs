@@ -10,7 +10,7 @@ namespace ReviewManagement.App.Commands.Common
 {
     public abstract class CreateHandlerBase<TCommand, TResult> : IRequestHandler<TCommand, TResult>
         where TCommand : IRequest<TResult>
-        where TResult : BaseEntity
+        where TResult : AuditableEntity
     {
         protected readonly IReviewManagementContext Context;
         protected readonly IMapper Mapper;

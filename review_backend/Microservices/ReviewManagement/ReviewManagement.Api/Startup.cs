@@ -49,7 +49,7 @@ namespace ReviewManagement
             {
                 option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             })
-            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<App.Commands.Thing.AddComment.Validator>());
+            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<App.Commands.Place.AddComment.Validator>());
 
             services.AddDbContext<IReviewManagementContext, ReviewManagementContext>(ConfigureSqlServer);
             services.AddDbContext<ReviewManagementContext>(ConfigureSqlServer); // this is required for design-time execution though dotnet ef migrations
@@ -61,7 +61,12 @@ namespace ReviewManagement
                 option.ExpirationScanFrequency = System.TimeSpan.FromMinutes(5);
             });
 
-            services.AddTransient<EntityServiceCache<Thing>>();
+            services.AddTransient<EntityServiceCache<Place>>();
+
+            var secretKey = Configuration.GetValue<string>("Jwt:Secret");
+            var expirationTime = Configuration.GetValue<int>("Jwt:ExpirationTime");
+            services.CustomAuthentication(Configuration);
+            services.AddServices();
 
             services.AddControllers();
         }
@@ -85,6 +90,13 @@ namespace ReviewManagement
             {
                 endpoints.MapControllers();
             });
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<ReviewManagementContext>();
+                context.Database.Migrate();
+                var result = context.Database.EnsureCreated();
+            }
         }
 
         private void ConfigureSqlServer(DbContextOptionsBuilder options)

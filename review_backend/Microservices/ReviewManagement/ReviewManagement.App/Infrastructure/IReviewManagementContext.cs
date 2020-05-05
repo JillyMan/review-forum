@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ReviewManagement.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using ReviewManagement.Domain.Entities;
+using ReviewManagement.Domain.Entities.Security;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,13 +9,25 @@ namespace Review.App.Infrastructure
 {
     public interface IReviewManagementContext
     {
-        DbSet<Thing> Things { get; set; }
+        DbSet<Place> Places { get; set; }
 
         DbSet<Comment> Comments { get; set; }
 
         DbSet<Category> Categories { get; set; }
 
-        DbSet<ThingRateInfo> ThingRateInfos { get; set; }
+        DbSet<PlaceRate> PlaceRateInfos { get; set; }
+
+        DbSet<DishRate> DishRateInfos { get; set; }
+        
+        DbSet<UserInfo> Users { get; set; }
+
+        DbSet<TokenInfo> Tokens { get; set; }
+
+        DbSet<Address> Addresses { get; set; }
+
+        DbSet<Country> Countries { get; set; }
+
+        DbSet<City> Cities { get; set; }
 
         DbSet<TQuery> Set<TQuery>()
             where TQuery : class;

@@ -4,7 +4,7 @@ using ReviewManagement.Domain.Entities;
 
 namespace ReviewManagement.Data.EntityConfiguration
 {
-    public class ThingConfiguration : BaseConfiguration<Thing>
+    public class ThingConfiguration : AuditableBaseConfiguration<Thing>
     {
         public override void Configure(EntityTypeBuilder<Thing> builder)
         {
