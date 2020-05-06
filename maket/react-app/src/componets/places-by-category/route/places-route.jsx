@@ -1,10 +1,11 @@
 import React from 'react'
-import ListOfPlacesByCategoryContainer from '../containers/list-of-places-by-category-container'
+import ListOfPlacesContainer from '../containers/list-of-places-container'
+import { getPlaceByCategory } from '../../../api/places/place-service'
 
 export const PlacesRoute = (props) => {
     const { categoryId } = props.match.params
 
     return (
-        <ListOfPlacesByCategoryContainer categoryId={categoryId} />
+        <ListOfPlacesContainer selector={() => getPlaceByCategory(categoryId)}/>
     )
 }
