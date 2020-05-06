@@ -25,7 +25,7 @@ const searchSectorStyle = {
 }
 
 const formControlStyle = {
-    width: "813px"
+    width: "985px"
 }
 
 const SearchPlaceContainer = () => {
@@ -41,20 +41,18 @@ const SearchPlaceContainer = () => {
             <div style={searchSectorStyle}>
                 <div></div>
                 <div>
-                    <div>
-                        <Form inline>
-                            <FormControl
-                                type="text"
-                                placeholder="Search"
-                                className="mr-sm-1"
-                                style={formControlStyle}
-                                value={placeName}
-                                onChange={onInputValueChange} />
-                            <Button variant="primary">{searchBtnName}</Button>
-                        </Form>
-                        <div style={variantsListStyle}>
-                            <ListOfPlacesContainer selector={() => getPlaceByName(placeName)}/>
-                        </div>
+                    <Form inline>
+                        <FormControl
+                            type="text"
+                            placeholder="Search"
+                            className="mr-sm-1"
+                            style={formControlStyle}
+                            value={placeName}
+                            onChange={onInputValueChange} />
+                        <Button variant="primary">{searchBtnName}</Button>
+                    </Form>
+                    <div style={variantsListStyle}>
+                        <ListOfPlacesContainer selector={() => getPlaceByName(placeName)} />
                     </div>
                 </div>
                 <div></div>

@@ -18,7 +18,7 @@ const ListOfPlacesContainer = (props) => {
     return (
         <div style={containerStyle}>
             <div></div>
-            <ListOfPlacesPresenter orientation="inlineоо" placeConfigs={places} />
+            <ListOfPlacesPresenter orientation="blocks" placeConfigs={places} />
         </div>
     )
 }
