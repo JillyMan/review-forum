@@ -28,7 +28,7 @@ const DropDownToLink = (props) => {
         <DropdownButton
             id="dropdown-basic-button"
             title={dropDownName}
-            style={{ marginLeft: dropDownStyle.marginLeft }}>
+            style={ dropDownStyle }>
             {DropDownItems}
         </DropdownButton>
     )
