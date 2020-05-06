@@ -20,9 +20,9 @@ namespace ReviewManagement.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Postplace([FromBody]PlaceCreateModel model)
+        public async Task<IActionResult> PostPlace([FromBody]PlaceCreateModel model)
         {
-            var place = await Mediator.Send(Mapper.Map<App.Commands.Place.AddPlace.Command>(model));
+            var place = await Mediator.Send(Mapper.Map<App.Commands.Place.Create.CommandCreatePlace>(model));
             _cacheService.Set(place, place.Id);
 
             return Ok(place);
@@ -43,9 +43,9 @@ namespace ReviewManagement.Api.Controllers
 
         [HttpPost]
         [Route("{id}/rate_place")]
-        public async Task<IActionResult> PostAddRate([FromBody]PlaceRateCreateModel rateModel, [FromRoute][Required]int id)
+        public async Task<IActionResult> PostAddPlaceRate([FromBody]PlaceRateCreateModel rateModel, [FromRoute][Required]int id)
         {
-            var command = Mapper.Map<App.Commands.Place.Rate.CommandPlaceRate>(rateModel);
+            var command = Mapper.Map<App.Commands.Rate.Create.CommandCreatePlaceRate>(rateModel);
             command.PlaceId = id;
 
             await Mediator.Send(command);
@@ -57,9 +57,9 @@ namespace ReviewManagement.Api.Controllers
 
         [HttpPost]
         [Route("{id}/rate_place")]
-        public async Task<IActionResult> PostAddRate([FromBody]DishRateCreateModel rateModel, [FromRoute][Required]int id)
+        public async Task<IActionResult> PostAddDishRate([FromBody]DishRateCreateModel rateModel, [FromRoute][Required]int id)
         {
-            var command = Mapper.Map<App.Commands.Place.Rate.CommandDishRate>(rateModel);
+            var command = Mapper.Map<App.Commands.Rate.Create.CommandCreateDishRate>(rateModel);
             command.DishId = id;
 
             await Mediator.Send(command);
@@ -72,7 +72,7 @@ namespace ReviewManagement.Api.Controllers
         [Route("{id}/comment")]
         public async Task<IActionResult> PostComment([FromBody]CommentCreateModel rateModel, [FromRoute][Required]int id)
         {
-            var command = Mapper.Map<App.Commands.Place.AddComment.Command>(rateModel);
+            var command = Mapper.Map<App.Commands.Place.AddComment.CommandCreateComment>(rateModel);
             command.PlaceId = id;
 
             await Mediator.Send(command);

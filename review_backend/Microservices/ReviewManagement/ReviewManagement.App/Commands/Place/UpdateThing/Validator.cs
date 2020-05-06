@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using Review.App.Infrastructure;
 using ReviewManagement.App.Exceptions;
+using ReviewManagement.App.Extension;
 using System;
 using System.Linq;
 
@@ -16,15 +17,9 @@ namespace ReviewManagement.App.Commands.Place.UpdatePlace
         {
             _context = ctx;
 
-            RuleFor(x => x.UrlImage)
+            RuleFor(x => x.ImageUrl)
                 .Cascade(CascadeMode.StopOnFirstFailure)
-                .Custom((url, ctx) =>
-                {
-                    if (url != null && !Uri.IsWellFormedUriString(url, UriKind.Absolute))
-                    {
-                        ctx.AddFailure("Invalid img url.");
-                    }
-                });
+                .ValidateUrl();
 
             RuleFor(x => x.Name)
                 .MinimumLength(2)
@@ -33,15 +28,6 @@ namespace ReviewManagement.App.Commands.Place.UpdatePlace
                     if (d != null && d.Length == 0)
                     {
                         ctx.AddFailure("'Name' can't be empty");
-                    }
-                });
-
-            RuleFor(x => x.Description)
-                .Custom((d, ctx) =>
-                {
-                    if (d != null && d.Length == 0)
-                    {
-                        ctx.AddFailure("'Description' can't be empty");
                     }
                 });
         }

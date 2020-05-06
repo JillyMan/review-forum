@@ -7,11 +7,11 @@ namespace ReviewManagement.Domain.Entities
     {
         public string Name { get; set; }
 
-        public string UrlImage { get; set; }
-
         public float Rate { get; set; }
 
-        public string Description { get; set; }
+        public string ImageUrl { get; set; }
+
+        public string PhoneNumber { get; set; }
 
         public int CategoryId { get; set; }
 
@@ -20,26 +20,28 @@ namespace ReviewManagement.Domain.Entities
         public int AddressId { get; set; }
 
         public Address Address { get; set; }
-
+     
         public ICollection<HeaderImage> HeaderImages { get; set; }
 
         public ICollection<Dish> Dishes { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
 
-        public static Place Create(string urlImage, int categoryId, string description, 
+        public static Place Create(string urlImage, 
+            int categoryId, 
+            string phoneNumber,
             Address address, 
             ICollection<Dish> dishes,
             ICollection<HeaderImage> headerImages)
         {
             return new Place()
             {
-                UrlImage = urlImage,
+                ImageUrl = urlImage,
                 Dishes = dishes,
                 Address = address,
-
+                PhoneNumber = phoneNumber,
                 CategoryId = categoryId,
-                Description = description,
+                HeaderImages = headerImages,
                 CreatedAt = DateTime.UtcNow
             };
         }

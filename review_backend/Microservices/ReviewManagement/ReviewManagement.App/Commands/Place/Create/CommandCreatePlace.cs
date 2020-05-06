@@ -1,17 +1,18 @@
-﻿using ReviewManagement.Api.Models.Create.Dto;
+﻿using MediatR;
+using ReviewManagement.App.Commands.Place.Create.Dto;
 using System.Collections.Generic;
 
-namespace ReviewManagement.Api.Models.Create
+namespace ReviewManagement.App.Commands.Place.Create
 {
-    public class PlaceCreateModel
+    public class CommandCreatePlace : IRequest<Domain.Entities.Place>
     {
         public string Name { get; set; }
+
+        public string PhoneNumber { get; set; }
 
         public string ImageUrl { get; set; }
 
         public int CategoryId { get; set; }
-
-        public string phoneNumber { get; set; }
 
         public AddressDto Address { get; set; }
 

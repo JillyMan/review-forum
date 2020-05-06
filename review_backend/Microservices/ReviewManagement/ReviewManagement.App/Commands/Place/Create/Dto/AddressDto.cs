@@ -1,4 +1,4 @@
-﻿namespace ReviewManagement.App.Commands.Place.AddPlace
+﻿namespace ReviewManagement.App.Commands.Place.Create.Dto
 {
     public class AddressDto
     {

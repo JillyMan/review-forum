@@ -30,8 +30,7 @@ namespace ReviewManagement.App.Commands.Place.UpdatePlace
         {
             place.Name = command.Name ?? place.Name;
             place.CategoryId = command.CategoryId ?? place.CategoryId;
-            place.UrlImage = command.UrlImage ?? place.UrlImage;
-            place.Description = command.Description ?? place.Description;
+            place.ImageUrl = command.ImageUrl ?? place.ImageUrl;
         }
     }
 }

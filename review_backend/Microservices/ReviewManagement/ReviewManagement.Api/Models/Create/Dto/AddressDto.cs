@@ -1,4 +1,4 @@
-﻿namespace ReviewManagement.Api.Models.Create
+﻿namespace ReviewManagement.Api.Models.Create.Dto
 {
 	public class AddressDto
     {

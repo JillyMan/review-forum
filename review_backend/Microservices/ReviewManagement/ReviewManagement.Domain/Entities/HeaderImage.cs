@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
 
-        public string ImgUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         public int PlaceId { get; set; }
 

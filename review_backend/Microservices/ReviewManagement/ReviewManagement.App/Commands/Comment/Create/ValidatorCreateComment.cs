@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace ReviewManagement.App.Commands.Place.AddComment
 {
-    public class Validator : AbstractValidator<Command>
+    public class Validator : AbstractValidator<CommandCreateComment>
     {
         private IReviewManagementContext _context;
 
@@ -20,7 +20,7 @@ namespace ReviewManagement.App.Commands.Place.AddComment
                 .NotEmpty();
         }
 
-        protected override bool PreValidate(ValidationContext<Command> context, ValidationResult result)
+        protected override bool PreValidate(ValidationContext<CommandCreateComment> context, ValidationResult result)
         {
             var command = context.InstanceToValidate;
 

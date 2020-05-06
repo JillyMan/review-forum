@@ -8,10 +8,8 @@ namespace ReviewManagement.App.Commands.Place.UpdatePlace
 
         public string Name { get; set; }
 
-        public string UrlImage { get; set; }
+        public string ImageUrl { get; set; }
 
         public int? CategoryId { get; set; }
-
-        public string Description { get; set; }
     }
 }

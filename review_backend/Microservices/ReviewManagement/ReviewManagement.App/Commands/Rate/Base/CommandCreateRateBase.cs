@@ -1,12 +1,9 @@
 ﻿using MediatR;
 using ReviewManagement.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace ReviewManagement.App.Commands.Place.Rate
+namespace ReviewManagement.App.Commands.Rate.Base
 {
-    public class CommandRateBase<TResponse> : IRequest<TResponse>
+    public abstract class CommandCreateRateBase<TResponse> : IRequest<TResponse>
         where TResponse : RatableEntity
     {
         public int UserId { get; set; }

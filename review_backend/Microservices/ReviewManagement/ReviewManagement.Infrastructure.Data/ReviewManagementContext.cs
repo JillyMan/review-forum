@@ -15,7 +15,7 @@ namespace Review.Data
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<PlaceRate> PlaceRateInfos { get; set; }
-        
+
         public DbSet<DishRate> DishRateInfos { get; set; }
 
         public DbSet<UserInfo> Users { get; set; }

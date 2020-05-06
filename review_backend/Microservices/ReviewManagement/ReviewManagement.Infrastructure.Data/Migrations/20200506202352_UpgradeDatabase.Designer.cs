@@ -10,8 +10,8 @@ using Review.Data;
 namespace ReviewManagement.Data.Migrations
 {
     [DbContext(typeof(ReviewManagementContext))]
-    [Migration("20200505200818_RefactorRateSystem")]
-    partial class RefactorRateSystem
+    [Migration("20200506202352_UpgradeDatabase")]
+    partial class UpgradeDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -227,10 +227,10 @@ namespace ReviewManagement.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Rate")
@@ -398,7 +398,7 @@ namespace ReviewManagement.Data.Migrations
             modelBuilder.Entity("ReviewManagement.Domain.Entities.DishRate", b =>
                 {
                     b.HasOne("ReviewManagement.Domain.Entities.Dish", "Dish")
-                        .WithMany()
+                        .WithMany("Rates")
                         .HasForeignKey("DishId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

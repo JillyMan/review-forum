@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using Review.App.Infrastructure;
-using ReviewManagement.Domain.Entities;
 
-namespace ReviewManagement.App.Commands.Place.AddComment
+namespace ReviewManagement.App.Commands.Place.Create
 {
-    public class Handler : Common.CreateHandlerBase<Command, Comment>
+    public class Handler : Common.CreateHandlerBase<CommandCreatePlace, Domain.Entities.Place>
     {
         public Handler(IReviewManagementContext context, IMapper mapper)
             : base(context, mapper)

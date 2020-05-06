@@ -10,8 +10,8 @@ using Review.Data;
 namespace ReviewManagement.Data.Migrations
 {
     [DbContext(typeof(ReviewManagementContext))]
-    [Migration("20200505193343_Test1")]
-    partial class Test1
+    [Migration("20200506204646_ChangeName")]
+    partial class ChangeName
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -160,6 +160,37 @@ namespace ReviewManagement.Data.Migrations
                     b.ToTable("Dish");
                 });
 
+            modelBuilder.Entity("ReviewManagement.Domain.Entities.DishRate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DishId")
+                        .HasColumnType("int");
+
+                    b.Property<float>("Rate")
+                        .HasColumnType("real");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DishId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DishRateInfos");
+                });
+
             modelBuilder.Entity("ReviewManagement.Domain.Entities.HeaderImage", b =>
                 {
                     b.Property<int>("Id")
@@ -167,7 +198,7 @@ namespace ReviewManagement.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ImgUrl")
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PlaceId")
@@ -196,10 +227,13 @@ namespace ReviewManagement.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Rate")
@@ -207,9 +241,6 @@ namespace ReviewManagement.Data.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("UrlImage")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -220,7 +251,7 @@ namespace ReviewManagement.Data.Migrations
                     b.ToTable("Places");
                 });
 
-            modelBuilder.Entity("ReviewManagement.Domain.Entities.RateInfo", b =>
+            modelBuilder.Entity("ReviewManagement.Domain.Entities.PlaceRate", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -230,10 +261,7 @@ namespace ReviewManagement.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DishId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PlaceId")
+                    b.Property<int>("PlaceId")
                         .HasColumnType("int");
 
                     b.Property<float>("Rate")
@@ -246,8 +274,6 @@ namespace ReviewManagement.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DishId");
 
                     b.HasIndex("PlaceId");
 
@@ -369,6 +395,21 @@ namespace ReviewManagement.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ReviewManagement.Domain.Entities.DishRate", b =>
+                {
+                    b.HasOne("ReviewManagement.Domain.Entities.Dish", "Dish")
+                        .WithMany("Rates")
+                        .HasForeignKey("DishId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ReviewManagement.Domain.Entities.UserInfo", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ReviewManagement.Domain.Entities.HeaderImage", b =>
                 {
                     b.HasOne("ReviewManagement.Domain.Entities.Place", "Place")
@@ -393,15 +434,13 @@ namespace ReviewManagement.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ReviewManagement.Domain.Entities.RateInfo", b =>
+            modelBuilder.Entity("ReviewManagement.Domain.Entities.PlaceRate", b =>
                 {
-                    b.HasOne("ReviewManagement.Domain.Entities.Dish", "Dish")
-                        .WithMany("RateInfo")
-                        .HasForeignKey("DishId");
-
                     b.HasOne("ReviewManagement.Domain.Entities.Place", "Place")
                         .WithMany()
-                        .HasForeignKey("PlaceId");
+                        .HasForeignKey("PlaceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ReviewManagement.Domain.Entities.UserInfo", "User")
                         .WithMany()

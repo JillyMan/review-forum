@@ -15,5 +15,7 @@ namespace ReviewManagement.Domain.Entities
         public string ImageUrl { get; set; }
 
         public float Rate { get; set; }
+
+        public ICollection<DishRate> Rates { get; set; }
     }
 }

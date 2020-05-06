@@ -3,7 +3,7 @@ using ReviewManagement.Domain.Entities;
 
 namespace ReviewManagement.App.Commands.Place.AddComment
 {
-    public class Command : IRequest<Comment>
+    public class CommandCreateComment : IRequest<Comment>
     {
         public int PlaceId { get; set; }
 
