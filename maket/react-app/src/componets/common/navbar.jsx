@@ -34,7 +34,7 @@ const NavigationContainer = () => {
         {mainLinkName}
       </Navbar.Brand>
       <DropDownToLink listOfLinks={things} />
-      <Button variant="light" style={{ marginLeft: signIn.marginLeft, marginRight: signIn.marginRight }}>{signInBtnName}</Button>
+      <Button variant="light" style={ signIn }>{signInBtnName}</Button>
       <Button variant="light">{registrationBtnName}</Button>
     </Navbar>
   )

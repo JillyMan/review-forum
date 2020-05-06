@@ -1,0 +1,18 @@
+.card:hover{
+    transition: 0.5s;
+    box-shadow: 0 0 20px #989898;
+}
+
+.card:not(:hover){
+    transition: 0.5s;
+}
+
+.card-body{
+    display: grid;
+    grid-template-rows: 27px auto auto;
+}
+
+.firstRow{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
