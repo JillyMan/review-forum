@@ -1,8 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ReviewManagement.Api.Models.Create;
 using ReviewManagement.Api.Models.Update;
 using ReviewManagement.Api.Services;
+using ReviewManagement.App.Commands.Comment.Create;
+using ReviewManagement.App.Commands.Place.Create;
+using ReviewManagement.App.Commands.Rate.Create;
 using ReviewManagement.Domain.Entities;
+using ReviewManagement.Domain.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
@@ -20,9 +26,10 @@ namespace ReviewManagement.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = RoleNames.SuperUser)]
         public async Task<IActionResult> PostPlace([FromBody]PlaceCreateModel model)
         {
-            var place = await Mediator.Send(Mapper.Map<App.Commands.Place.Create.CommandCreatePlace>(model));
+            var place = await Mediator.Send(Mapper.Map<CommandCreatePlace>(model));
             _cacheService.Set(place, place.Id);
 
             return Ok(place);
@@ -30,22 +37,25 @@ namespace ReviewManagement.Api.Controllers
 
         [HttpPatch]
         [Route("{id}")]
-        public async Task<IActionResult> Patchplace([FromBody]PlaceUpdateModel model, [FromRoute][Required]int id)
+        [Authorize(Roles = RoleNames.SuperUser)]
+        public async Task<IActionResult> PatchPlace([FromBody]PlaceUpdateModel model, [FromRoute][Required]int id)
         {
-            var command = Mapper.Map<App.Commands.Place.UpdatePlace.Command>(model);
-            command.PlaceId = id;
+            //var command = Mapper.Map<App.Commands.Place.UpdatePlace.Command>(model);
+            //command.PlaceId = id;
 
-            var place = await Mediator.Send(command);
-            _cacheService.Set(place, place.Id);
+            //var place = await Mediator.Send(command);
+            //_cacheService.Set(place, place.Id);
 
-            return Ok(place);
+            //            return Ok(place);
+            throw new NotImplementedException();
         }
 
         [HttpPost]
         [Route("{id}/rate_place")]
-        public async Task<IActionResult> PostAddPlaceRate([FromBody]PlaceRateCreateModel rateModel, [FromRoute][Required]int id)
+        [Authorize(Roles = RoleNames.User)]
+        public async Task<IActionResult> PostPlaceRate([FromBody]PlaceRateCreateModel rateModel, [FromRoute][Required]int id)
         {
-            var command = Mapper.Map<App.Commands.Rate.Create.CommandCreatePlaceRate>(rateModel);
+            var command = Mapper.Map<CommandCreatePlaceRate>(rateModel);
             command.PlaceId = id;
 
             await Mediator.Send(command);
@@ -56,10 +66,12 @@ namespace ReviewManagement.Api.Controllers
         }
 
         [HttpPost]
-        [Route("{id}/rate_place")]
-        public async Task<IActionResult> PostAddDishRate([FromBody]DishRateCreateModel rateModel, [FromRoute][Required]int id)
+        [Authorize]
+        [Route("{id}/rate_dish")]
+        [Authorize(Roles = RoleNames.User)]
+        public async Task<IActionResult> PostDishRate([FromBody]DishRateCreateModel rateModel, [FromRoute][Required]int id)
         {
-            var command = Mapper.Map<App.Commands.Rate.Create.CommandCreateDishRate>(rateModel);
+            var command = Mapper.Map<CommandCreateDishRate>(rateModel);
             command.DishId = id;
 
             await Mediator.Send(command);
@@ -69,10 +81,12 @@ namespace ReviewManagement.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("{id}/comment")]
+        [Authorize(Roles = RoleNames.User)]
         public async Task<IActionResult> PostComment([FromBody]CommentCreateModel rateModel, [FromRoute][Required]int id)
         {
-            var command = Mapper.Map<App.Commands.Place.AddComment.CommandCreateComment>(rateModel);
+            var command = Mapper.Map<CommandCreateComment>(rateModel);
             command.PlaceId = id;
 
             await Mediator.Send(command);

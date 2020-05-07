@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Review.App.Infrastructure;
+using ReviewManagement.App.Infrastructure;
 using ReviewManagement.App.Exceptions;
 using ReviewManagement.App.Models;
 using ReviewManagement.App.Utils;

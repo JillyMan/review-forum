@@ -11,8 +11,8 @@ namespace ReviewManagement.Api.AutoMapperConfig
     {
         public MapperProfile()
         {
-            CreateMap<AddressDto, App.Commands.Place.Create.Dto.AddressDto>();
             CreateMap<DishDto, App.Commands.Place.Create.Dto.DishDto>();
+            CreateMap<AddressDto, App.Commands.Place.Create.Dto.AddressDto>();
             CreateMap<HeaderImageDto, App.Commands.Place.Create.Dto.HeaderImageDto>();
             CreateMap<PlaceCreateModel, App.Commands.Place.Create.CommandCreatePlace>();
 
@@ -21,18 +21,18 @@ namespace ReviewManagement.Api.AutoMapperConfig
             CreateMap<PlaceRateCreateModel, App.Commands.Rate.Create.CommandCreatePlaceRate>();
 
 
+            CreateMap<CommentCreateModel, App.Commands.Comment.Create.CommandCreateComment>();
+
             //CreateMap<PlaceUpdateModel, App.Commands.Place.UpdatePlace.Command>();
             //CreateMap<CommentCreateModel, App.Commands.Place.AddComment.CommandCreateComment>();
 
-
-            CreateMap<CreateCategoryModel, App.Commands.Category.Add.Command>();
+            CreateMap<CreateCategoryModel, App.Commands.Category.Add.CommandCreateaCategory>();
             CreateMap<UpdateCategoryModel, App.Commands.Category.Update.Command>();
 
 
-            CreateMap<AuthenticateInfoModel, AuthenticateInfo>();
             CreateMap<UserCreateModel, RegisterInfo>();
-
             CreateMap<AuthTokenResponse, AuthenticateInfo>();
+            CreateMap<AuthenticateInfoModel, AuthenticateInfo>();
         }
     }
 }

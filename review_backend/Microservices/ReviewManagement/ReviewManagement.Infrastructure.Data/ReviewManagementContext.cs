@@ -2,9 +2,9 @@
 using ReviewManagement.Domain.Entities.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using Review.App.Infrastructure;
+using ReviewManagement.App.Infrastructure;
 
-namespace Review.Data
+namespace ReviewManagement.Data
 {
     public class ReviewManagementContext : DbContext, IReviewManagementContext
     {

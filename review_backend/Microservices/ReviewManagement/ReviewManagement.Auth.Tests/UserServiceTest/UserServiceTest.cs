@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using Review.App.Infrastructure;
+using ReviewManagement.App.Infrastructure;
 using ReviewManagement.App.Models;
 using ReviewManagement.App.Services.User;
 using ReviewManagement.App.Utils;

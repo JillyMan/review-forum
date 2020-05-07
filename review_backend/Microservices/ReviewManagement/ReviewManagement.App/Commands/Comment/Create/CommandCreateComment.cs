@@ -1,14 +1,15 @@
 ﻿using MediatR;
+using ReviewManagement.App.Models;
 using ReviewManagement.Domain.Entities;
 
-namespace ReviewManagement.App.Commands.Place.AddComment
+namespace ReviewManagement.App.Commands.Comment.Create
 {
-    public class CommandCreateComment : IRequest<Comment>
+    public class CommandCreateComment : IRequest<Domain.Entities.Comment>, ICreateCommand
     {
         public int PlaceId { get; set; }
 
-        public int UserId { get; set; }
-
         public string Text { get; set; }
+
+        public UserInfo CreatedBy { get; set; }
     }
 }

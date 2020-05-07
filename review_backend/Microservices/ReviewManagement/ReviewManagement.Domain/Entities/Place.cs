@@ -26,24 +26,5 @@ namespace ReviewManagement.Domain.Entities
         public ICollection<Dish> Dishes { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
-
-        public static Place Create(string urlImage, 
-            int categoryId, 
-            string phoneNumber,
-            Address address, 
-            ICollection<Dish> dishes,
-            ICollection<HeaderImage> headerImages)
-        {
-            return new Place()
-            {
-                ImageUrl = urlImage,
-                Dishes = dishes,
-                Address = address,
-                PhoneNumber = phoneNumber,
-                CategoryId = categoryId,
-                HeaderImages = headerImages,
-                CreatedAt = DateTime.UtcNow
-            };
-        }
     }
 }

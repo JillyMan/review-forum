@@ -1,9 +1,7 @@
 ﻿namespace ReviewManagement.Domain.Entities
 {
-    public class Address
+    public class Address : BaseEntity
     {
-        public int Id { get; set; }
-
         public int CityId { get; set; }
 
         public City City { get; set; }

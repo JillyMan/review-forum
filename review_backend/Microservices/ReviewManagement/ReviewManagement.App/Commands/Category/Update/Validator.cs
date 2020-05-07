@@ -1,4 +1,4 @@
-﻿using Review.App.Infrastructure;
+﻿using ReviewManagement.App.Infrastructure;
 
 namespace ReviewManagement.App.Commands.Category.Update
 {

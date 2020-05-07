@@ -8,8 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
-using Review.App.Infrastructure;
-using Review.Data;
+using ReviewManagement.App.Infrastructure;
+using ReviewManagement.Data;
 using ReviewManagement.Api.AutoMapperConfig;
 using ReviewManagement.Api.ExceptionHandling;
 using ReviewManagement.Api.Extensions;
@@ -35,8 +35,10 @@ namespace ReviewManagement
             services.AddAutoMapper(typeof(MapperProfile).Assembly,
                             typeof(App.AutoMapperConfig.MapperProfile).Assembly);
 
-            services.AddMediatR(typeof(App.Commands.Category.Add.Command).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(App.Commands.Category.Add.CommandCreateaCategory).GetTypeInfo().Assembly);
+
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ContextTransactionBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuditableBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             services.AddMvc(options =>
@@ -49,7 +51,7 @@ namespace ReviewManagement
             {
                 option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             })
-            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<App.Commands.Place.AddComment.Validator>());
+            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<App.Commands.Place.Create.Validator>());
 
             services.AddDbContext<IReviewManagementContext, ReviewManagementContext>(ConfigureSqlServer);
             services.AddDbContext<ReviewManagementContext>(ConfigureSqlServer); // this is required for design-time execution though dotnet ef migrations

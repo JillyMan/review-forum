@@ -2,7 +2,7 @@
 
 namespace ReviewManagement.App.Commands.Category.Add
 {
-    public class Command : CategoryCommandBase<Domain.Entities.Category>
+    public class CommandCreateaCategory : CategoryCommandBase<Domain.Entities.Category>
     {
     }
 }

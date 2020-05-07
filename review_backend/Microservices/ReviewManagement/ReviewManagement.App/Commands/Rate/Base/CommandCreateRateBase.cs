@@ -1,13 +1,14 @@
 ﻿using MediatR;
+using ReviewManagement.App.Models;
 using ReviewManagement.Domain.Entities;
 
 namespace ReviewManagement.App.Commands.Rate.Base
 {
-    public abstract class CommandCreateRateBase<TResponse> : IRequest<TResponse>
+    public abstract class CommandCreateRateBase<TResponse> : IRequest<TResponse>, ICreateCommand
         where TResponse : RatableEntity
     {
-        public int UserId { get; set; }
+        public int Rate { get; set; }
 
-        public float Rate { get; set; }
+        public UserInfo CreatedBy { get; set; }
     }
 }

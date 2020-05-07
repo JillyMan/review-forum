@@ -5,7 +5,7 @@ using ReviewManagement.Domain.Entities.Security;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Review.App.Infrastructure
+namespace ReviewManagement.App.Infrastructure
 {
     public interface IReviewManagementContext
     {

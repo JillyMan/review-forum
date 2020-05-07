@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
-using Review.App.Infrastructure;
 using ReviewManagement.App.Exceptions;
+using ReviewManagement.App.Infrastructure;
 using System.Linq;
 
-namespace ReviewManagement.App.Commands.Place.AddComment
+namespace ReviewManagement.App.Commands.Comment.Create
 {
     public class Validator : AbstractValidator<CommandCreateComment>
     {
@@ -24,13 +24,12 @@ namespace ReviewManagement.App.Commands.Place.AddComment
         {
             var command = context.InstanceToValidate;
 
-            var place = _context.Places.AsNoTracking().FirstOrDefault(x => x.Id == command.PlaceId);
-            if (place == null)
+            if (_context.Places
+                .AsNoTracking()
+                .FirstOrDefault(x => x.Id == command.PlaceId) == null)
             {
                 throw new EntityNotFoundException();
             }
-
-            //todo: add user check.
 
             return true;
         }

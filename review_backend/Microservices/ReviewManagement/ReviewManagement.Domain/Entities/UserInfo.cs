@@ -1,9 +1,10 @@
 ﻿using ReviewManagement.Domain.Enums;
 using ReviewManagement.Domain.Entities.Security;
+using System;
 
 namespace ReviewManagement.Domain.Entities
 {
-    public class UserInfo : AuditableEntity
+    public class UserInfo : BaseEntity
     {
         public bool IsActive { get; set; }
 
@@ -15,6 +16,10 @@ namespace ReviewManagement.Domain.Entities
 
         public string FullName => $"{FirstName} {LastName}";
 
+        public DateTime CreatedAt { get; set; }
+
+        public DateTime? UpdatedAt { get; set; }
+
         public UserSettingInfo UserSettingInfo { get; set; }
 
         public static UserInfo Create(
@@ -25,10 +30,12 @@ namespace ReviewManagement.Domain.Entities
         {
             return new UserInfo
             {
+                IsActive = true,
                 Role = role,
                 FirstName = firstName,
                 LastName = lastName,
-                UserSettingInfo = userSetting
+                UserSettingInfo = userSetting,
+                CreatedAt = DateTime.UtcNow
             };
         }
     }

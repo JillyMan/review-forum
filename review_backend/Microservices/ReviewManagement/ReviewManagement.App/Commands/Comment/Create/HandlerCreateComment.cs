@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Review.App.Infrastructure;
-using ReviewManagement.Domain.Entities;
+using ReviewManagement.App.Commands.Common;
+using ReviewManagement.App.Infrastructure;
 
-namespace ReviewManagement.App.Commands.Place.AddComment
+namespace ReviewManagement.App.Commands.Comment.Create
 {
-    public class Handler : Common.CreateHandlerBase<CommandCreateComment, Comment>
+    public class HandlerCreateComment : HandlerCreateAuditableEntity<CommandCreateComment, Domain.Entities.Comment>
     {
-        public Handler(IReviewManagementContext context, IMapper mapper)
+        public HandlerCreateComment(IReviewManagementContext context, IMapper mapper)
             : base(context, mapper)
         {
         }

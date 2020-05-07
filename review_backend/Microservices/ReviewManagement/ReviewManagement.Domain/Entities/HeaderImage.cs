@@ -1,6 +1,6 @@
 ﻿namespace ReviewManagement.Domain.Entities
 {
-	public class HeaderImage
+	public class HeaderImage : AuditableEntity
     {
         public int Id { get; set; }
 

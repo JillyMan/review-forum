@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
-using Review.App.Infrastructure;
+using ReviewManagement.App.Infrastructure;
 using ReviewManagement.App.Commands.Rate.Base;
 using ReviewManagement.App.Exceptions;
 using ReviewManagement.Domain.Entities;

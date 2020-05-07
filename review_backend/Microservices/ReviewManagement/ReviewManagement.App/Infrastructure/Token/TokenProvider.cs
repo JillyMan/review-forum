@@ -1,7 +1,7 @@
 ﻿using ReviewManagement.App.Models;
 using ReviewManagement.Domain.Entities.Security;
 using Microsoft.IdentityModel.Tokens;
-using Review.App.Infrastructure;
+using ReviewManagement.App.Infrastructure;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
