@@ -167,12 +167,9 @@ let row4 = {
 
 }
 
-function getPlaceByCategory(categoryId) {
+export const getPlaceByCategory = (categoryId) => {
   return [row1, row2, row3, row4, row5].filter((place) => place.categoryId == categoryId)
-
 }
-
-export default getPlaceByCategory;
 
 export const getPlaceByName = (name) => {
   return [row1, row2, row3, row4, row5].filter((place) => place.name.toLowerCase().indexOf(name.toLowerCase()) > -1)

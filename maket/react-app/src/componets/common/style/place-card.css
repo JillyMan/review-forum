@@ -1,6 +1,7 @@
 .card:hover{
     transition: 0.5s;
-    box-shadow: 0 0 20px #989898;
+    transform: scale(1.1); 
+    z-index: 1;
 }
 
 .card:not(:hover){

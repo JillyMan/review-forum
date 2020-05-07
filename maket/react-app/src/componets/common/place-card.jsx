@@ -2,27 +2,24 @@ import React from "react"
 import "./style/place-card.css"
 import { Link } from "react-router-dom"
 
-import StarRatingComponent from 'react-star-rating-component';
 import ContactInfo from "./contact-info";
+import StarRaiting from "./star-raiting";
 
-const rateImg = <span>&#9786;</span>
 const imgAlt = "..."
-const starCount = 5;
 
 const cardStyle = {
-    maxWidth : "440px"
 }
 
 const imgContainerStyle = {
-    alignSelf : "center"
+    alignSelf: "center"
 }
 
 const imgWrapperStyle = {
-    height: "160px" 
+    height: "160px"
 }
 
 const imgStyle = {
-    height : "100%"
+    height: "100%"
 }
 
 const raitingStyle = {
@@ -53,7 +50,7 @@ const PlaceCard = (props) => {
                                     {props.data.name.toUpperCase()}
                                 </div>
                                 <div style={raitingStyle}>
-                                    <StarRatingComponent rate={props.data.rate} />
+                                    <StarRaiting rate={props.data.rate} />
                                 </div>
                             </div>
                             <ContactInfo data={props.data} />

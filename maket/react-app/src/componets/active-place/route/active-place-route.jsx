@@ -6,9 +6,7 @@ const ActivePlaceRoute = (props) => {
 
     const { placeId } = props.match.params
 
-    const place = getPlaceById(placeId)
-
-    return <ActivePlaceContainer selector={place}/>
+    return <ActivePlaceContainer selector={() => getPlaceById(placeId)}/>
 
 }
 

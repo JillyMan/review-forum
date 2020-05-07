@@ -5,7 +5,7 @@ import { Carousel } from "react-bootstrap";
 const imgContainerStyle = {
     width: "100%",
     height: "100%",
-    marginLeft : "3%"
+    marginLeft : "0%"
 }
 
 
@@ -18,7 +18,7 @@ const DishesSlideMenu = (props) => {
             imgCountainer.push(
                 <DelishesCard key={i} info={info[i]} />
             )
-            if (imgCountainer.length === 4 || i === info.length - 1) {
+            if (imgCountainer.length === 3 || i === info.length - 1) {
                 itemsArray.push(
                     <Carousel.Item key={i}>
                         <div style={imgContainerStyle}>

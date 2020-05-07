@@ -5,10 +5,18 @@ import StarRaiting from "../../common/star-raiting";
 import { Button } from "react-bootstrap";
 import MoadalStatisticWidow from "./modal-statistic-window"
 import DishesSlideMenu from "./dishes-slide-menu";
+import CommentContainer from "./comment/comment-container"
 
 const nameStyle = {
-    fontWeight: "bold",
-    fontSize: "25pt"
+    fontFamily: "Poppins,Helvetica Neue,Helvetica,Arial,sans-serif",
+    fontSize: "25pt",
+    fontWeight: "900",
+    wordWrap: "break-word!important",
+    wordBreak: "break-word!important",
+    overflowWrap: "break-word!important",
+    color: "#2b273c",
+    fontWize: "48px",
+    lineHeight: "54px",
 }
 
 const raitingInfoStyle = {
@@ -57,10 +65,10 @@ const ActivePlacePresentation = (props) => {
             <div className="activePageStyle">
                 <div className="infoRow">
                     <div className="firstRowCenter">
-                        <div style={nameStyle}>{place[0].name}</div>
+                        <div style={nameStyle}>{place.name}</div>
                         <div style={raitingInfoStyle}>
                             <div style={starsStyle}>
-                                <StarRaiting rate={place[0].rate} />
+                                <StarRaiting rate={place.rate} />
                             </div>
                             <div style={reviewsColumn}>
                                 <div style={reviewsValueStyle}>
@@ -85,8 +93,8 @@ const ActivePlacePresentation = (props) => {
                         <DishesSlideMenu info={place[0].dishes} />
                     </div>
                 </div>
-                <div className="commentsRow">
-
+                <div className="commentsRow" style={{marginTop: 50}}>
+                    <CommentContainer/>
                 </div>
             </div>
         </>);
