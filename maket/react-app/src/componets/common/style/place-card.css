@@ -17,3 +17,12 @@
     display: grid;
     grid-template-columns: 50% 50%;
 }
+
+.placeCardLink{
+    color:black;
+}
+
+.placeCardLink:hover{
+    text-decoration: none;
+    color:black;
+}
