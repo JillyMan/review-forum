@@ -1,5 +1,6 @@
 import React from "react"
 import "./style/place-card.css"
+import { Link } from "react-router-dom"
 
 import StarRatingComponent from 'react-star-rating-component';
 import ContactInfo from "./contact-info";
@@ -36,34 +37,31 @@ const placeNameStyle = {
 const PlaceCard = (props) => {
 
     return (
-        <div className="card mb-3" style={ cardStyle }>
-            <div className="row no-gutters">
-                <div className="col-md-4" style={ imgContainerStyle }>
-                    <div style={ imgWrapperStyle }>
-                        <img src={props.data.imgUrl} style={imgStyle} className="card-img" alt={imgAlt} />
-                    </div>
-                </div>
-                <div className="col-md-8">
-                    <div className="card-body">
-                        <div className="firstRow">
-                            <div style={ placeNameStyle }>
-                                {props.orderNumber + ". "}
-                                {props.data.name.toUpperCase()}
-                            </div>
-                            <div style={raitingStyle}>
-                                <StarRatingComponent
-                                    name="rate2"
-                                    renderStarIcon={() => rateImg }
-                                    starCount={ starCount }
-                                    value={ props.data.rate }
-                                />
-                            </div>
+        <Link to={`/active_places/${props.data.id}`} className="placeCardLink">
+            <div className="card mb-3" style={cardStyle}>
+                <div className="row no-gutters">
+                    <div className="col-md-4" style={imgContainerStyle}>
+                        <div style={imgWrapperStyle}>
+                            <img src={props.data.imgUrl} style={imgStyle} className="card-img" alt={imgAlt} />
                         </div>
-                        <ContactInfo data={ props.data } />
+                    </div>
+                    <div className="col-md-8">
+                        <div className="card-body">
+                            <div className="firstRow">
+                                <div style={placeNameStyle}>
+                                    {props.orderNumber + ". "}
+                                    {props.data.name.toUpperCase()}
+                                </div>
+                                <div style={raitingStyle}>
+                                    <StarRatingComponent rate={props.data.rate} />
+                                </div>
+                            </div>
+                            <ContactInfo data={props.data} />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

@@ -48,7 +48,7 @@ let row3 = {
 }
 
 let row5 = {
-  id: 2,
+  id: 4,
   categoryId: 2,
   name: "Evroopt",
   rate: 3,
@@ -64,19 +64,107 @@ let row5 = {
 }
 
 let row4 = {
-  id: 3,
-  categoryId: 2,
-  name: "Almi",
-  rate: 2,
+  id: 5,
+  name: "KFC",
+  rate: 5,
+  imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+  phoneNumber: "37533888552",
+  categoryId: 3,
+  category: null,
+  addressId: 2,
   Address: {
+    id: 2,
+    cityId: 1,
     City: { name: "grodno" },
+    countryId: 1,
     Country: { name: "Belarus" },
     Street: {
-      name: "White rosy",
+      name: "lenina",
     },
+    latitude: 1.0,
+    longitude: 2.0
   },
-  imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/XsXYGlTQL6rRBaLgDAA27A/300s.jpg",
-  telNumber: "+32211445568"
+  headerImages: [
+    {
+      id: 1002,
+      imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+      placeId: 2
+    },
+    {
+      id: 1003,
+      imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+      placeId: 2
+    }
+  ],
+  dishes: [
+    {
+      id: 1002,
+      placeId: 2,
+      name: "Draniki",
+      imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+      rate: 0.0,
+      cost :545, 
+      rates: null
+    },
+    {
+      id: 1003,
+      placeId: 2,
+      name: "Eggs",
+      imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+      rate: 0.0,
+      cost :89, 
+      rates: null
+    },
+    {
+      id: 1003,
+      placeId: 2,
+      name: "Eggs",
+      imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+      rate: 0.0,
+      cost :89, 
+      rates: null
+    },
+    {
+      id: 1003,
+      placeId: 2,
+      name: "Eggs",
+      imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+      rate: 0.0,
+      cost :89, 
+      rates: null
+    },
+    {
+      id: 1003,
+      placeId: 2,
+      name: "Eggs",
+      imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+      rate: 0.0,
+      cost :89, 
+      rates: null
+    },
+    {
+      id: 1003,
+      placeId: 2,
+      name: "Eggs",
+      imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+      rate: 0.0,
+      cost :89, 
+      rates: null
+    },
+    {
+      id: 1003,
+      placeId: 2,
+      name: "Eggs",
+      imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+      rate: 0.0,
+      cost :89, 
+      rates: null
+    }
+  ],
+  comments: null,
+  createdAt: "2020-05-07T07:10:13.8724714Z",
+  updatedAt: null
+
 }
 
 function getPlaceByCategory(categoryId) {
@@ -85,3 +173,11 @@ function getPlaceByCategory(categoryId) {
 }
 
 export default getPlaceByCategory;
+
+export const getPlaceByName = (name) => {
+  return [row1, row2, row3, row4, row5].filter((place) => place.name.toLowerCase().indexOf(name.toLowerCase()) > -1)
+}
+
+export const getPlaceById = (id) => {
+  return [row1, row2, row3, row4, row5].filter((place) => place.id == id)
+}
