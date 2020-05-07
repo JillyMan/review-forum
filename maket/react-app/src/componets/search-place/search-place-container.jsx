@@ -52,7 +52,7 @@ const SearchPlaceContainer = () => {
                         <Button variant="primary">{searchBtnName}</Button>
                     </Form>
                     <div style={variantsListStyle}>
-                        <ListOfPlacesContainer selector={() => getPlaceByName(placeName)} />
+                        {placeName.length > 1 ? <ListOfPlacesContainer selector={() => getPlaceByName(placeName)} /> : ""}
                     </div>
                 </div>
                 <div></div>
