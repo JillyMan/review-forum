@@ -27,7 +27,6 @@ const DelishesCard = (props) => {
                     style={{
                         height: "100%",
                         width: "100%",
-                        boxShadow: "0 0 10px rgba(0,0,0,10)",
                         borderRadius: "10px"
                     }}
                 />
@@ -41,7 +40,6 @@ const DelishesCard = (props) => {
                 <div style={{
                     textAlign: "center",
                     alignSelf: "center",
-                    boxShadow: "0 0 10px rgba(0,0,0,10)",
                     borderRadius: "5px"
                 }}>
                     {info.name + " : " + info.cost + " $"}

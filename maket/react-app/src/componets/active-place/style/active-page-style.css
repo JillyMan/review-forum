@@ -14,11 +14,19 @@
     background-color: green;
 }
 
+.addressColumn{
+    position: sticky;
+    top: 15px;
+    height: auto;
+    width:auto;
+    margin-left: -300px;
+}
+
 .infoRow{
     grid-area: infoRow;
     display: grid;
     grid-template-columns: 1fr auto auto 1fr;
-    grid-template-areas: "left name map right";
+    grid-template-areas: "left name map addressColumn";
 }
 
 .dishesRowMenu{
@@ -34,16 +42,30 @@
     grid-template-areas: "left dishesMenu right";
 }
 
+.someComment{
+    grid-area: someComment;
+}
+
 .commentsRow{
     grid-area: commentsRow;
+    display: grid;
+    grid-template-columns: auto 1050px auto;
+    grid-template-rows: auto;
+    grid-template-areas: "left someComment right";
+}
+
+.leftColumn{
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "infoRow"
+    "dishesRow"
+    "commentsRow";
 }
 
 .activePageStyle{
     margin-top: 50px;
     background-color: white;
     display: grid;
-    grid-template-rows: auto auto auto;
-    grid-template-areas: "infoRow"
-                         "dishesRow"
-                         "commentsRow";
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "leftColumn rightColumn";
 }

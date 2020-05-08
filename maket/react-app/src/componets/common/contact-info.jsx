@@ -19,7 +19,7 @@ const ContactInfo = (props) => {
             {data.Address.Street.name.toUpperCase()}
         </div>
         <div>
-            {props.data.telNumber}
+            {props.data.phoneNumber}
         </div>
     </>
     )
