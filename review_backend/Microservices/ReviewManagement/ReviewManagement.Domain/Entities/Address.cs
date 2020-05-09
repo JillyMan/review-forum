@@ -8,10 +8,6 @@ namespace ReviewManagement.Domain.Entities
 
         public City City { get; set; }
 
-        public int CountryId { get; set; }
-
-        public Country Country { get; set; }
-
         public string Street { get; set; }
 
         public float Latitude { get; set; }

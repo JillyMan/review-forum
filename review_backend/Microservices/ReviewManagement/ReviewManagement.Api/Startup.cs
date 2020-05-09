@@ -67,10 +67,12 @@ namespace ReviewManagement
 
             var secretKey = Configuration.GetValue<string>("Jwt:Secret");
             var expirationTime = Configuration.GetValue<int>("Jwt:ExpirationTime");
-            services.CustomAuthentication(Configuration);
+
             services.AddServices();
 
             services.AddControllers();
+
+            services.CustomAuthentication(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -79,20 +81,28 @@ namespace ReviewManagement
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseRouting(); 
 
             app.UseMiddleware<ExceptionHandlingMiddleware>();
 
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseHttpsRedirection();
 
-            app.UseRouting();
-
-            app.UseAuthorization();
+            app.UseMvc();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
+            //TODO: DELETE IT.
             using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
 
             var context = serviceScope.ServiceProvider.GetRequiredService<ReviewManagementContext>();

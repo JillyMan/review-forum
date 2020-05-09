@@ -5,6 +5,7 @@ using ReviewManagement.Api.ExceptionHandling.Handlers;
 using ReviewManagement.App.Infrastructure.Token;
 using ReviewManagement.App.Services.User;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ReviewManagement.Api.Extensions
 {
@@ -39,12 +40,17 @@ namespace ReviewManagement.Api.Extensions
                 {
                     ValidateIssuer = true,
                     ValidIssuer = jwtSetting.Issuer,
+
                     ValidateAudience = true,
                     ValidAudience = jwtSetting.Issuer,
-                    ValidateLifetime = true,
+
+                    ValidateLifetime = false,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSetting.Secret)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSetting.Secret)),
                 };
+
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
             });
 
             return serviceCollection;

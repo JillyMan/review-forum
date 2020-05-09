@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ReviewManagement.Api.Models;
 using ReviewManagement.Api.Models.Create;
@@ -7,6 +8,9 @@ using ReviewManagement.App.Models;
 using ReviewManagement.App.Services.User;
 using ReviewManagement.Domain.Entities;
 using ReviewManagement.Domain.Entities.Security;
+using ReviewManagement.Domain.Enums;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace ReviewManagement.Api.Controllers
@@ -30,7 +34,7 @@ namespace ReviewManagement.Api.Controllers
 
             var userInfo = await _userService.Authenticate(authorizeInfo);
 
-            return Ok(GetIdentityWithToken(userInfo));
+            return Ok(await GetIdentityWithToken(userInfo));
         }
 
         [HttpPost("registration")]
@@ -40,7 +44,7 @@ namespace ReviewManagement.Api.Controllers
 
             var identityInfo = await _userService.Register(registerInfo);
 
-            return Ok(GetIdentityWithToken(identityInfo));
+            return Ok(await GetIdentityWithToken(identityInfo));
         }
 
         [HttpPost("token_update")]
@@ -49,12 +53,17 @@ namespace ReviewManagement.Api.Controllers
             throw new System.NotImplementedException();
         }
 
+        [HttpGet("test")]
+        [Authorize(Roles = "User")]
+        public IActionResult Test()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            return Ok(new { message = "Hi user by id: " + identity.Name });
+        }
+
         private async Task<TokenInfo> GetIdentityWithToken(UserInfo userInfo)
         {
-            var payload = Mapper.Map<PayloadInfo>(userInfo);
-
-            var token = await _tokenProvider.CreateToken(payload);
-
+            var token = await _tokenProvider.CreateToken(userInfo);
             return token;
         }
     }

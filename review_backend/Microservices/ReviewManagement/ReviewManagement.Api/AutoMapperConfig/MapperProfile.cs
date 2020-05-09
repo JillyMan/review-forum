@@ -11,7 +11,10 @@ namespace ReviewManagement.Api.AutoMapperConfig
     {
         public MapperProfile()
         {
+            CreateMap<ImageDto, App.Commands.Place.Create.Dto.DishDto>();
+
             CreateMap<DishDto, App.Commands.Place.Create.Dto.DishDto>();
+
             CreateMap<AddressDto, App.Commands.Place.Create.Dto.AddressDto>();
             CreateMap<HeaderImageDto, App.Commands.Place.Create.Dto.HeaderImageDto>();
             CreateMap<PlaceCreateModel, App.Commands.Place.Create.CommandCreatePlace>();

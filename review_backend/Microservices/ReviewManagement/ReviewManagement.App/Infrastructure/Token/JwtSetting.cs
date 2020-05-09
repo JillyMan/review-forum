@@ -6,7 +6,7 @@
 
         public int ExpireTimeSec { get; }
 
-        public string Issuer { get; set; }
+        public string Issuer { get; }
 
         public JwtSetting(string secret, int expireTimeSec, string issuer)
         {

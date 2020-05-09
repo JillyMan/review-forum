@@ -7,7 +7,7 @@ namespace ReviewManagement.Api.Models.Create
     {
         public string Name { get; set; }
 
-        public string ImageUrl { get; set; }
+        public ImageDto Image { get; set; }
 
         public int CategoryId { get; set; }
 

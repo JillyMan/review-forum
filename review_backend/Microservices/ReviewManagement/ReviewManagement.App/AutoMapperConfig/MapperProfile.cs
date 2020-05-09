@@ -11,7 +11,8 @@ namespace ReviewManagement.App.AutoMapperConfig
         {
             CreateMap<DishDto, Domain.Entities.Dish>();
             CreateMap<AddressDto, Domain.Entities.Address>();
-            CreateMap<HeaderImageDto, Domain.Entities.Image>();
+            CreateMap<HeaderImageDto, Domain.Entities.HeaderPlaceImage>();
+
             CreateMap<CommandCreatePlace, Domain.Entities.Place>();
 
             CreateMap<CommandCreateDishRate, Domain.Entities.DishRate>();

@@ -7,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using ReviewManagement.Domain.Entities;
 
 namespace ReviewManagement.App.Infrastructure.Token
 {
@@ -24,27 +25,14 @@ namespace ReviewManagement.App.Infrastructure.Token
             _jwtSetting = jwtSetting;
         }
 
-        public async Task<TokenInfo> CreateToken(PayloadInfo payload)
+        public Task<TokenInfo> CreateToken(UserInfo payload)
         {
             var token = TokenInfo.Create(
-                GetAccessToken(payload), 
+                GetAccessToken(payload),
                 GetRefreshToken()
             );
 
-            //using var transaction = _dbContext.BeginTransaction();
-            //var entity = _dbContext.Tokens.Add(token);
-
-            try
-            {
-                //await _dbContext.SaveChangesAsync();
-                //var result = entity.Entity;
-                return token;
-            }
-            catch (Exception e)
-            {
-//                await transaction.CommitAsync();
-                throw e;
-            }
+            return Task.FromResult(token);
         }
 
         public Task<TokenInfo> RefreshToken(TokenInfo token)
@@ -58,14 +46,14 @@ namespace ReviewManagement.App.Infrastructure.Token
             return token;
         }
 
-        private string GetAccessToken(PayloadInfo payload)
+        private string GetAccessToken(UserInfo payload)
         {
-            var key = Encoding.ASCII.GetBytes(_jwtSetting.Secret);
+            var key = Encoding.UTF8.GetBytes(_jwtSetting.Secret);
+            var credantials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature);
 
             var claims = new Claim[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, payload.FullName),
-                new Claim(JwtRegisteredClaimNames.Jti , Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.Name, payload.Id.ToString()),
                 new Claim(ClaimTypes.Role, payload.Role.ToString())
             };
 
@@ -74,7 +62,7 @@ namespace ReviewManagement.App.Infrastructure.Token
                 audience: _jwtSetting.Issuer,
                 claims,
                 expires: DateTime.Now.AddSeconds(_jwtSetting.ExpireTimeSec),
-                signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature));
+                signingCredentials: credantials);
 
             var tokenString = _tokenHandler.WriteToken(token);
 
