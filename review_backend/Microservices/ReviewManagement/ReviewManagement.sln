@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReviewManagement.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReviewManagement.Data", "ReviewManagement.Infrastructure.Data\ReviewManagement.Data.csproj", "{264D06B9-C2F9-4902-951E-AB44C86979A5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReviewManagement.Auth.Tests", "ReviewManagement.Auth.Tests\ReviewManagement.Auth.Tests.csproj", "{61BD5F5A-D573-45CC-B3A8-0B03EBC39644}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,9 @@ Global
 		{264D06B9-C2F9-4902-951E-AB44C86979A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{264D06B9-C2F9-4902-951E-AB44C86979A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{264D06B9-C2F9-4902-951E-AB44C86979A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61BD5F5A-D573-45CC-B3A8-0B03EBC39644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61BD5F5A-D573-45CC-B3A8-0B03EBC39644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61BD5F5A-D573-45CC-B3A8-0B03EBC39644}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +60,7 @@ Global
 		{C3932D0E-F519-496B-B050-8F4997F03D97} = {07CB6488-6D8F-47C3-81EB-A46317901EC8}
 		{75E4E18E-6484-4611-BDB3-416CAB75FE87} = {014AA78F-0560-4A54-B5AE-BC9394C3B9F9}
 		{264D06B9-C2F9-4902-951E-AB44C86979A5} = {52956C10-D2DA-4E9F-B82E-881F4981A7C1}
+		{61BD5F5A-D573-45CC-B3A8-0B03EBC39644} = {E66A4538-A804-441D-AD09-A7F1D2B90EEF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C4B1027-0ECC-402F-A041-3C3F1BF4D7F8}

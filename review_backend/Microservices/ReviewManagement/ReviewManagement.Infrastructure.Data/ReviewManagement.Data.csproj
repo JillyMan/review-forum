@@ -5,6 +5,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="EntityConfiguration\**" />
+    <EmbeddedResource Remove="EntityConfiguration\**" />
+    <None Remove="EntityConfiguration\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="AddressConfiguration.cs" />
+    <Compile Remove="AuditableBaseConfiguration.cs" />
+    <Compile Remove="BaseConfiguration.cs" />
+    <Compile Remove="CategoryConfiguration.cs" />
+    <Compile Remove="CityConfiguration.cs" />
+    <Compile Remove="CommentConfiguration.cs" />
+    <Compile Remove="CountryConfiguration.cs" />
+    <Compile Remove="DishConfiguration.cs" />
+    <Compile Remove="ImageConfiguration.cs" />
+    <Compile Remove="PlaceConfiguration.cs" />
+    <Compile Remove="RateDishConfiguration.cs" />
+    <Compile Remove="RatePlaceConfiguration.cs" />
+    <Compile Remove="UserInfoConfiguration.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
   </ItemGroup>
 
