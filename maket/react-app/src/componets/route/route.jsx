@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import { urlGetCategoryByIdPagePattern, urlGetPlaceByIdPagePattern } from "./route-patterns";
 import { PlacesRoute } from "../places-by-category/route/places-route";
 import ActivePlaceRoute from "../active-place/route/active-place-route";
-import AdminPagePresenter from "../admin-page/admin-page-presenter/admin-page-presenter";
+import AdminPagePresenter from "../admin-page/presenter/admin-page-presenter";
 
 const RouteContainer = () => {
     return (

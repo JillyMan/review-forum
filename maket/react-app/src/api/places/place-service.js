@@ -4,8 +4,12 @@ let row1 = {
   name: "KfC",
   rate: 2.2,
   Address: {
-    City: { name: "grodno" },
-    Country: { name: "Belarus" },
+    City: {
+      name: "grodno",
+      Country: {
+        name: "Belarus"
+      }
+    },
     Street: {
       name: "soviet street",
     },
@@ -21,8 +25,12 @@ let row2 = {
   name: "BURGER KING",
   rate: 3,
   Address: {
-    City: { name: "grodno" },
-    Country: { name: "Belarus" },
+    City: {
+      name: "grodno",
+      Country: {
+        name: "Belarus"
+      }
+    },
     Street: {
       name: "lenina",
     },
@@ -37,8 +45,13 @@ let row3 = {
   name: "MAC",
   rate: 2,
   Address: {
-    City: { name: "grodno" },
-    Country: { name: "Belarus" },
+    City: {
+      name: "grodno",
+      Country: {
+        name: "Belarus"
+      }
+    },
+
     Street: {
       name: "White rosy",
     },
@@ -53,8 +66,13 @@ let row5 = {
   name: "Evroopt",
   rate: 3,
   Address: {
-    City: { name: "grodno" },
-    Country: { name: "Belarus" },
+    City: {
+      name: "grodno",
+      Country: {
+        name: "Belarus"
+      }
+    },
+
     Street: {
       name: "lenina",
     },
@@ -74,10 +92,14 @@ let row4 = {
   addressId: 2,
   Address: {
     id: 2,
-    cityId: 1,
-    City: { name: "grodno" },
-    countryId: 1,
-    Country: { name: "Belarus" },
+    cityId: 1, 
+    City: {
+      name: "grodno",
+      Country: {
+        name: "Belarus"
+      }
+    },
+
     Street: {
       name: "lenina",
     },
@@ -103,7 +125,7 @@ let row4 = {
       name: "Draniki",
       imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
       rate: 0.0,
-      cost :545, 
+      cost: 545,
       rates: null
     },
     {
@@ -112,7 +134,7 @@ let row4 = {
       name: "Eggs",
       imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
       rate: 0.0,
-      cost :89, 
+      cost: 89,
       rates: null
     },
     {
@@ -121,7 +143,7 @@ let row4 = {
       name: "Eggs",
       imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
       rate: 0.0,
-      cost :89, 
+      cost: 89,
       rates: null
     },
     {
@@ -130,7 +152,7 @@ let row4 = {
       name: "Eggs",
       imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
       rate: 0.0,
-      cost :89, 
+      cost: 89,
       rates: null
     },
     {
@@ -139,7 +161,7 @@ let row4 = {
       name: "Eggs",
       imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
       rate: 0.0,
-      cost :89, 
+      cost: 89,
       rates: null
     },
     {
@@ -148,7 +170,7 @@ let row4 = {
       name: "Eggs",
       imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
       rate: 0.0,
-      cost :89, 
+      cost: 89,
       rates: null
     },
     {
@@ -157,7 +179,7 @@ let row4 = {
       name: "Eggs",
       imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
       rate: 0.0,
-      cost :89, 
+      cost: 89,
       rates: null
     }
   ],

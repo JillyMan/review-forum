@@ -8,7 +8,7 @@ const ActivePlaceAddress = (props) => {
     return (
         <>
             <ListGroup>
-                <ListGroup.Item>{contacts.Address.Country.name.toUpperCase()}</ListGroup.Item>
+                <ListGroup.Item>{contacts.Address.City.Country.name.toUpperCase()}</ListGroup.Item>
                 <ListGroup.Item>{contacts.Address.City.name.toUpperCase()}</ListGroup.Item>
                 <ListGroup.Item>{contacts.Address.Street.name.toUpperCase()}</ListGroup.Item>
                 <ListGroup.Item>{contacts.phoneNumber}</ListGroup.Item>
