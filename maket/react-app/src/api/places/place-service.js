@@ -11,7 +11,7 @@ let row1 = {
     },
   },
   imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/RQoplqo1XVrhhjDl3Uoo1w/l.jpg",
-  telNumber: "+32211445568"
+  phoneNumber: "+32211445568"
 
 }
 
@@ -28,7 +28,7 @@ let row2 = {
     },
   },
   imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
-  telNumber: "+32211445568"
+  phoneNumber: "+32211445568"
 }
 
 let row3 = {
@@ -44,7 +44,7 @@ let row3 = {
     },
   },
   imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/XsXYGlTQL6rRBaLgDAA27A/300s.jpg",
-  telNumber: "+32211445568"
+  phoneNumber: "+32211445568"
 }
 
 let row5 = {
@@ -60,7 +60,7 @@ let row5 = {
     },
   },
   imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
-  telNumber: "+32211445568"
+  phoneNumber: "+32211445568"
 }
 
 let row4 = {
