@@ -9,7 +9,9 @@ namespace ReviewManagement.Domain.Entities
 
         public float Rate { get; set; }
 
-        public string ImageUrl { get; set; }
+        public int ImageId { get; set; }
+
+        public Image Image { get; set; }
 
         public string PhoneNumber { get; set; }
 
@@ -21,10 +23,12 @@ namespace ReviewManagement.Domain.Entities
 
         public Address Address { get; set; }
      
-        public ICollection<HeaderImage> HeaderImages { get; set; }
+        public ICollection<HeaderPlaceImage> HeaderImages { get; set; }
 
         public ICollection<Dish> Dishes { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
+
+        public ICollection<PlaceRate> Rates { get; set; }
     }
 }

@@ -31,18 +31,18 @@ namespace ReviewManagement.App.Infrastructure.Token
                 GetRefreshToken()
             );
 
-            using var transaction = _dbContext.BeginTransaction();
-            var entity = _dbContext.Tokens.Add(token);
+            //using var transaction = _dbContext.BeginTransaction();
+            //var entity = _dbContext.Tokens.Add(token);
 
             try
             {
-                await _dbContext.SaveChangesAsync();
-                var result = entity.Entity;
-                return result;
+                //await _dbContext.SaveChangesAsync();
+                //var result = entity.Entity;
+                return token;
             }
             catch (Exception e)
             {
-                await transaction.CommitAsync();
+//                await transaction.CommitAsync();
                 throw e;
             }
         }

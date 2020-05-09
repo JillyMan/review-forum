@@ -1,4 +1,6 @@
-﻿namespace ReviewManagement.Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace ReviewManagement.Domain.Entities
 {
     public class Address : BaseEntity
     {
@@ -15,5 +17,7 @@
         public float Latitude { get; set; }
 
         public float Longitude { get; set; }
+
+        public ICollection<Place> Places { get; set; }
     }
 }

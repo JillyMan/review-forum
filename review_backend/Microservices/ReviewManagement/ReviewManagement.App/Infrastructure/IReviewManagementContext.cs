@@ -21,14 +21,16 @@ namespace ReviewManagement.App.Infrastructure
         
         DbSet<UserInfo> Users { get; set; }
 
-        DbSet<TokenInfo> Tokens { get; set; }
-
         DbSet<Address> Addresses { get; set; }
 
         DbSet<Country> Countries { get; set; }
 
         DbSet<City> Cities { get; set; }
 
+        DbSet<Image> Images { get; set; }
+
+        DbSet<HeaderPlaceImage> HeaderPlaceImages { get; set; }
+        
         DbSet<TQuery> Set<TQuery>()
             where TQuery : class;
 

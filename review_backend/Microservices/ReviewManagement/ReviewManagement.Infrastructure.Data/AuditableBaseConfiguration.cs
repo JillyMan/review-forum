@@ -17,8 +17,17 @@ namespace ReviewManagement.Data.EntityConfiguration
 
             builder.Property(e => e.CreatedAt)
                 .HasColumnName("created_at")
-                .HasColumnType("datetimeoffset(3)")
+                .HasColumnType("datetime")
                 .IsRequired();
+
+            builder.Property(x => x.CreatedById)
+                .HasColumnName("created_by")
+                .IsRequired();
+
+            builder.HasOne(e => e.CreatedBy)
+                .WithMany()
+                .HasForeignKey(e => e.CreatedById)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

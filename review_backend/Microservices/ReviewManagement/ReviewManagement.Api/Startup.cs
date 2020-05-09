@@ -93,12 +93,11 @@ namespace ReviewManagement
                 endpoints.MapControllers();
             });
 
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetRequiredService<ReviewManagementContext>();
-                context.Database.Migrate();
-                var result = context.Database.EnsureCreated();
-            }
+            using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
+
+            var context = serviceScope.ServiceProvider.GetRequiredService<ReviewManagementContext>();
+            context.Database.Migrate();
+            var result = context.Database.EnsureCreated();
         }
 
         private void ConfigureSqlServer(DbContextOptionsBuilder options)

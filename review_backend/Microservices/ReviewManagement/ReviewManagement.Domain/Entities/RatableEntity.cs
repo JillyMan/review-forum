@@ -2,6 +2,6 @@
 {
     public class RatableEntity : AuditableEntity
     {
-        public float Rate { get; set; }
+        public int Rate { get; set; }
     }
 }

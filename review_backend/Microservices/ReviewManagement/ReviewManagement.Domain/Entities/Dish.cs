@@ -2,7 +2,7 @@
 
 namespace ReviewManagement.Domain.Entities
 {
-    public class Dish : AuditableEntity
+    public class Dish : BaseEntity
     {
         public int PlaceId { get; set; }
 
@@ -10,9 +10,11 @@ namespace ReviewManagement.Domain.Entities
 
         public string Name { get; set; }
 
-        public string ImageUrl { get; set; }
+        public int ImageId { get; set; }
 
-        public int Rate { get; set; }
+        public Image Image { get; set; }
+
+        public float Rate { get; set; }
 
         public float Price { get; set; }
 
