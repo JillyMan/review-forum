@@ -53,8 +53,9 @@ namespace ReviewManagement.App.Infrastructure.Token
 
             var claims = new Claim[]
             {
+                new Claim(ClaimTypes.NameIdentifier, payload.Id.ToString()),
                 new Claim(ClaimTypes.Name, payload.Id.ToString()),
-                new Claim(ClaimTypes.Role, payload.Role.ToString())
+                new Claim(ClaimTypes.Role, payload.Role.ToString()),
             };
 
             var token = new JwtSecurityToken(

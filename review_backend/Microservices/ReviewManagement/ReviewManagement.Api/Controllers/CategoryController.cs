@@ -9,7 +9,7 @@ namespace ReviewManagement.Api.Controllers
 		[HttpGet]
 		public async Task<IActionResult> GetAll()
 		{
-			return Ok(await Mediator.Send(new App.Queries.GetAllCategory.Query()));
+			return Ok(await Mediator.Send(new App.Queries.GetAllCategory.QueryGetAllCountry()));
 		}
 	}
 }

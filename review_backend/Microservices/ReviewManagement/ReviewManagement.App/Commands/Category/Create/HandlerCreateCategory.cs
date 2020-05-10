@@ -1,16 +1,17 @@
 ﻿using AutoMapper;
+using ReviewManagement.App.Commands.Common;
 using ReviewManagement.App.Infrastructure;
 
-namespace ReviewManagement.App.Commands.Category.Add
+namespace ReviewManagement.App.Commands.Category.Create
 {
-    public class HandlerCreateCategory : Common.HandlerCreateBase<CommandCreateaCategory, Domain.Entities.Category>
+    public class HandlerCreateCategory : HandlerCreateBase<CommandCreateCategory, Domain.Entities.Category>
     {
         public HandlerCreateCategory(IReviewManagementContext ctx, IMapper mapper) :
             base(ctx, mapper)
         {
         }
 
-        protected override Domain.Entities.Category PrepareEntity(CommandCreateaCategory command)
+        protected override Domain.Entities.Category PrepareEntity(CommandCreateCategory command)
         {
             var entity = Mapper.Map<Domain.Entities.Category>(command);
             return entity;

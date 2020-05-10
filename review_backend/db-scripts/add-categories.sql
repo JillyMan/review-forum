@@ -1,4 +1,6 @@
---insert into dbo.Categories (CreatedAt, [Name])
---values ('2020-04-26 20:19:00', 'Cars')
+--insert into dbo.Categories ([Name])
+--values ( 'Cafe'),
+--		('Restaurant'),
+--		('Fast Food')
 
 --select * from dbo.Categories

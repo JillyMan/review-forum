@@ -24,12 +24,7 @@ namespace ReviewManagement.App.Queries.GetPlace
                 .Include(x => x.Comments)
                 .FirstOrDefaultAsync(x => x.Id == request.PlaceId);
 
-            if (place == null)
-            {
-                throw new EntityNotFoundException();
-            }
-
-            return place;
+            return place ?? throw new EntityNotFoundException();
         }
     }
 }

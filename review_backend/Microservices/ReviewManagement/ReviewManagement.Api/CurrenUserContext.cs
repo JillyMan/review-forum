@@ -28,15 +28,13 @@ namespace ReviewManagement.Api
 			return CurrentUser.Role;
 		}
 
-		private const string IdClaimType = "http://schemas.microsoft.com/identity/claims/objectidentifier";
-
 		private static int GetUserId(ClaimsPrincipal claimsPrincipal)
 		{
-			var claim = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == IdClaimType);
+			var claim = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
 
 			if (claim == null || !int.TryParse(claim.Value, out var id))
 			{
-				throw new UserNotFoundException($"Unable to find claim of type '{IdClaimType}'.");
+				throw new UserNotFoundException($"Unable to find claim of type '{ClaimTypes.NameIdentifier}'.");
 			}
 
 			return id;

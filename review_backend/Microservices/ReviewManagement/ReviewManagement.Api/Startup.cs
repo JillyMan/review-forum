@@ -18,6 +18,7 @@ using ReviewManagement.Api.Services;
 using ReviewManagement.App.Infrastructure.PipelineBehaviors;
 using ReviewManagement.Domain.Entities;
 using System.Reflection;
+using ReviewManagement.Api;
 
 namespace ReviewManagement
 {
@@ -35,11 +36,13 @@ namespace ReviewManagement
             services.AddAutoMapper(typeof(MapperProfile).Assembly,
                             typeof(App.AutoMapperConfig.MapperProfile).Assembly);
 
-            services.AddMediatR(typeof(App.Commands.Category.Add.CommandCreateaCategory).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(App.Commands.Category.Create.CommandCreateCategory).GetTypeInfo().Assembly);
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ContextTransactionBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuditableBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+
+            services.AddScoped<ICurrentUserContext, CurrenUserContext>();
 
             services.AddMvc(options =>
             {

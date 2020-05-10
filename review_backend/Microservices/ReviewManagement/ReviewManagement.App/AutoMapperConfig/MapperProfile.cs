@@ -20,9 +20,15 @@ namespace ReviewManagement.App.AutoMapperConfig
 
             CreateMap<Commands.Comment.Create.CommandCreateComment, Domain.Entities.Comment>();
 
+            CreateMap<Commands.Country.Dto.CityDto, Domain.Entities.City>();
+            CreateMap<Commands.Country.Create.CommandCreateCountry, Domain.Entities.Country>();
+            CreateMap<Commands.Country.Update.CommandCountryUpdate, Domain.Entities.Country>();
 
-            CreateMap<Commands.Category.Add.CommandCreateaCategory, Domain.Entities.Category>();
-            CreateMap<Commands.Category.Add.CommandCreateaCategory, Domain.Entities.Category>();
+            //CreateMap<Commands.City.Create.CommandCreateCity, >();
+            //CreateMap<Commands.City.Update.CommandUpdateCity, >();
+
+            CreateMap<Commands.Category.Create.CommandCreateCategory, Domain.Entities.Category>();
+            CreateMap<Commands.Category.Create.CommandCreateCategory, Domain.Entities.Category>();
         }
     }
 }
