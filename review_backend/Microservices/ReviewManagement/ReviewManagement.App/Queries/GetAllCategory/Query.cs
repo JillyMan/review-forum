@@ -1,10 +1,9 @@
-﻿using MediatR;
+﻿using ReviewManagement.App.Queries.Base;
 using ReviewManagement.Domain.Entities;
-using System.Collections.Generic;
 
 namespace ReviewManagement.App.Queries.GetAllCategory
 {
-    public class Query : IRequest<IEnumerable<Category>>
+    public class QueryGetAllCountry : QueryGetAllBase<Category>
     {
     }
 }

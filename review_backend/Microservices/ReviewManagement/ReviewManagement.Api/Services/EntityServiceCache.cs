@@ -15,8 +15,8 @@ namespace ReviewManagement.Api.Services
 
         public TEntity Get(int id)
         {
-            _memoryCache.TryGetValue<TEntity>($"{EntityName.GetType().Name}_{id}", out var thing);
-            return thing;
+            _memoryCache.TryGetValue<TEntity>($"{EntityName.GetType().Name}_{id}", out var place);
+            return place;
         }
 
         public void Set(TEntity entity, int id)

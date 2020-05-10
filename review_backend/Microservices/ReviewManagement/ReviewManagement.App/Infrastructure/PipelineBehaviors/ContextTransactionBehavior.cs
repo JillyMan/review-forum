@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Review.App.Infrastructure;
+using ReviewManagement.App.Infrastructure;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

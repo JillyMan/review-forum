@@ -31,8 +31,8 @@ namespace AccessManagement.Api
             var secretKey = Configuration.GetValue<string>("Jwt:Secret");
             var expirationTime = Configuration.GetValue<int>("Jwt:ExpirationTime");
             services.CustomAuthentication(Configuration);
-
             services.AddServices();
+
             services.AddControllers();
         }
 
