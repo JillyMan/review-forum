@@ -19,6 +19,7 @@ using ReviewManagement.App.Infrastructure.PipelineBehaviors;
 using ReviewManagement.Domain.Entities;
 using System.Reflection;
 using ReviewManagement.Api;
+using ReviewManagement.App.Models.Place;
 
 namespace ReviewManagement
 {
@@ -66,7 +67,7 @@ namespace ReviewManagement
                 option.ExpirationScanFrequency = System.TimeSpan.FromMinutes(5);
             });
 
-            services.AddTransient<EntityServiceCache<Place>>();
+            services.AddTransient<EntityServiceCache<PlaceModel>>();
 
             var secretKey = Configuration.GetValue<string>("Jwt:Secret");
             var expirationTime = Configuration.GetValue<int>("Jwt:ExpirationTime");

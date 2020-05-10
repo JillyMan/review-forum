@@ -2,7 +2,7 @@
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using ReviewManagement.App.Infrastructure;
-using ReviewManagement.App.Commands.Place.Create.Dto;
+using ReviewManagement.App.Commands.Place.Dto;
 using ReviewManagement.App.Extension;
 using System.Linq;
 
@@ -12,7 +12,11 @@ namespace ReviewManagement.App.Commands.Place.Create
     {
         private readonly IReviewManagementContext _context;
 
-        public Validator(IReviewManagementContext ctx, IValidator<AddressDto> validatorAddress, IValidator<DishDto> validatorDish)
+        public Validator(IReviewManagementContext ctx,
+            IValidator<AddressDto> validatorAddress,
+            IValidator<DishDto> validatorDish,
+            IValidator<ImageDto> validatorImg,
+            IValidator<HeaderImageDto> validatorHeaderImg)
         {
             _context = ctx;
 
@@ -22,10 +26,12 @@ namespace ReviewManagement.App.Commands.Place.Create
             RuleFor(x => x.Address)
                 .SetValidator(validatorAddress);
 
-            RuleFor(x => x.ImageUrl)
-                .ValidateUrl()
-                .NotEmpty()
-                .When(x => x != null);
+            RuleForEach(x => x.HeaderImages)
+                .SetValidator(validatorHeaderImg);
+
+            RuleFor(x => x.Image)
+                .SetValidator(validatorImg)
+                .When(x => x.Image != null);
 
             RuleFor(x => x.Name)
                 .NotEmpty()

@@ -30,9 +30,8 @@ namespace ReviewManagement.Api.Controllers
         public async Task<IActionResult> PostPlace([FromBody]PlaceCreateModel model)
         {
             var place = await Mediator.Send(Mapper.Map<CommandCreatePlace>(model));
-            _cacheService.Set(place, place.Id);
-
-            return Ok(place);
+            _cacheService.Remove(place.Id);
+            return Ok(place.Id);
         }
 
         [HttpPatch]
@@ -40,19 +39,18 @@ namespace ReviewManagement.Api.Controllers
         [Authorize(Roles = RoleNames.SuperUser)]
         public async Task<IActionResult> PatchPlace([FromBody]PlaceUpdateModel model, [FromRoute][Required]int id)
         {
-            //var command = Mapper.Map<App.Commands.Place.UpdatePlace.Command>(model);
-            //command.PlaceId = id;
+            var command = Mapper.Map<App.Commands.Place.Update.CommandUpdatePlace>(model);
+            command.Id = id;
 
-            //var place = await Mediator.Send(command);
-            //_cacheService.Set(place, place.Id);
+            var place = await Mediator.Send(command);
+            _cacheService.Remove(place.Id);
 
-            //            return Ok(place);
-            throw new NotImplementedException();
+            return NoContent();
         }
 
         [HttpPost]
         [Route("{id}/rate_place")]
-        [Authorize(Roles = RoleNames.User)]
+        [Authorize(Roles = "User,Admin,SuperUser")]
         public async Task<IActionResult> PostPlaceRate([FromBody]PlaceRateCreateModel rateModel, [FromRoute][Required]int id)
         {
             var command = Mapper.Map<CommandCreatePlaceRate>(rateModel);
@@ -62,13 +60,13 @@ namespace ReviewManagement.Api.Controllers
 
             _cacheService.Remove(id);
 
-            return NoContent();
+            return Ok();
         }
 
         [HttpPost]
         [Authorize]
         [Route("{id}/rate_dish")]
-        [Authorize(Roles = RoleNames.User)]
+        [Authorize(Roles = "User,Admin,SuperUser")]
         public async Task<IActionResult> PostDishRate([FromBody]DishRateCreateModel rateModel, [FromRoute][Required]int id)
         {
             var command = Mapper.Map<CommandCreateDishRate>(rateModel);
@@ -77,13 +75,13 @@ namespace ReviewManagement.Api.Controllers
             await Mediator.Send(command);
             _cacheService.Remove(id);
 
-            return NoContent();
+            return Ok();
         }
 
         [HttpPost]
         [Authorize]
         [Route("{id}/comment")]
-        [Authorize(Roles = RoleNames.User)]
+        [Authorize(Roles = "User,Admin,SuperUser")]
         public async Task<IActionResult> PostComment([FromBody]CommentCreateModel rateModel, [FromRoute][Required]int id)
         {
             var command = Mapper.Map<CommandCreateComment>(rateModel);
@@ -93,7 +91,7 @@ namespace ReviewManagement.Api.Controllers
             
             _cacheService.Remove(id);
             
-            return NoContent();
+            return Ok();
         }
     }
 }

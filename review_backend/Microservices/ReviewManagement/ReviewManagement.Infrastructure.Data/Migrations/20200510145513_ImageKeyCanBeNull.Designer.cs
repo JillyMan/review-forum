@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ReviewManagement.Data;
 
 namespace ReviewManagement.Data.Migrations
 {
     [DbContext(typeof(ReviewManagementContext))]
-    partial class ReviewManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20200510145513_ImageKeyCanBeNull")]
+    partial class ImageKeyCanBeNull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

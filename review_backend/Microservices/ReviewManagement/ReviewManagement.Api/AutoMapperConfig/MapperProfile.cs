@@ -3,7 +3,7 @@ using ReviewManagement.Api.Models.Update;
 using ReviewManagement.Api.Models.Create;
 using ReviewManagement.App.Models;
 using ReviewManagement.Api.Models;
-using ReviewManagement.Api.Models.Create.Dto;
+using ReviewManagement.Api.Models.Dto;
 using ReviewManagement.Api.Models.Delete;
 
 namespace ReviewManagement.Api.AutoMapperConfig
@@ -12,10 +12,10 @@ namespace ReviewManagement.Api.AutoMapperConfig
     {
         public MapperProfile()
         {
-            CreateMap<ImageDto, App.Commands.Place.Create.Dto.DishDto>();
-            CreateMap<DishDto, App.Commands.Place.Create.Dto.DishDto>();
-            CreateMap<AddressDto, App.Commands.Place.Create.Dto.AddressDto>();
-            CreateMap<HeaderImageDto, App.Commands.Place.Create.Dto.HeaderImageDto>();
+            CreateMap<ImageDto, App.Commands.Place.Dto.ImageDto>();
+            CreateMap<DishDto, App.Commands.Place.Dto.DishDto>();
+            CreateMap<AddressDto, App.Commands.Place.Dto.AddressDto>();
+            CreateMap<HeaderImageDto, App.Commands.Place.Dto.HeaderImageDto>();
             CreateMap<PlaceCreateModel, App.Commands.Place.Create.CommandCreatePlace>();
 
 
