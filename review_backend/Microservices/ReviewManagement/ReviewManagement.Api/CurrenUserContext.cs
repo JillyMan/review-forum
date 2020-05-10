@@ -10,17 +10,25 @@ namespace ReviewManagement.Api
 {
 	public class CurrenUserContext : ICurrentUserContext
 	{
-		public UserInfo CurrentUser { get; }
+		private UserInfo _currentUser;
+
+		public UserInfo CurrentUser 
+		{
+			get
+			{
+				if (_currentUser == null)
+				{
+					throw new UserNotFoundException();
+				}
+
+				return _currentUser;
+			}
+		}
 
 		public CurrenUserContext(IReviewManagementContext reviewContext, IHttpContextAccessor httpContextAccessor)
 		{
 			var userId = GetUserId(httpContextAccessor.HttpContext.User);
-			CurrentUser = reviewContext.Users.FirstOrDefault(x => x.Id == userId);
-
-			if (CurrentUser == null)
-			{
-				throw new UserNotFoundException();
-			}
+			_currentUser = reviewContext.Users.FirstOrDefault(x => x.Id == userId);
 		}
 
 		public Role Role()
@@ -28,15 +36,14 @@ namespace ReviewManagement.Api
 			return CurrentUser.Role;
 		}
 
-		private const string IdClaimType = "http://schemas.microsoft.com/identity/claims/objectidentifier";
-
 		private static int GetUserId(ClaimsPrincipal claimsPrincipal)
 		{
-			var claim = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == IdClaimType);
+			var claim = claimsPrincipal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
 
 			if (claim == null || !int.TryParse(claim.Value, out var id))
 			{
-				throw new UserNotFoundException($"Unable to find claim of type '{IdClaimType}'.");
+				return -1;
+//				throw new UserNotFoundException($"Unable to find claim of type '{ClaimTypes.NameIdentifier}'.");
 			}
 
 			return id;

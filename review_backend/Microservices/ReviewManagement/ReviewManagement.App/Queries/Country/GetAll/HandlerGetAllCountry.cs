@@ -1,10 +1,9 @@
 ﻿using ReviewManagement.App.Infrastructure;
-using ReviewManagement.App.Queries.Base;
 using ReviewManagement.Domain.Entities;
 
-namespace ReviewManagement.App.Queries.GetAllCategory
+namespace ReviewManagement.App.Queries.Country.GetAll
 {
-    public class HandlerGetAllCountry : HandlerGetAllBase<QueryGetAllCountry, Category>
+    public class HandlerGetAllCountry : Base.HandlerGetAllBase<QueryGetAllCountry, Domain.Entities.Country>
     {
         public HandlerGetAllCountry(IReviewManagementContext context)
             : base(context)

@@ -1,11 +1,9 @@
-﻿using MediatR;
+﻿using ReviewManagement.App.Queries.Base;
 using ReviewManagement.Domain.Entities;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace ReviewManagement.App.Queries.GetAllPlaces
 {
-    public class Query : IRequest<IEnumerable<Place>>
+    public class Query : QueryGetAllBase<Place>
     {
     }
 }

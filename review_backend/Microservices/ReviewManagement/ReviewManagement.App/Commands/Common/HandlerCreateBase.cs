@@ -20,7 +20,11 @@ namespace ReviewManagement.App.Commands.Common
             Context = context;
         }
 
-        protected abstract TEntity PrepareEntity(TCommand command);
+        protected virtual TEntity PrepareEntity(TCommand command)
+        {
+            var entity = Mapper.Map<TEntity>(command);
+            return entity;
+        }
 
         public async Task<TEntity> Handle(TCommand request, CancellationToken cancellationToken)
         {
