@@ -10,17 +10,25 @@ namespace ReviewManagement.Api
 {
 	public class CurrenUserContext : ICurrentUserContext
 	{
-		public UserInfo CurrentUser { get; }
+		private UserInfo _currentUser;
+
+		public UserInfo CurrentUser 
+		{
+			get
+			{
+				if (_currentUser == null)
+				{
+					throw new UserNotFoundException();
+				}
+
+				return _currentUser;
+			}
+		}
 
 		public CurrenUserContext(IReviewManagementContext reviewContext, IHttpContextAccessor httpContextAccessor)
 		{
 			var userId = GetUserId(httpContextAccessor.HttpContext.User);
-			CurrentUser = reviewContext.Users.FirstOrDefault(x => x.Id == userId);
-
-			if (CurrentUser == null)
-			{
-				throw new UserNotFoundException();
-			}
+			_currentUser = reviewContext.Users.FirstOrDefault(x => x.Id == userId);
 		}
 
 		public Role Role()
@@ -34,7 +42,8 @@ namespace ReviewManagement.Api
 
 			if (claim == null || !int.TryParse(claim.Value, out var id))
 			{
-				throw new UserNotFoundException($"Unable to find claim of type '{ClaimTypes.NameIdentifier}'.");
+				return -1;
+//				throw new UserNotFoundException($"Unable to find claim of type '{ClaimTypes.NameIdentifier}'.");
 			}
 
 			return id;
