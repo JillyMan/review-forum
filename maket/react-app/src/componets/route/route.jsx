@@ -15,7 +15,7 @@ const RouteContainer = () => {
                 <Route path={urlGetCategoryByIdPagePattern.pattern} component={PlacesRoute} />
                 <Route path={urlGetPlaceByIdPagePattern.pattern} component={ActivePlaceRoute} />
                 <Route path={"/admin"} component={AdminPagePresenter} />
-                <Route path={"/superUser"} component={SuperUserPresenter} />
+                <Route path={"/super_user"} component={SuperUserPresenter} />
             </Switch>
         </>
     )

@@ -2,7 +2,7 @@ import React from 'react'
 import ListOfPlacesPresenter from '../presentations/list-of-places-presenter'
 
 const containerStyle = {
-    marginTop : "20px",
+    marginTop: "20px",
     height: "100%",
     width: "100%",
     display: "grid",
