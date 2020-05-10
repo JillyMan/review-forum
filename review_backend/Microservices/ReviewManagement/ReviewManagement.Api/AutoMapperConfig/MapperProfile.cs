@@ -4,6 +4,7 @@ using ReviewManagement.Api.Models.Create;
 using ReviewManagement.App.Models;
 using ReviewManagement.Api.Models;
 using ReviewManagement.Api.Models.Create.Dto;
+using ReviewManagement.Api.Models.Delete;
 
 namespace ReviewManagement.Api.AutoMapperConfig
 {
@@ -34,6 +35,9 @@ namespace ReviewManagement.Api.AutoMapperConfig
 
             CreateMap<CityCreateModel, App.Commands.City.Create.CommandCreateCity>();
             CreateMap<CityCreateModel, App.Commands.City.Update.CommandUpdateCity>();
+
+
+            CreateMap<DeleteMultiplyModel, App.Commands.City.Delete.CommandDeleteMultiplyCity>();
 
 
             CreateMap<UserCreateModel, RegisterInfo>();
