@@ -25,7 +25,10 @@ const ListOfPlacesPresenter = (props) => {
     const { placeConfigs, orientation } = props
 
     const cards = placeConfigs.map((value, index) => (
-        <Link to={`/active_places/${value.id}`} className="placeCardLink">
+        <Link
+            to={`/active_places/${value.id}`}
+            className="placeCardLink"
+            key={index}>
             <PlaceCard
                 key={index}
                 orderNumber={index + 1}

@@ -4,7 +4,7 @@ import CommentList from "../comment/comment-list"
 
 const CommentContainer = () => {
 
-    const [loading, setLoading] = useState(true);
+    const [loading] = useState(true);
     const [comments, setComments] = useState([]);
 
     const addComment = (comment) => {

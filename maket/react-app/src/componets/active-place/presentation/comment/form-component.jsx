@@ -4,7 +4,7 @@ const FormComponent = (props) => {
 
     const { addCommentCallBack } = props
 
-    const [loading, setLoading] = useState(false)
+    const [loading] = useState(false)
 
     const [comment, setComment] = useState({ name: "user", message: "" })
 

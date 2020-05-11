@@ -9,6 +9,7 @@ const rateImg = <span>&#9786;</span>
 const StarRaiting = (props) => {
     return (
         <StarRatingComponent
+            name="starRaiting"
             renderStarIcon={() => rateImg}
             starCount={starCount}
             value={props.rate}

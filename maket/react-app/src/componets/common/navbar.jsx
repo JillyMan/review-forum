@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import DropDownToLink from "./drop-down-to-link"
-import { Navbar, Button } from "react-bootstrap"
+import { Navbar } from "react-bootstrap"
 import { urlGetCategoryByIdPagePattern } from '../route/route-patterns'
+import NavbarUserButotns from "./navbar-user-buttons"
 
 const categories = [
   { id: 1, name: "Eatery" },
@@ -10,14 +11,6 @@ const categories = [
 ]
 
 const mainLinkName = "RF"
-
-const signIn = {
-  marginLeft: "auto",
-  marginRight: "10px"
-}
-
-const signInBtnName = "Sign In"
-const registrationBtnName = "Registration"
 
 const NavigationContainer = () => {
 
@@ -34,8 +27,7 @@ const NavigationContainer = () => {
         {mainLinkName}
       </Navbar.Brand>
       <DropDownToLink listOfLinks={things} />
-      <Button variant="light" style={ signIn }>{signInBtnName}</Button>
-      <Button variant="light">{registrationBtnName}</Button>
+      <NavbarUserButotns autorize={false} />
     </Navbar>
   )
 }

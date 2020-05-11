@@ -9,33 +9,63 @@ const rowStyle = {
     paddingBottom: "10px"
 }
 
+const submitBtnName = "Submit place"
+
 const AddPlaceComponent = () => {
 
-    const [inputPlace, setValues] = useState({
-        contactInfo: "",
+    const [place, setPlace] = useState({
+        name: "",
+        phoneNumber: "",
+        image: {
+            imageUrl: ""
+        },
+        categoryId: "",
         address: "",
         dishes: [],
         headerImages: []
     });
 
     const changeAddress = (newValue) => {
-        setValues({ ...inputPlace, address: newValue })
+        setPlace({
+            ...place,
+            address: {
+                cityId: newValue.city.id,
+                street: newValue.street,
+                latitude: newValue.latitude,
+                Longitude: newValue.longtude
+            }
+        })
     }
 
     const changeContactInfo = (newValue) => {
-        setValues({ ...inputPlace, contactInfo: newValue })
+        setPlace({
+            ...place,
+            name: newValue.name,
+            phoneNumber: newValue.phone,
+            image: {
+                imageUrl: newValue.imgUrl
+            },
+            categoryId: newValue.category.id
+        })
     }
 
     const onDishesChange = (newValue) => {
-        let array = inputPlace.dishes.slice()
-        array.push(newValue);
-        setValues({ ...inputPlace, dishes: array })
+        let updatedDishes = [...place.dishes, newValue]
+        setPlace({ ...place, dishes: [...updatedDishes] })
     }
 
     const onHeaderImgChange = (newValue) => {
-        let array = inputPlace.headerImages.slice()
+        let array = place.headerImages.slice()
         array.push(newValue);
-        setValues({ ...inputPlace, headerImages: array })
+        setPlace({ ...place, headerImages: array.slice() })
+    }
+
+    const removeDishes = (item) => {
+
+    }
+
+    const removeHeaderImg = (item) => {
+
     }
 
     return (
@@ -48,20 +78,18 @@ const AddPlaceComponent = () => {
             </Row>
             <Row style={rowStyle}>
                 <CollapseItem
-                    handlerName={"Add Header Image"}
+                    handlerName={"Header Image"}
                     contentForm={<HeaderImageInfo onChange={onHeaderImgChange} />}
-                    change={onHeaderImgChange}
                 />
             </Row>
             <Row style={rowStyle}>
                 <CollapseItem
-                    handlerName={"Add Dishes"}
+                    handlerName={"Dish"}
                     contentForm={<DishForm onChange={onDishesChange} />}
-                    change={onDishesChange}
                 />
             </Row>
             <Row>
-                <Button variant="primary">Add</Button>
+                <Button variant="primary" onClick={() => { console.log(place) }}>{submitBtnName}</Button>
             </Row>
         </>
     )
