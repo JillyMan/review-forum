@@ -5,6 +5,7 @@ using ReviewManagement.App.Models;
 using ReviewManagement.Api.Models;
 using ReviewManagement.Api.Models.Dto;
 using ReviewManagement.Api.Models.Delete;
+using ReviewManagement.App.Commands.Users.Update;
 
 namespace ReviewManagement.Api.AutoMapperConfig
 {
@@ -40,6 +41,8 @@ namespace ReviewManagement.Api.AutoMapperConfig
             CreateMap<DeleteMultiplyModel, App.Commands.City.Delete.CommandDeleteMultiplyCity>();
 
 
+
+            CreateMap<UserInfoUpdate, CommandUpdateUser>();
             CreateMap<UserCreateModel, RegisterInfo>();
             CreateMap<AuthTokenResponse, AuthenticateInfo>();
             CreateMap<AuthenticateInfoModel, AuthenticateInfo>();
