@@ -7,6 +7,9 @@ using ReviewManagement.Domain.Entities;
 using ReviewManagement.Domain.Entities.Security;
 using System;
 using System.Threading.Tasks;
+using FluentValidation;
+using FluentValidation.Results;
+using System.Collections.Generic;
 
 namespace ReviewManagement.App.Services.User
 {
@@ -21,9 +24,20 @@ namespace ReviewManagement.App.Services.User
 
         public async Task<UserInfo> Authenticate(AuthenticateInfo authorizeInfo)
         {
-            if (string.IsNullOrEmpty(authorizeInfo.Login) || string.IsNullOrEmpty(authorizeInfo.Password))
+            if (string.IsNullOrEmpty(authorizeInfo.Login))
             {
-                throw new ArgumentException($"The argument: {nameof(authorizeInfo)} has null props.");
+                throw new ValidationException(new List<ValidationFailure>() 
+                {
+                    new ValidationFailure("Login", "Can't be null or empty")
+                });
+            }
+
+            if (string.IsNullOrEmpty(authorizeInfo.Password))
+            {
+                throw new ValidationException(new List<ValidationFailure>()
+                {
+                    new ValidationFailure("Password", "Can't be null or empty")
+                });
             }
 
             var user = await _context.Users

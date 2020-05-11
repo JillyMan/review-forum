@@ -1,6 +1,6 @@
-﻿namespace ReviewManagement.App.Commands.Place.Create.Dto
+﻿namespace ReviewManagement.Api.Models.Dto
 {
-    public class AddressDto
+	public class AddressDto
     {
         public int CountryId { get; set; }
 

@@ -27,7 +27,7 @@ namespace ReviewManagement.App.Commands.Common
 			return Mapper.Map<TEntity>(command);
 		}
 
-		public async Task<TEntity> Handle(TCommand request, CancellationToken cancellationToken)
+		public virtual async Task<TEntity> Handle(TCommand request, CancellationToken cancellationToken)
 		{
 			var entityToUpdate = Context.Set<TEntity>().FirstOrDefault(x => x.Id == request.Id);
 			if (entityToUpdate == null)

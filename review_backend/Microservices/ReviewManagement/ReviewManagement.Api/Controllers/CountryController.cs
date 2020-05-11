@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ReviewManagement.App.Queries.Country.Get;
+using ReviewManagement.App.Queries.Country.GetAll;
 using System.Threading.Tasks;
 
 namespace ReviewManagement.Api.Controllers
@@ -7,15 +9,17 @@ namespace ReviewManagement.Api.Controllers
 	public class CountryController : BaseController
 	{
 		[HttpGet]
-		public async Task<Domain.Entities.Country> Get() 
+		public async Task<IActionResult> Get()
 		{
-			return null;
+			var list = await Mediator.Send(new QueryGetAllCountry());
+			return Ok(list);
 		}
 
 		[HttpGet("{id}")]
-		public async Task<Domain.Entities.Country> Get([FromRoute]int id)
+		public async Task<IActionResult> Get([FromRoute]int id)
 		{
-			return null;
+			var country = await Mediator.Send(new QueryGetCountry() { Id = id });
+			return Ok(country);
 		}
 	}
 }

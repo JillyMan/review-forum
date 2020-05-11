@@ -1,25 +1,24 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
-using ReviewManagement.App.Infrastructure;
+using ReviewManagement.App.Commands.Place.Dto;
 using ReviewManagement.App.Exceptions;
-using ReviewManagement.App.Extension;
-using System;
+using ReviewManagement.App.Infrastructure;
 using System.Linq;
 
-namespace ReviewManagement.App.Commands.Place.UpdatePlace
+namespace ReviewManagement.App.Commands.Place.Update
 {
-    public class Validator : AbstractValidator<Command>
+    public class ValidatorUpdatePlace : AbstractValidator<CommandUpdatePlace>
     {
         private IReviewManagementContext _context;
 
-        public Validator(IReviewManagementContext ctx)
+        public ValidatorUpdatePlace(IReviewManagementContext ctx, IValidator<ImageDto> validatorImg)
         {
             _context = ctx;
 
-            RuleFor(x => x.ImageUrl)
-                .Cascade(CascadeMode.StopOnFirstFailure)
-                .ValidateUrl();
+            RuleFor(x => x.Image)
+                .SetValidator(validatorImg)
+                .When(x => x != null);
 
             RuleFor(x => x.Name)
                 .MinimumLength(2)
@@ -32,16 +31,16 @@ namespace ReviewManagement.App.Commands.Place.UpdatePlace
                 });
         }
 
-        protected override bool PreValidate(ValidationContext<Command> context, ValidationResult result)
+        protected override bool PreValidate(ValidationContext<CommandUpdatePlace> context, ValidationResult result)
         {
             var command = context.InstanceToValidate;
 
-            if (_context.Places.AsNoTracking().FirstOrDefault(x => x.Id == command.PlaceId) == null)
+            if (_context.Places.AsNoTracking().FirstOrDefault(x => x.Id == command.Id) == null)
             {
                 throw new EntityNotFoundException();
             }
 
-            if (command.CategoryId.HasValue && 
+            if (command.CategoryId.HasValue &&
                 _context.Categories
                     .AsNoTracking()
                     .FirstOrDefault(x => x.Id == command.CategoryId) == null)

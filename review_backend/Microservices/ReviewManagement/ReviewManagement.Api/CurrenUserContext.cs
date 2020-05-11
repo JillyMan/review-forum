@@ -16,7 +16,7 @@ namespace ReviewManagement.Api
 		{
 			get
 			{
-				if (_currentUser == null)
+				if (_currentUser == null || !_currentUser.IsActive)
 				{
 					throw new UserNotFoundException();
 				}

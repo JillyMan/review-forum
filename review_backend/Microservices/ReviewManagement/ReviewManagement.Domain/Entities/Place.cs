@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ReviewManagement.Domain.Entities
 {
@@ -9,7 +8,7 @@ namespace ReviewManagement.Domain.Entities
 
         public float Rate { get; set; }
 
-        public int ImageId { get; set; }
+        public int? ImageId { get; set; }
 
         public Image Image { get; set; }
 
@@ -22,7 +21,7 @@ namespace ReviewManagement.Domain.Entities
         public int AddressId { get; set; }
 
         public Address Address { get; set; }
-     
+
         public ICollection<HeaderPlaceImage> HeaderImages { get; set; }
 
         public ICollection<Dish> Dishes { get; set; }

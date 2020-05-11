@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using ReviewManagement.Domain.Entities;
+using ReviewManagement.App.Models.Place;
 
 namespace ReviewManagement.App.Queries.GetPlace
 {
-    public class Query : IRequest<Place>
+    public class Query : IRequest<PlaceModel>
     {
         public int PlaceId { get; set; }
     }

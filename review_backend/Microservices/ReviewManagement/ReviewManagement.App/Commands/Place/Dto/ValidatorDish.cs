@@ -1,14 +1,13 @@
 ﻿using FluentValidation;
-using ReviewManagement.App.Extension;
 
-namespace ReviewManagement.App.Commands.Place.Create.Dto
+namespace ReviewManagement.App.Commands.Place.Dto
 {
 	public class ValidatorDish : AbstractValidator<DishDto>
 	{
-		public ValidatorDish()
+		public ValidatorDish(IValidator<ImageDto> validatorImg)
 		{
-			RuleFor(x => x.ImageUrl)
-				.ValidateUrl()
+			RuleFor(x => x.Image)
+				.SetValidator(validatorImg)
 				.When(x => x != null);
 
 			RuleFor(x => x.Name).NotEmpty();

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ReviewManagement.Api.Services;
+using ReviewManagement.App.Models.Place;
 using ReviewManagement.Domain.Entities;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -10,9 +11,9 @@ namespace ReviewManagement.Api.Controllers
     [Route("api/places")]
     public class PlaceController : BaseController
     {
-        private EntityServiceCache<Place> _cacheService;
+        private EntityServiceCache<PlaceModel> _cacheService;
 
-        public PlaceController(EntityServiceCache<Place> cacheService)
+        public PlaceController(EntityServiceCache<PlaceModel> cacheService)
         {
             _cacheService = cacheService;
         }

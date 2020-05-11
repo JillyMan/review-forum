@@ -1,18 +1,7 @@
 ﻿namespace ReviewManagement.Domain.Entities
 {
-	public class Image : BaseEntity
+    public class Image : BaseEntity
     {
         public string ImageUrl { get; set; }
-    }
-
-    public class HeaderPlaceImage : BaseEntity
-    {
-        public int PlaceId { get; set; }
-
-        public Place Place { get; set; }
-
-        public int ImageId { get; set; }
-
-        public Image Image { get; set; }
     }
 }
