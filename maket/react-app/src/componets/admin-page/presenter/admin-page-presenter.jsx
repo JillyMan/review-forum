@@ -1,5 +1,5 @@
 import React from "react"
-import AdminPageContainer from "../admin-page-container/admin-page-container"
+import AdminPageContainer from "../container/admin-page-container"
 
 const AdminPagePresenter = () =>{
 

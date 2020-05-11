@@ -2,6 +2,9 @@ import React from "react"
 
 import PlaceCard from "../../common/place-card"
 
+import "../../common/style/place-card.css"
+import { Link } from "react-router-dom"
+
 const inlineOrientation = "inline"
 
 const containerStyle = {
@@ -19,14 +22,16 @@ const blockOrinentation = {
 
 const ListOfPlacesPresenter = (props) => {
 
-    const {placeConfigs, orientation} = props
+    const { placeConfigs, orientation } = props
 
     const cards = placeConfigs.map((value, index) => (
-        <PlaceCard
-            key={index}
-            orderNumber={index + 1}
-            data={value}
-        />
+        <Link to={`/active_places/${value.id}`} className="placeCardLink">
+            <PlaceCard
+                key={index}
+                orderNumber={index + 1}
+                data={value}
+            />
+        </Link>
     ))
 
     return (
