@@ -4,30 +4,32 @@ import { Modal, Button, Form } from "react-bootstrap"
 
 const RegistrationModalWindow = (props) => {
 
+    const [user, setUser] = useState({
+        login: "",
+        firstName: "",
+        lastName: "",
+        password: ""
+    })
 
-    const [login, setLogin] = useState()
-    const [firstName, setFirstName] = useState()
-    const [lastName, setLastName] = useState()
-    const [password, setPassword] = useState()
-
-    const onFormSubmit = () => {
-
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+        console.log(user)
     }
 
     const onLnameChange = (e) => {
-        setLastName(e.target.value)
+        setUser({ ...user, lastName: e.target.value });
     }
 
     const onFnameChange = (e) => {
-        setFirstName(e.target.value)
+        setUser({ ...user, firstName: e.target.value });
     }
 
     const onLoginChange = (e) => {
-        setLogin(e.target.value)
+        setUser({ ...user, login: e.target.value });
     }
 
     const onPasswordCHange = (e) => {
-        setPassword(e.target.value)
+        setUser({ ...user, password: e.target.value });
     }
 
     return (
@@ -46,20 +48,20 @@ const RegistrationModalWindow = (props) => {
                 <Form>
                     <Form.Group controlId="formBasicFname">
                         <Form.Label>First name</Form.Label>
-                        <Form.Control type="text" placeholder="first name" value={firstName} onChange={onFnameChange} required />
+                        <Form.Control type="text" placeholder="first name" value={user.firstName} onChange={onFnameChange} required />
                     </Form.Group>
                     <Form.Group controlId="formBasicLname">
                         <Form.Label>Last name</Form.Label>
-                        <Form.Control type="text" placeholder="last name" value={lastName} onChange={onLnameChange} required />
+                        <Form.Control type="text" placeholder="last name" value={user.lastName} onChange={onLnameChange} required />
                     </Form.Group>
                     <Form.Group controlId="formBasicLogin">
                         <Form.Label>Login</Form.Label>
-                        <Form.Control type="text" placeholder="login" value={login} onChange={onLoginChange} required />
+                        <Form.Control type="text" placeholder="login" value={user.login} onChange={onLoginChange} required />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" value={password} onChange={onPasswordCHange} required />
+                        <Form.Control type="password" placeholder="Password" value={user.password} onChange={onPasswordCHange} required />
                     </Form.Group>
                     <Button variant="primary" type="submit" onClick={onFormSubmit}>
                         Submit

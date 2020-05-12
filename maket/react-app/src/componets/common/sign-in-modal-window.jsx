@@ -3,19 +3,22 @@ import { Modal, Button, Form } from "react-bootstrap"
 
 const SignInModalWindow = (props) => {
 
-    const [login, setLogin] = useState()
-    const [password, setPassword] = useState()
+    const [user, setUser] = useState({
+        login: "",
+        password: ""
+    })
 
-    const onFormSubmit = () => {
-
+    const onFormSubmit = (e) => {
+        console.log(user)
+        e.preventDefault();
     }
 
     const onLoginChange = (e) => {
-        setLogin(e.target.value)
+        setUser({ ...user, login: e.target.value })
     }
 
     const onPasswordCHange = (e) => {
-        setPassword(e.target.value)
+        setUser({ ...user, password: e.target.value })
     }
 
     return (
@@ -34,12 +37,12 @@ const SignInModalWindow = (props) => {
                 <Form>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Login</Form.Label>
-                        <Form.Control type="text" placeholder="login" value={login} onChange={onLoginChange} required />
+                        <Form.Control type="text" placeholder="login" value={user.login} onChange={onLoginChange} required />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" value={password} onChange={onPasswordCHange} required />
+                        <Form.Control type="password" placeholder="Password" value={user.password} onChange={onPasswordCHange} required />
                     </Form.Group>
                     <Button variant="primary" type="submit" onClick={onFormSubmit}>
                         Submit

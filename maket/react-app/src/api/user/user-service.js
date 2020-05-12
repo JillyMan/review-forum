@@ -5,7 +5,9 @@ const user1 = {
         id: 5,
         name: "KFC",
         rate: 5,
-        imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+        image: {
+            imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/WsgUMMqxDlbPhU6aTurYjA/300s.jpg"
+        },
         phoneNumber: "37533888552",
         categoryId: 3,
         category: null,
@@ -58,7 +60,9 @@ const user1 = {
         id: 5,
         name: "KFC2",
         rate: 5,
-        imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+        image: {
+            imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/WsgUMMqxDlbPhU6aTurYjA/300s.jpg"
+        },
         phoneNumber: "37533888552",
         categoryId: 3,
         category: null,
@@ -122,7 +126,9 @@ const user1 = {
         id: 5,
         name: "KFC3",
         rate: 5,
-        imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+        image: {
+            imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/WsgUMMqxDlbPhU6aTurYjA/300s.jpg"
+        },
         phoneNumber: "37533888552",
         categoryId: 3,
         category: null,
@@ -176,7 +182,9 @@ const user1 = {
         id: 5,
         name: "KFC4",
         rate: 5,
-        imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+        image: {
+            imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/WsgUMMqxDlbPhU6aTurYjA/300s.jpg"
+        },
         phoneNumber: "37533888552",
         categoryId: 3,
         category: null,
@@ -238,7 +246,9 @@ const user1 = {
         id: 5,
         name: "KFC5",
         rate: 5,
-        imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+        image: {
+            imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/WsgUMMqxDlbPhU6aTurYjA/300s.jpg"
+        },
         phoneNumber: "37533888552",
         categoryId: 3,
         category: null,
@@ -314,7 +324,9 @@ const user2 = {
         id: 5,
         name: "KFC",
         rate: 5,
-        imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+        image: {
+            imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/WsgUMMqxDlbPhU6aTurYjA/300s.jpg"
+        },
         phoneNumber: "37533888552",
         categoryId: 3,
         category: null,
@@ -367,7 +379,9 @@ const user2 = {
         id: 5,
         name: "KFC2",
         rate: 5,
-        imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+        image: {
+            imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/WsgUMMqxDlbPhU6aTurYjA/300s.jpg"
+        },
         phoneNumber: "37533888552",
         categoryId: 3,
         category: null,
@@ -431,7 +445,9 @@ const user2 = {
         id: 5,
         name: "KFC3",
         rate: 5,
-        imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+        image: {
+            imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/WsgUMMqxDlbPhU6aTurYjA/300s.jpg"
+        },
         phoneNumber: "37533888552",
         categoryId: 3,
         category: null,
@@ -485,7 +501,9 @@ const user2 = {
         id: 5,
         name: "KFC4",
         rate: 5,
-        imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+        image: {
+            imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/WsgUMMqxDlbPhU6aTurYjA/300s.jpg"
+        },
         phoneNumber: "37533888552",
         categoryId: 3,
         category: null,
@@ -547,7 +565,9 @@ const user2 = {
         id: 5,
         name: "KFC5",
         rate: 5,
-        imgUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/Shl8otIcJh3e2vffUq9g3g/300s.jpg",
+        image: {
+            imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/WsgUMMqxDlbPhU6aTurYjA/300s.jpg"
+        },
         phoneNumber: "37533888552",
         categoryId: 3,
         category: null,
@@ -616,6 +636,31 @@ const user2 = {
     }]
 }
 
+const user5 = {
+    id: 5,
+    name: "Tom",
+    login: "Tom34",
+    isActice: true
+}
+
+const user6 = {
+    id: 6,
+    name: "Zeus",
+    login: "apps@oo",
+    isActice: false
+}
+
+const user7 = {
+    id: 7,
+    name: "Jerry",
+    login: "Je2Ry",
+    isActice: false
+}
+
 export const getPlaceByUserId = (id) => {
-    return [user1,user2].filter((user) => user.id == id)
+    return [user1, user2].filter((user) => user.id == id)
+}
+
+export const getAll = () => {
+    return [user5, user6, user7];
 }

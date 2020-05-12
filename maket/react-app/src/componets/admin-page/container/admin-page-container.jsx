@@ -2,7 +2,7 @@ import React from "react"
 import { Tab, Tabs } from "react-bootstrap";
 import EditCity from "../edit-city";
 import EditCountry from "../edit-country";
-import ListOfUsers from "../list-of-users";
+import EditUser from "../edit-user";
 
 const containerStyle = {
     marginTop: "10px",
@@ -14,7 +14,7 @@ const AdminPageContainer = () => {
     return (
 
         <Tabs defaultActiveKey="city" id="uncontrolled-tab-example" >
-            <Tab eventKey="city" title="City" defaultActiveKey>
+            <Tab eventKey="city" title="City">
                 <div style={containerStyle}>
                     <EditCity />
                 </div>
@@ -26,7 +26,7 @@ const AdminPageContainer = () => {
             </Tab>
             <Tab eventKey="user" title="User">
                 <div style={containerStyle}>
-                    <ListOfUsers />
+                    <EditUser />
                 </div>
             </Tab>
         </Tabs>

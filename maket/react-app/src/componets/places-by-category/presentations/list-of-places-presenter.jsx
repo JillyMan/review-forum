@@ -32,7 +32,7 @@ const ListOfPlacesPresenter = (props) => {
             <PlaceCard
                 key={index}
                 orderNumber={index + 1}
-                data={value}
+                place={value}
             />
         </Link>
     ))

@@ -17,7 +17,7 @@ const CollapseItem = (props) => {
 
     const [open, setOpen] = useState(false);
 
-    const { handlerName, contentForm, change } = props
+    const { handlerName, contentForm } = props
 
     const [dishes, setDishes] = useState([contentForm])
 

@@ -1,36 +1,37 @@
 import React from "react"
-import { ButtonGroup, Button } from "react-bootstrap";
-import EditableInput from "../common/editable-input";
+import EditableInputUser from "./editable-input-user";
+import { Row, Col } from "react-bootstrap";
 
-const ListOfUsers = () => {
 
-    <ButtonGroup>
-        <Button variant="secondary" >Add</Button>
-        <Button variant="secondary" >Delete</Button>
-    </ButtonGroup>
+const containerStyle = {
+    width: "400px",
+    marginTop: "10px"
+}
+
+const ListOfUsers = (props) => {
+
+    const { entities, statusUpdate } = props
 
     return (
         <>
-            <ButtonGroup>
-                <Button variant="secondary" onClick={add}>Add</Button>
-                <Button variant="secondary" onClick={onDelete}>Delete</Button>
-            </ButtonGroup>
-            <br />
             <div style={containerStyle}>
-                {entities.map((value, rowIndex) => (
-                    <EditableInput
-                        key={rowIndex}
-                        //  add={add}
-                        //  update={update}
-                        //  addToDeleteList={addToDeleteList}
-                        rowIndex={rowIndex}
-                        value={value.name}
-                        valueId={value.id}
+                <Row style={{ border: "1px solid black" }}>
+                    <Col xs lg="2" style={{ border: "1px solid black", textAlign: "center" }}>Id</Col>
+                    <Col xs lg="4" style={{ border: "1px solid black", textAlign: "center" }}>Name</Col>
+                    <Col xs lg="4" style={{ border: "1px solid black", textAlign: "center" }}>login</Col>
+                    <Col xs lg="2" style={{ border: "1px solid black", textAlign: "center" }}>status</Col>
+                </Row>
+                {entities.map((value, index) => (
+                    <EditableInputUser
+                        key={index}
+                        user={value}
+                        statusUpdate={statusUpdate}
+                        userIndex={index}
                     />
                 ))}
             </div>
         </>
-    );
+    )
 }
 
 export default ListOfUsers

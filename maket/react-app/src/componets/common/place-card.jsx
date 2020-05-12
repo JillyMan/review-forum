@@ -31,12 +31,14 @@ const placeNameStyle = {
 
 const PlaceCard = (props) => {
 
+    const { place } = props
+
     return (
         <div className="card mb-3" style={cardStyle}>
             <div className="row no-gutters">
                 <div className="col-md-4" style={imgContainerStyle}>
                     <div style={imgWrapperStyle}>
-                        <img src={props.data.imgUrl} style={imgStyle} className="card-img" alt={imgAlt} />
+                        <img src={place.image.imageUrl} style={imgStyle} className="card-img" alt={imgAlt} />
                     </div>
                 </div>
                 <div className="col-md-8">
@@ -44,13 +46,13 @@ const PlaceCard = (props) => {
                         <div className="firstRow">
                             <div style={placeNameStyle}>
                                 {props.orderNumber + ". "}
-                                {props.data.name.toUpperCase()}
+                                {place.name.toUpperCase()}
                             </div>
                             <div style={raitingStyle}>
-                                <StarRaiting rate={props.data.rate} />
+                                <StarRaiting rate={place.rate} />
                             </div>
                         </div>
-                        <ContactInfo data={props.data} />
+                        <ContactInfo data={place} />
                     </div>
                 </div>
             </div>
