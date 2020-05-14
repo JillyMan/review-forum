@@ -7,12 +7,20 @@ const rateImg = <span>&#9786;</span>
 
 
 const StarRaiting = (props) => {
+
+    const { rate, onRateChange } = props
+
+    const rateChange = (e) => {
+        onRateChange(e.target.value)
+    }
+
     return (
         <StarRatingComponent
             name="starRaiting"
             renderStarIcon={() => rateImg}
             starCount={starCount}
-            value={props.rate}
+            value={rate}
+            onStarClick={rateChange}
         />
     )
 }

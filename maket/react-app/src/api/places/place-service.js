@@ -121,16 +121,25 @@ let row5 = {
     Street: {
       name: "lenina",
     },
-    latitude: 1.0,
-    longitude: 2.0
+    latitude: 23.848732,
+    longitude: 53.715878
   },
+  rate: 3,
   headerImages: [
-    { image: { imageUrl: "https://vk.com" } },
-    { image: { imageUrl: "https://vk.com" } }
+    { image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/fBs8B6-y9OFSPtvMHoFrsw/l.jpg" } },
+    { image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/eSdOrc8OxM0Rifk52cGfGQ/o.jpg" } },
+    { image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/2CLsWiL7e02Q8mRP2dwA3w/l.jpg" } },
+    { image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/hQCxjORdzq6vasWCoLnFMQ/l.jpg" } },
+    { image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/0-AQDMvIwKhoO9PQ53A5Hg/l.jpg" } },
+    { image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/P4G6vv785U28Lmey_ie6dQ/l.jpg" } },
+    { image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/aJels0Xq61gpfeFoLbZRxw/l.jpg" } },
+    { image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/QDX2gHLeOv4PlP4x32nKfQ/l.jpg" } },
+    { image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/R5eVEBVp9h3L6kAMib7hLg/l.jpg" } },
   ],
   dishes: [
-    { name: "Draniki", image: { imageUrl: "https://vk.com" }, price: 123 },
-    { name: "Kebab", image: { imageUrl: "https://vk.com" }, price: 123 }
+    { name: "Fried Chicken Sandwich", image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/ESVqJgcqO_QbDBK-o8Q-3w/258s.jpg" }, price: 123 },
+    { name: "Goliath Waffle Sandwich", image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/G5R6jlfnVgkXbo7mk5vjNA/258s.jpg" }, price: 123 },
+    { name: "Yaki", image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/H9vmbm4iJqqBJlujXHloSA/258s.jpg" }, price: 123 }
   ]
 }
 
@@ -197,8 +206,7 @@ const row6 = {
     longitude: 2.0
   },
   headerImages: [
-    { image: { imageUrl: "https://vk.com" } },
-    { image: { imageUrl: "https://vk.com" } }
+    { image: { imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/BWpaBuHh5hukxpofW9eEgQ/l.jpg" } }
   ],
   dishes: [
     { name: "Draniki", image: { imageUrl: "https://vk.com" }, price: 123 },
@@ -216,4 +224,8 @@ export const getPlaceByName = (name) => {
 
 export const getPlaceById = (id) => {
   return [row1, row2, row3, row4, row5, row6].filter((place) => place.id == id)
+}
+
+export const getRateByMonthsByPlace = (id, year) => {
+  return [3, 4, 5, 1, 2, 4, 5, 5]
 }
