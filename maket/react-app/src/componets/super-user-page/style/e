@@ -1,0 +1,16 @@
+{
+    "name": "qwe",
+    "phoneNumber": "qwe",
+    "image": {
+        "imageUrl": "qwe"
+    },
+    "categoryId": 3,
+    "address": {
+        "cityId": 3,
+        "street": "",
+        "latitude": "qw",
+        "Longitude": "qw"
+    },
+    "dishes": [],
+    "headerImages": []
+}

@@ -1,6 +1,17 @@
 import React, { useState } from "react"
 import { Button, Collapse } from "react-bootstrap";
-import DishForm from "./dish-form";
+import "./style/collapse.css"
+
+const btnStyle = {
+    marginLeft: "10px",
+    marginTop: "10px"
+}
+
+const containerstyle = {
+    width: "100%",
+    height: "400px",
+    overflow: "auto"
+}
 
 const CollapseItem = (props) => {
 
@@ -11,9 +22,7 @@ const CollapseItem = (props) => {
     const [dishes, setDishes] = useState([contentForm])
 
     const addDish = () => {
-        let array = dishes.slice()
-        array.push(contentForm)
-        setDishes(array.slice())
+        setDishes([...dishes, contentForm])
     }
 
     return (
@@ -25,17 +34,25 @@ const CollapseItem = (props) => {
             >
                 {handlerName}
             </Button>
-            <Collapse in={open} style={{ width: "100%", height: "400px", overflow: "auto" }}>
 
-                <div id="example-collapse-text">
+            <Collapse in={open} style={containerstyle}>
+                <div>
                     <Button
                         onClick={addDish}
+                        style={btnStyle}
                     >
-                        {handlerName}
-                    </Button>
-                    {dishes.map((value) => (
-                        value
-                    ))}
+                        +
+            </Button>
+                    <div id="example-collapse-text" >
+                        <div style={containerstyle}>
+                            {dishes.map((value, index) => (
+                                <div className="containerstyle"
+                                    key={index}>
+                                    {value}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </Collapse>
         </>

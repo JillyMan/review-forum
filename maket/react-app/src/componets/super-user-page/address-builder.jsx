@@ -6,7 +6,7 @@ import { getAll } from "../../api/countries/country-service"
 const AddressBuilder = (props) => {
 
 
-    const [countries, setCountry] = useState(getAll())
+    const [countries] = useState(getAll())
 
     const getCitiesByCountry = (country) => {
         let array = [{ id: 0 }]
@@ -102,33 +102,33 @@ const AddressBuilder = (props) => {
 
     return (
         <>
-            <Form.Group as={Col} controlId="formGridPassword">
+            <Form.Group as={Col} controlId="formGridCountry">
                 <Form.Label>Country</Form.Label>
-                <DropdownButton id="dropdown-basic-button" title={address.country.name}>
+                <DropdownButton id="dropdown-basic-button1" title={address.country.name}>
                     {countriesList}
                 </DropdownButton>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridPassword">
+            <Form.Group as={Col} controlId="formGridCity">
                 <Form.Label>City</Form.Label>
-                <DropdownButton id="dropdown-basic-button" title={address.city.name}>
+                <DropdownButton id="dropdown-basic-button2" title={address.city.name}>
                     {citiesList}
                 </DropdownButton>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Group as={Col} controlId="formGridStreet">
                 <Form.Label>Street</Form.Label>
-                <Form.Control type="text" placeholder="street" value={address.street} onChange={onStreetChange} />
+                <Form.Control type="text" placeholder="street" value={address.street} onChange={onStreetChange} required />
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Group as={Col} controlId="formGridLongtude">
                 <Form.Label>Longtude</Form.Label>
-                <Form.Control type="text" placeholder="longtude" value={address.longtude} onChange={onLongtudeChange} />
+                <Form.Control type="text" placeholder="longtude" value={address.longtude} onChange={onLongtudeChange} required />
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Group as={Col} controlId="formGridLatitude">
                 <Form.Label>Latitude</Form.Label>
-                <Form.Control type="text" placeholder="Latitude" value={address.latitude} onChange={onLatitudeChange} />
+                <Form.Control type="text" placeholder="Latitude" value={address.latitude} onChange={onLatitudeChange} required />
             </Form.Group>
         </>
     )

@@ -9,9 +9,9 @@ const rowStyle = {
     paddingBottom: "10px"
 }
 
-const submitBtnName = "Submit place"
+const editBtnName = "Edit place"
 
-const AddPlaceComponent = () => {
+const ChangePlaceComponent = () => {
 
     const [place, setPlace] = useState({
         name: "",
@@ -89,10 +89,10 @@ const AddPlaceComponent = () => {
                 />
             </Row>
             <Row>
-                <Button variant="primary" onClick={() => { console.log(place) }}>{submitBtnName}</Button>
+                <Button variant="primary" onClick={() => { console.log(place) }}>{editBtnName}</Button>
             </Row>
         </>
     )
 }
 
-export default AddPlaceComponent
+export default ChangePlaceComponent

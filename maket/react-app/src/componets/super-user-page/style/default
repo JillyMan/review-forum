@@ -1,0 +1,42 @@
+{
+    "categoryId": 3,
+    "name": "KFC",
+    "image": {
+        "imageUrl": "https://vk.com"
+    },
+    "phoneNumber": "37533888552",
+    "address": {
+        "cityId": 6,
+        "street": "White rozi",
+        "latitude": 1,
+        "Longitude": 2
+    },
+    "headerImages": [
+        {
+            "image": {
+                "imageUrl": "https://vk.com"
+            }
+        },
+        {
+            "image": {
+                "imageUrl": "https://vk.com"
+            }
+        }
+    ],
+    "dishes": [
+        {
+            "price": 12,
+            "name": "Draniki",
+            "image": {
+                "imageUrl": "https://vk.com"
+            }
+        },
+        {
+            "price": 12,
+            "name": "Kebab",
+            "image": {
+                "imageUrl": "https://vk.com"
+            }
+        }
+    ]
+}

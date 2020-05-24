@@ -7,13 +7,13 @@ import { getAll } from "../../api/place-types/place-type-service"
 const CommonInfo = (props) => {
     const { changeAddress, changeContactInfo } = props
 
-    const [placeType] = useState(getAll())
+    const [placeCategory] = useState(getAll())
 
     const [contactValues, setContactValues] = useState({
         name: "",
         phone: "",
         imgUrl: "",
-        placeType: {
+        category: {
             id: "",
             name: "type"
         }
@@ -46,47 +46,47 @@ const CommonInfo = (props) => {
         changeContactInfo(newPhone)
     }
 
-    const onPlaceTypeChange = (id, name) => {
-        const newType = {
+    const onCategoryChange = (id, name) => {
+        const newCategory = {
             ...contactValues,
-            placeType: {
+            category: {
                 id: id,
                 name: name
             }
         }
-        setContactValues(newType)
-        changeContactInfo(newType)
+        setContactValues(newCategory)
+        changeContactInfo(newCategory)
     }
 
-    const placeTypesList = placeType.map((place) => (
+    const placeCategoryList = placeCategory.map((place) => (
         <Dropdown.Item
             key={place.id}
-            onClick={() => onPlaceTypeChange(place.id, place.name)}
+            onClick={() => onCategoryChange(place.id, place.name)}
         >{place.name}</Dropdown.Item>
     ))
 
     return (
         <Form>
             <Form.Row>
-                <Form.Group as={Col} controlId="formGridEmail">
+                <Form.Group as={Col} controlId="formGridName">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="place name" value={contactValues.name} onChange={onNameChange} />
+                    <Form.Control type="text" placeholder="place name" value={contactValues.name} onChange={onNameChange} required />
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridPassword">
+                <Form.Group as={Col} controlId="formGridPhone">
                     <Form.Label>Phone</Form.Label>
-                    <Form.Control type="text" placeholder="phone number" value={contactValues.phone} onChange={onPhoneChange} />
+                    <Form.Control type="text" placeholder="phone number" value={contactValues.phone} onChange={onPhoneChange} required />
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridPassword">
+                <Form.Group as={Col} controlId="formGridImage">
                     <Form.Label>Image</Form.Label>
-                    <Form.Control type="text" placeholder="image URL" value={contactValues.imgUrl} onChange={onImgUrlChange} />
+                    <Form.Control type="text" placeholder="image URL" value={contactValues.imgUrl} onChange={onImgUrlChange} required />
                 </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridPassword">
+                <Form.Group as={Col} controlId="formGridType">
                     <Form.Label>Type</Form.Label>
-                    <DropdownButton id="dropdown-basic-button" title={contactValues.placeType.name}>
-                        {placeTypesList}
+                    <DropdownButton id="dropdown-basic-button" title={contactValues.category.name}>
+                        {placeCategoryList}
                     </DropdownButton>
                 </Form.Group>
             </Form.Row>

@@ -3,7 +3,8 @@ import { Carousel } from "react-bootstrap"
 
 
 const imgStyle = {
-    width: "334px"
+    width: "334px",
+    height: "250px"
 }
 
 const imgContainerStyle = {
@@ -21,7 +22,7 @@ const SlideMenu = (props) => {
                 <img
                     key={i}
                     style={imgStyle}
-                    src={images[i]}
+                    src={images[i].image.imageUrl}
                     alt="..."
                 />, ' '
             )
