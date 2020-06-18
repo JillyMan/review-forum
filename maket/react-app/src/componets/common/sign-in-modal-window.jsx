@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { login } from "../../api/user/user-service"
 import { Modal, Button, Form } from "react-bootstrap"
 
 const SignInModalWindow = (props) => {
@@ -9,7 +10,9 @@ const SignInModalWindow = (props) => {
     })
 
     const onFormSubmit = (e) => {
-        console.log(user)
+        if(login(user)){
+            document.location.reload();
+        }
         e.preventDefault();
     }
 
