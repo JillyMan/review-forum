@@ -14,7 +14,7 @@ namespace ReviewManagement.App.Infrastructure.Token
     public class JwtTokenProvider : ITokenService
     {
         private readonly IReviewManagementContext _dbContext;
-
+        private readonly Random _random = new Random();
         private readonly JwtSetting _jwtSetting;
         private readonly JwtSecurityTokenHandler _tokenHandler = new JwtSecurityTokenHandler();
 
@@ -70,10 +70,19 @@ namespace ReviewManagement.App.Infrastructure.Token
             return tokenString;
         }
 
-        private string GetRefreshToken()
+        private string GetRefreshToken(string access_token)
         {
-            return string.Empty;
-            //throw new NotImplementedException();
+            return GetRandomStringBySize(10) + access_token.PadRight(6);
+        }
+
+        private string GetRandomStringBySize(int size)
+        {
+            var result = "";
+            for(int i = 0; i < size; ++i)
+            {
+                result += (char)_random.Next();
+            }
+            return result;
         }
     }
 }

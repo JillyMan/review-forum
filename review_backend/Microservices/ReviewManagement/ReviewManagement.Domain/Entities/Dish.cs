@@ -10,7 +10,7 @@ namespace ReviewManagement.Domain.Entities
 
         public string Name { get; set; }
 
-        public int ImageId { get; set; }
+        public int? ImageId { get; set; }
 
         public Image Image { get; set; }
 

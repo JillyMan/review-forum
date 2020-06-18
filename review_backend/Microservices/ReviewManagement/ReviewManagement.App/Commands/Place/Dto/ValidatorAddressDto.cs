@@ -5,7 +5,7 @@ using ReviewManagement.App.Infrastructure;
 using ReviewManagement.App.Exceptions;
 using System.Linq;
 
-namespace ReviewManagement.App.Commands.Place.Create.Dto
+namespace ReviewManagement.App.Commands.Place.Dto
 {
 	public class ValidatorAddressDto : AbstractValidator<AddressDto>
     {
@@ -32,11 +32,6 @@ namespace ReviewManagement.App.Commands.Place.Create.Dto
             if (_context.Cities.AsNoTracking().FirstOrDefault(x => x.Id == command.CityId) == null)
             {
                 throw new EntityNotFoundException($"City with id: {command.CityId} not found");
-            }
-
-            if (_context.Countries.AsNoTracking().FirstOrDefault(x => x.Id == command.CountryId) == null)
-            {
-                throw new EntityNotFoundException($"Country with id: {command.CountryId} not found");
             }
 
             return true;

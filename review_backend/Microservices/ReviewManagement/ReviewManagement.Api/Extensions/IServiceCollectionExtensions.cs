@@ -13,7 +13,9 @@ namespace ReviewManagement.Api.Extensions
     {
         public static void RegisterExceptionHandlers(this IServiceCollection serviceCollection)
         {
+            serviceCollection.AddTransient<IExceptionHandler, UserNotFoundExceptionHandler>();
             serviceCollection.AddTransient<IExceptionHandler, ValidationExceptionHandler>();
+            serviceCollection.AddTransient<IExceptionHandler, EntityAlreadyExistsHandler>();
             serviceCollection.AddTransient<IExceptionHandler, EntityNotFoundExceptionHandler>();
             serviceCollection.AddTransient<IExceptionHandler, UntypedExceptionHandler>();
         }
