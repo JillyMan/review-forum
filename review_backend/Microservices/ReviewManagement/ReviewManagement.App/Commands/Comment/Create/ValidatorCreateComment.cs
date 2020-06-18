@@ -33,6 +33,5 @@ namespace ReviewManagement.App.Commands.Comment.Create
 
             return true;
         }
-
     }
 }
