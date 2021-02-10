@@ -27,7 +27,7 @@ const NavigationContainer = () => {
         {mainLinkName}
       </Navbar.Brand>
       <DropDownToLink listOfLinks={things} />
-      <NavbarUserButotns autorize={false} />
+      <NavbarUserButotns autorize={localStorage.getItem("user") ? true : false} />
     </Navbar>
   )
 }

@@ -657,6 +657,39 @@ const user7 = {
     isActice: false
 }
 
+const user8 = {
+    id: 8,
+    eMail: "Je2rry",
+    name: "Jerry",
+    login: "Je2Ry",
+    isActice: false,
+    password: "password",
+    role: "super-user",
+    token:""
+}
+
+const user9 = {
+    id: 9,
+    eMail: "Mouse",
+    name: "Mouse",
+    login: "Mouse",
+    isActice: false,
+    password: "password",
+    role: "admin",
+    token:""
+}
+
+export const login = (user) => {
+    let status = false;
+    [user9, user8].forEach((defaultUser) => {
+        if (user.login === defaultUser.login && defaultUser.password === user.password) {
+            localStorage.setItem("user",JSON.stringify(defaultUser));
+            status = true;
+        }
+    })
+    return status;
+}
+
 export const getPlaceByUserId = (id) => {
     return [user1, user2].filter((user) => user.id == id)
 }

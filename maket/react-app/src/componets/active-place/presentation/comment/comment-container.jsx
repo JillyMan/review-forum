@@ -9,7 +9,6 @@ const CommentContainer = () => {
 
     const addComment = (comment) => {
         setComments([...comments, comment])
-        console.log(comments)
     }
 
     return (
